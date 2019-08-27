@@ -1,5 +1,7 @@
 {
   "name": "SevenServicios",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

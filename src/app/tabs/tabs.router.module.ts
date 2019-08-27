@@ -1,52 +1,73 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
-
+import { AuthGuard } from '../guards/auth.guard';
 const routes: Routes = [
   {
     path: 'tabs',
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'gmplane',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+              import('../pages/gm/gmplane/gmplane.module').then(m => m.GmplanePageModule),
+            canActivate:[AuthGuard],data:{  role: 'ADMIN'} 
           }
         ]
       },
       {
-        path: 'tab2',
+        path: 'dtendep',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+              import('../pages/dt/dteendep/dteendep.module').then(m => m.DteendepPageModule)
           }
         ]
       },
       {
-        path: 'tab3',
+        path: 'etcurso',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+              import('../pages/pl/plcacul/plcacul.module').then(m => m.PlcaculPageModule)
+          }
+        ]
+      },
+      {
+        path: 'tecuter',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/te/tecuter/tecuter.module').then(m => m.TecuterPageModule)
+          }
+        ]
+      },
+      {
+        path: 'tuplatu',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/tu/tuplatu/tuplatu.module').then(m => m.TuplatuPageModule)
           }
         ]
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/tab2',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/gmplane',
     pathMatch: 'full'
   }
 ];

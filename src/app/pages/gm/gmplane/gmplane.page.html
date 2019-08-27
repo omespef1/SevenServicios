@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>gmplane</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row>
+        <ion-col size="6">
+          <ion-button expand="block" (click)="enableDark()">Dark</ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button expand="block" (click)="enableLight()">Light</ion-button>
+        </ion-col>
+      </ion-row>
+
+      
+2
+3
+4
+5
+<ion-list lines="none">    
+  </ion-list>
+  <ion-list lines="none">
+    <ion-item class="child-item" *ngFor="let plane of gmplane" text-wrap detail="false" lines="none">
+      <ion-thumbnail slot="start">
+        <img  src="assets/icon/weightlifter.svg">
+      </ion-thumbnail>
+      <ion-label>
+        <h3>{{plane.pla_nomb}}</h3>
+        <h3>{{plane.pla_codi}}</h3>
+      </ion-label>      
+      <ion-button fill="outline" slot="end">View</ion-button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
