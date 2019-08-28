@@ -14,7 +14,7 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../pages/gm/gmplane/gmplane.module').then(m => m.GmplanePageModule),
-            canActivate:[AuthGuard],data:{  role: 'ADMIN'} 
+              // canActivate:[AuthGuard],data:{  role: 'ADMIN'} 
           }
         ]
       },
