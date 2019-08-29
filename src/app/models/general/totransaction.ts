@@ -4,3 +4,18 @@ export interface ToTransaction {
     ObjTransaction:any;
 
 }
+
+export class loginRequest {
+    Username:string;
+    Password:string;
+    emp_codi:number;
+}
+
+export interface TOAccess {
+    errorMessage:string;
+    codeResult:number;
+    objResult:any;
+    strToken:string;
+
+
+}

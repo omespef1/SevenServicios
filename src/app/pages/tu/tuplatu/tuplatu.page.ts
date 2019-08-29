@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpManagerService } from '../../../services/httpManager/http-manager.service';
 import { tuplatu } from '../../../models/te/tuplatu';
+import { ToTransaction } from '../../../models/general/totransaction';
+import { AuthService } from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-tuplatu',
@@ -9,14 +10,14 @@ import { tuplatu } from '../../../models/te/tuplatu';
 })
 export class TuplatuPage implements OnInit {
 tuplatu:tuplatu[]=[];
-  constructor(private _http:HttpManagerService) { }
+  constructor(private _http:AuthService) { }
 
   ngOnInit() {
     this.GetTuPlatu();
   }
 
   GetTuPlatu(){
-  this._http.Get('/tuplatu').subscribe(resp=>{
+  this._http.Get<ToTransaction>('/tuplatu').subscribe(resp=>{
     this.tuplatu = resp.ObjTransaction;
   })
   }

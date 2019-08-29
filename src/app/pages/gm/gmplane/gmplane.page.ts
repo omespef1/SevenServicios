@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { HttpManagerService } from "../../../services/httpManager/http-manager.service";
 import { HttpEvent } from "@angular/common/http";
 import { ToTransaction } from "src/app/models/general/totransaction";
 import { Gmplane } from '../../../models/gm/gmplane';
 import { ThemeService } from '../../../services/theme/theme.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AuthService } from '../../../services/auth/auth.service';
 
 @Component({
   selector: "app-gmplane",
@@ -12,7 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ["./gmplane.page.scss"]
 })
 export class GmplanePage implements OnInit {
-  constructor(private _http: HttpManagerService,private theme:ThemeService,private sanitizer: DomSanitizer) {}
+  constructor(private _http: AuthService,private theme:ThemeService,private sanitizer: DomSanitizer) {}
   gmplane:Gmplane[];
 
   items = [
@@ -25,7 +25,8 @@ export class GmplanePage implements OnInit {
   }
 
   GetGmPlane() {
-   this._http.Get("/gmplane").subscribe((resp)=>{
+   this._http.Get<ToTransaction>("/gmplane").subscribe((resp)=>{
+     console.log(resp);
       this.gmplane = resp.ObjTransaction;
   });
   }

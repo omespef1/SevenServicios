@@ -11,27 +11,20 @@ import { AuthService } from '../services/auth/auth.service';
 export class AuthGuard implements CanActivate {
   constructor(private router: Router, private auth: AuthService, private alertCtrl: AlertController) { }
  
-  canActivate(route: ActivatedRouteSnapshot)  {
-    const expectedRole = route.data.role;
- 
-    return this.auth.user.pipe(
-      take(1),
-      map(user => {
-        if (!user) {
-          this.showAlert();
-          return this.router.parseUrl('/login')
-        } else {
-          let role = user['role'];
- 
-          if (expectedRole == role) {
-            return true;
-          } else {
-            this.showAlert();
-            return this.router.parseUrl('/login');
-          }
-        }
-      })
-    )
+   canActivate(route: ActivatedRouteSnapshot)  {     
+    // return this.auth.user.pipe(
+    //   take(1),
+    //   map(user => {
+    //     console.log(user);
+    //     if (!user) {
+    //       this.showAlert();
+    //       this.auth.signOut();
+    //       return false;
+    //     } else
+    //     return true;
+    //   })
+    // )
+    return true;
   }
  
   async showAlert() {

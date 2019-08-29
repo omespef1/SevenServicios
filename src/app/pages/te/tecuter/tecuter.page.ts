@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpManagerService } from '../../../services/httpManager/http-manager.service';
 import { tecuter } from '../../../models/te/tecuter';
+import { ToTransaction } from '../../../models/general/totransaction';
+import { AuthService } from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-tecuter',
@@ -9,14 +10,14 @@ import { tecuter } from '../../../models/te/tecuter';
 })
 export class TecuterPage implements OnInit {
 tecuter:tecuter[]=[];
-  constructor(private _http:HttpManagerService) { }
+  constructor(private _http:AuthService) { }
 
   ngOnInit() {
     this.GetTeCuter();
   }
 
   GetTeCuter() {
-   this._http.Get("/tecuter").subscribe((resp)=>{
+   this._http.Get<ToTransaction>("/tecuter").subscribe((resp)=>{
       this.tecuter = resp.ObjTransaction;
   });
   }

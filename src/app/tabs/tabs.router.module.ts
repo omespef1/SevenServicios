@@ -4,7 +4,7 @@ import { TabsPage } from './tabs.page';
 import { AuthGuard } from '../guards/auth.guard';
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children: [
       {
@@ -14,7 +14,7 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../pages/gm/gmplane/gmplane.module').then(m => m.GmplanePageModule),
-              // canActivate:[AuthGuard],data:{  role: 'ADMIN'} 
+             canActivate:[AuthGuard]
           }
         ]
       },
@@ -57,17 +57,12 @@ const routes: Routes = [
               import('../pages/tu/tuplatu/tuplatu.module').then(m => m.TuplatuPageModule)
           }
         ]
-      },
-      {
-        path: '',
-        redirectTo: '/tabs/tab2',
-        pathMatch: 'full'
-      }
+      },     
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/gmplane',
+    redirectTo: 'gmplane',
     pathMatch: 'full'
   }
 ];

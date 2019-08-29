@@ -16,7 +16,7 @@
             <ion-item>
               <!-- <ion-label position="stacked">Email</ion-label> -->
               <ion-input position="fixed" required autofocus="true" name="email" clear-input type="text" placeholder="Email"
-                [(ngModel)]="user.email"></ion-input>
+                [(ngModel)]="user.Username"></ion-input>
               <ion-icon name="person" slot="start"></ion-icon>
             </ion-item>
           </ion-col>
@@ -26,10 +26,10 @@
           <ion-col>
             <ion-item>
               <!-- <ion-label strong position="stacked">Password</ion-label> -->
-              <ion-input required type="password" clear-input placeholder="Password" name="password"
-                [(ngModel)]="user.pw"></ion-input>
+              <ion-input required  [type]="showPass?'text':'password'" clear-input placeholder="Password" name="password"
+                [(ngModel)]="user.Password"></ion-input>
               <ion-icon name="lock" slot="start"></ion-icon>
-              <ion-icon name="eye" slot="end"></ion-icon>
+              <ion-icon  (click)="showPass=!showPass" button [name]="showPass==true?'eye-off':'eye'" slot="end"></ion-icon>
             </ion-item>
           </ion-col>
         </ion-row>

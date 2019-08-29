@@ -1,5 +1,10 @@
 <ion-header>
     <ion-toolbar color="primary">
+        <ion-buttons slot="secondary" *ngIf="logged()">
+            <ion-button>
+              <ion-icon slot="icon-only" name="contact"></ion-icon>
+            </ion-button>            
+          </ion-buttons>
       <ion-title>{{headerName}}</ion-title>
     </ion-toolbar>
   </ion-header>
