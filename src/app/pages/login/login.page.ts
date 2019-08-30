@@ -46,6 +46,10 @@ export class LoginPage implements OnInit {
     });
   }
 
+  facebook(){
+
+   this.auth.loginWithFacebook();
+  }
   // signIn(){
   //   this.loading=true;
   //   setTimeout(() => {

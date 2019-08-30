@@ -12,19 +12,7 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router, private auth: AuthService, private alertCtrl: AlertController) { }
  
    canActivate(route: ActivatedRouteSnapshot)  {     
-    // return this.auth.user.pipe(
-    //   take(1),
-    //   map(user => {
-    //     console.log(user);
-    //     if (!user) {
-    //       this.showAlert();
-    //       this.auth.signOut();
-    //       return false;
-    //     } else
-    //     return true;
-    //   })
-    // )
-    return true;
+    return this.auth.loadUser()!=undefined;
   }
  
   async showAlert() {

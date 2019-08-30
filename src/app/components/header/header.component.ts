@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logged(){
-  return this._auth.authState.value;
+  return this._auth.stroToken!="";
   }
 
 }

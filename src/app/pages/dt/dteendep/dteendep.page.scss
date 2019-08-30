@@ -1,0 +1,19 @@
+.img{
+    height: 120px;
+    background: url('../../../../assets/imgs/futbol.jpg');
+    background-position:left;
+}
+
+ion-card-header {       
+    max-height: 200px;
+}
+ion-card-content {
+    background:#fff;
+}
+
+/* Custom Skeleton Line Height and Margin */
+.custom-skeleton  {
+    line-height: 80px;
+    margin-top:0px;
+    margin-bottom: 0px;
+  }

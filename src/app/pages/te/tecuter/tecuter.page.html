@@ -2,6 +2,9 @@
 
 </app-header>
 <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
   <ion-list lines="none">
     <ion-item *ngFor="let item of tecuter" button detail start>
       <ion-thumbnail slot="start">

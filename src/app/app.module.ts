@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 //Modulo de componentes
 import { ComponentsModule } from './components/components.module';
 import { IonicStorageModule } from '@ionic/storage';
-
+import { Facebook } from '@ionic-native/facebook/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -28,9 +28,10 @@ import { IonicStorageModule } from '@ionic/storage';
     AppRoutingModule,
     HttpClientModule,
     ComponentsModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
   ],
   providers: [
+    Facebook,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

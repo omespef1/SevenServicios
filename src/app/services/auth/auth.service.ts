@@ -1,41 +1,31 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { Observable, of, BehaviorSubject } from "rxjs";
+import { Observable, of, BehaviorSubject, observable } from "rxjs";
 import { filter, tap, take, map } from "rxjs/operators";
 import { Storage } from "@ionic/storage";
 import { loginRequest } from "src/app/models/general/totransaction";
 import { TOAccess } from "../../models/general/totransaction";
 import { HttpManagerService } from '../httpManager/http-manager.service';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 
 @Injectable({
   providedIn: "root"
 })
 export class AuthService  {
-  user: Observable<any>;
-  public authState = new BehaviorSubject(null);
-
+  // user: Observable<any>;
+  // public authState = new BehaviorSubject(null);
+   public stroToken:string;
   constructor(
     private router: Router,
     private storage: Storage,
-    private _http:HttpManagerService
+    private _http:HttpManagerService,
+    private fb: Facebook
   ) {
     this.loadUser();
-    this.user = this.authState
-      .asObservable()
-      .pipe(filter(response => response));
   }
 
-  loadUser() {
-    this.storage.get("user").then((data: any) => {
-      console.log('leyendo usuario');
-      if (data) {
-        console.log(data);
-        this.authState.next(data);
-      } else {
-        console.log('borra usuario')
-        this.authState.next(null);
-      }
-    });
+   loadUser() {
+    return JSON.parse(localStorage.getItem('user'));      
   }
   signIn(credentials: loginRequest) {  
     console.log(credentials);
@@ -43,32 +33,37 @@ export class AuthService  {
       tap(async (userData: TOAccess) => {
         if (userData) {
           if (userData.codeResult === 0) {
-            this.authState.next(userData.objResult);
-            this.storage.set("user", userData);
-            console.log(this.authState.value);
-            return of(userData.objResult);
+            // this.authState.next(userData.objResult);
+           localStorage.setItem("user", JSON.stringify(userData));
+            // console.log(this.authState.value);
+            // return of(userData.objResult);
           }
         }
       })
     );
   }
 
-  Get<T>(urlController:string){
 
-   let token =  this.user.pipe(take(1),map(user=>{
-    
-      return user['strToken'];
-    
-  }))
-    console.log(token);
-     return this._http.Get<T>(urlController,this.authState.value.strToken);
+  loginWithFacebook(){
+    this.fb.login(['public_profile', 'user_friends', 'email'])
+  .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
+  .catch(e => console.log('Error logging into Facebook', e));
+  }
+
+  
+
+   Get<T>(urlController:string){      
+               
+   return this._http.Get<T>(urlController, JSON.parse(localStorage.getItem('user')).strToken);         
   }
   Post<T>(urlController:string,body:any){
     return this._http.Post<T>(urlController,body);
   }
   async signOut() {
-    await this.storage.set("user", null);
-    this.authState.next(null);
+    await this.storage.set("user", null);   
+    this.stroToken="";
     this.router.navigateByUrl("/login");
   }
+
+
 }

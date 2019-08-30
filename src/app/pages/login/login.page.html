@@ -4,7 +4,7 @@
 
 <ion-content>
   <div>
-    <form autocomplete="off" (ngSubmit)="signIn();" #loginForm="ngForm">
+    <form autocomplete="off" (ngSubmit)="signIn();" #loginForm="ngForm" class="bounceIn">
       <ion-grid fixed>
         <ion-row>
           <ion-col padding>
@@ -58,7 +58,7 @@
         </ion-row>
         <ion-row>
           <ion-col padding>
-              <ion-button class="btn-facebook"  expand="block"  >INGRESAR CON FACEBOOK</ion-button>
+              <ion-button class="btn-facebook"  expand="block" (click)="facebook()"  >INGRESAR CON FACEBOOK</ion-button>
               <ion-button  class="btn-google" expand="block"  >INGRESAR CON GOOGLE</ion-button>
              
           </ion-col>

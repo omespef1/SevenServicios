@@ -2,26 +2,93 @@
 
 </app-header>
 <ion-content>
-    <!-- <ion-row>
-        <ion-col size="6">
-          <ion-button expand="block" (click)="enableDark()">Dark</ion-button>
-        </ion-col>
-        <ion-col size="6">
-          <ion-button expand="block" (click)="enableLight()">Light</ion-button>
-        </ion-col>
-      </ion-row> -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
-  <ion-list lines="none">
-    <ion-item class="child-item" *ngFor="let plane of gmplane" text-wrap detail="false" lines="none">
-      <ion-thumbnail slot="start">
-        <img  src="assets/icon/weightlifter.svg">
-      </ion-thumbnail>
-      <ion-label>
-        <h3>{{plane.pla_nomb}}</h3>
-        <h3>{{plane.pla_codi}}</h3>
-      </ion-label>      
-      <ion-button fill="outline" slot="end">View</ion-button>
-    </ion-item>
-  </ion-list>
+
+
+
+  <ion-card *ngFor="let plane of gmplane" class="bounceIn">
+    <!-- <ion-img class="img-card-gym" src="assets/imgs/gym.jpg"></ion-img> -->
+    <div class="img">
+      </div>
+    <ion-card-header>
+      <ion-card-title>{{plane.pla_nomb}}</ion-card-title>
+      <ion-card-subtitle>Clases:{{plane.pla_clas}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col text-left size="6">
+            <ion-label>
+              <ion-icon slot="start" name="calendar"></ion-icon>
+            </ion-label>
+            Días: {{plane.pla_dias}}
+          </ion-col>
+          <ion-col text-right size="6">
+            <ion-label>
+              <ion-icon slot="start" name="calendar"></ion-icon>
+            </ion-label>
+            Meses: {{plane.pla_mese}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col text-left size="6">
+            <ion-label>
+              <ion-icon slot="start" name="person"></ion-icon>
+            </ion-label>
+            Edad mínima: {{plane.pla_emin}}
+          </ion-col>
+          <ion-col text-right size="6">
+            <ion-label>
+              <ion-icon slot="start" name="calendar"></ion-icon>
+            </ion-label>
+            Requiere rutina: {{plane.pla_rrut=='N'?'No':'Si'}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+
+
+  <ion-card *ngIf="gmplane==null">
+
+    <ion-skeleton-text class="custom-skeleton" animated></ion-skeleton-text>
+    <ion-card-header>
+      <ion-skeleton-text animated width="50%"></ion-skeleton-text>
+      <ion-skeleton-text animated width="30%"></ion-skeleton-text>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col text-left size="6">
+            <ion-skeleton-text animated width="100%"></ion-skeleton-text>
+          </ion-col>
+          <ion-col text-right size="6">
+            <ion-label>
+              <ion-skeleton-text animated width="100%"></ion-skeleton-text>
+            </ion-label>
+
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col text-left size="6">
+            <ion-label>
+              <ion-skeleton-text animated width="100%"></ion-skeleton-text>
+            </ion-label>
+          </ion-col>
+          <ion-col text-right size="6">
+            <ion-label>
+              <ion-skeleton-text animated width="100%"></ion-skeleton-text>
+            </ion-label>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
 
 </ion-content>

@@ -1,10 +1,10 @@
 <app-header headerName="Deportes">
-
 </app-header>
-
 <ion-content>
-
-  <ion-list lines="none">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+  <!-- <ion-list lines="none">
     <ion-item *ngFor="let item of dtendep" button detail start>
       <ion-thumbnail slot="start">
         <img  src="assets/icon/football-tab.svg">
@@ -14,7 +14,34 @@
       </ion-label>      
       <ion-button fill="outline" slot="end">View</ion-button>
     </ion-item>
-  </ion-list>
+  </ion-list> -->
+
+  <ion-card *ngFor="let item of dtendep" class="bounceIn">
+    <div class="img">
+    </div>
+    <ion-card-header>    
+      <!-- <ion-card-subtitle>Awesome Subtitle</ion-card-subtitle> -->
+      <ion-card-title>{{item.end_nomb}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+     <ion-grid fixed>
+        <ion-row>
+            <ion-col text-left size="6">
+              <ion-label>
+                <ion-icon slot="start" name="contacts"></ion-icon>
+              </ion-label>
+              Mín.Equipos  <b>{{item.end_nmeq}}</b>
+            </ion-col>
+            <ion-col text-right size="6">
+              <ion-label>
+                <ion-icon slot="start" name="contacts"></ion-icon>
+              </ion-label>
+              Min.Previos <b>{{item.end_mpre}}</b>
+            </ion-col>
+          </ion-row>
+     </ion-grid>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
 

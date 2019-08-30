@@ -1,1 +1,17 @@
+ion-card-header {
+    --background:#fff;
+    max-height: 200px;
+}
 
+.img{
+    height: 120px;
+    background: url('../../../../assets/imgs/gym.jpg');
+    background-position:left;
+}
+
+/* Custom Skeleton Line Height and Margin */
+.custom-skeleton  {
+    line-height: 80px;
+    margin-top:0px;
+    margin-bottom: 0px;
+  }
