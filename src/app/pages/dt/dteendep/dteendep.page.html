@@ -53,6 +53,21 @@
                </div>
                <div class="card-content-subtitle"> 
                   <ion-label>
+                      {{item.end_nmeq}}
+                  </ion-label>
+               </div>
+            </ion-col>
+            <ion-col  size="3">
+                <div class="card-content"> 
+                    <ion-label>                       
+                        <ion-icon slot="start" src="assets/imgs/clock-solid.svg"></ion-icon> 
+                      </ion-label>
+                </div>
+                <div class="card-content-title"> 
+                    Min. previos
+               </div>
+               <div class="card-content-subtitle"> 
+                  <ion-label>
                       {{item.end_mpre}}
                   </ion-label>
                </div>
@@ -64,11 +79,11 @@
                       </ion-label>
                 </div>
                 <div class="card-content-title"> 
-                    Mín.Equipos
+                    Min. posteriores
                </div>
                <div class="card-content-subtitle"> 
                   <ion-label>
-                      {{item.end_mpre}}
+                      {{item.end_mpos}}
                   </ion-label>
                </div>
             </ion-col>

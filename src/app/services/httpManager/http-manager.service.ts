@@ -19,14 +19,14 @@ export class HttpManagerService {
 strToken ="";
   constructor(private _http: HttpClient) {}
 
-   Get<T>(urlController: string,strToken:any) {     
+   Get<T>(urlController: string,strToken?:any) {     
      console.log(strToken)    ;
           const headerDict = {
             "Content-Type": "application/json",
             "Accept": "application/json",
             "Access-Control-Allow-Headers": "Content-Type",
             "Access-Control-Allow-Origin": "*",
-            "Authorization": strToken
+            "Authorization": strToken==null?"":strToken.strToken
           };
       
           let options:any = {

@@ -62,7 +62,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'gmplane',
+    redirectTo: 'tecuter',
     pathMatch: 'full'
   }
 ];

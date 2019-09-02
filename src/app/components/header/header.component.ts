@@ -16,7 +16,9 @@ export class HeaderComponent implements OnInit {
   }
 
   logged(){
-  return this._auth.stroToken!="";
+  return this._auth.loadUser()!=null;
   }
-
+  logOut(){
+    this._auth.signOut();
+  }
 }
