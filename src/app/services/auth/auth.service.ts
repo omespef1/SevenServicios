@@ -6,7 +6,7 @@ import { Storage } from "@ionic/storage";
 import { loginRequest } from "src/app/models/general/totransaction";
 import { TOAccess } from "../../models/general/totransaction";
 import { HttpManagerService } from '../httpManager/http-manager.service';
-import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
+// import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 
 @Injectable({
   providedIn: "root"
@@ -18,8 +18,8 @@ export class AuthService  {
   constructor(
     private router: Router,
     private storage: Storage,
-    private _http:HttpManagerService,
-    private fb: Facebook
+    private _http:HttpManagerService
+    // private fb: Facebook
   ) {
     this.loadUser();
   }
@@ -45,9 +45,9 @@ export class AuthService  {
 
 
   loginWithFacebook(){
-    this.fb.login(['public_profile', 'user_friends', 'email'])
-  .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
-  .catch(e => console.log('Error logging into Facebook', e));
+    // this.fb.login(['public_profile', 'user_friends', 'email'])
+  // .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
+  // .catch(e => console.log('Error logging into Facebook', e));
   }
 
   
