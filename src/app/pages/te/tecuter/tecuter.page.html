@@ -5,8 +5,8 @@
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
-  <ion-list lines="none">
-    <ion-item *ngFor="let item of tecuter" button detail start>
+
+    <!-- <ion-item *ngFor="let item of tecuter" button detail start>
       <ion-thumbnail slot="start">
         <img  src="assets/icon/language.svg">
       </ion-thumbnail>
@@ -15,7 +15,81 @@
         <h3>{{item.cut_codi}}</h3>
       </ion-label>      
       <ion-button fill="outline" slot="end">View</ion-button>
-    </ion-item>
-  </ion-list>
+    </ion-item> -->
+
+    
+  <ion-card *ngFor="let item of tecuter" class="bounceIn">
+    <!-- <ion-img class="img-card-gym" src="assets/imgs/gym.jpg"></ion-img> -->
+    <div class="img">
+      </div>
+    <ion-card-header>
+      <ion-card-title>{{item.cut_nomb}}</ion-card-title>
+      <!-- <ion-card-subtitle>Clases:{{plane.pla_clas}}</ion-card-subtitle> -->
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="3">
+            <div class="card-content"> 
+                <ion-label>
+                    <ion-icon slot="start" src="assets/imgs/laptop-code-solid.svg"></ion-icon> 
+                  </ion-label>
+            </div>
+            <div class="card-content-title"> 
+              Código
+           </div>
+           <div class="card-content-subtitle"> 
+              <ion-label>
+             {{item.cut_codi}}
+              </ion-label>
+           </div>
+        </ion-col>
+          <ion-col    size="3">
+            <div class="card-content"> 
+                <ion-label>
+                    <ion-icon slot="start" name="calendar"></ion-icon>                                
+                  </ion-label>
+            </div>
+            <div class="card-content-title"> 
+              No.Min.Alumnos
+            </div>
+           <div class="card-content-subtitle"> 
+              {{item.cut_nmal}}
+           </div>
+           
+          </ion-col>
+          <ion-col size="3">
+              <div class="card-content"> 
+                  <ion-label>
+                      <ion-icon slot="start" src="assets/imgs/clock-solid.svg"></ion-icon>          
+                    </ion-label>
+              </div>
+              <div class="card-content-title"> 
+                  % Min asistencia
+              </div>
+             <div class="card-content-subtitle">
+                {{item.cut_pmas}}
+             </div>
+          </ion-col>
+          <ion-col size="3">
+              <div class="card-content"> 
+                  <ion-label>
+                      <ion-icon slot="start" name="person"></ion-icon>          
+                    </ion-label>
+              </div>
+              <div class="card-content-title"> 
+                 Coordinadoor
+              </div>
+              <div class="card-content-subtitle"> 
+                {{item.ter_noco}}
+             </div>
+          </ion-col>
+        </ion-row>
+        
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+
 
 </ion-content>

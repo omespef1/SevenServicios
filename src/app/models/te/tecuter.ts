@@ -1,4 +1,6 @@
-export class tecuter {
+import { gnterce } from '../gn/gnterce';
+
+export class tecuter  extends gnterce {
   emp_codi: number;
   cut_cont: number;
   cut_codi: number;

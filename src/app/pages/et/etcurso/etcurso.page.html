@@ -3,8 +3,8 @@
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
-  <ion-list lines="none">
-    <ion-item *ngFor="let item of etcurso" button detail start>
+
+    <!-- <ion-item *ngFor="let item of etcurso" button detail start>
       <ion-thumbnail slot="start">
         <img  src="assets/icon/weightlifter.svg">
       </ion-thumbnail>
@@ -13,7 +13,79 @@
         <h3>{{item.cur_dias}}</h3>
       </ion-label>      
       <ion-button fill="outline" slot="end">View</ion-button>
-    </ion-item>
-  </ion-list>
+    </ion-item> -->
+    <ion-card *ngFor="let item of etcurso" class="bounceIn">
+        <!-- <ion-img class="img-card-gym" src="assets/imgs/gym.jpg"></ion-img> -->
+        <div class="img">
+          </div>
+        <ion-card-header>
+          <ion-card-title>{{item.cur_nomb}}</ion-card-title>
+          <!-- <ion-card-subtitle>Clases:{{plane.pla_clas}}</ion-card-subtitle> -->
+        </ion-card-header>
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="3">
+                <div class="card-content"> 
+                    <ion-label>
+                        <ion-icon slot="start" src="assets/imgs/laptop-code-solid.svg"></ion-icon> 
+                      </ion-label>
+                </div>
+                <div class="card-content-title"> 
+                  Código
+               </div>
+               <div class="card-content-subtitle"> 
+                  <ion-label>
+                 {{item.cur_codi}}
+                  </ion-label>
+               </div>
+            </ion-col>
+              <ion-col    size="3">
+                <div class="card-content"> 
+                    <ion-label>
+                        <ion-icon slot="start" name="calendar"></ion-icon>                                
+                      </ion-label>
+                </div>
+                <div class="card-content-title"> 
+                  Clases
+                </div>
+               <div class="card-content-subtitle"> 
+                  {{item.cur_clas}}
+               </div>
+               
+              </ion-col>
+              <ion-col size="3">
+                  <div class="card-content"> 
+                      <ion-label>
+                          <ion-icon slot="start"name="person"></ion-icon>          
+                        </ion-label>
+                  </div>
+                  <div class="card-content-title"> 
+                     Min.Alumnos
+                  </div>
+                 <div class="card-content-subtitle">
+                    {{item.cur_nmal}}
+                 </div>
+              </ion-col>
+              <ion-col size="3">
+                  <div class="card-content"> 
+                      <ion-label>
+                          <ion-icon slot="start" name="person"></ion-icon>          
+                        </ion-label>
+                  </div>
+                  <div class="card-content-title"> 
+                     Tipo
+                  </div>
+                  <div class="card-content-subtitle"> 
+                    {{item.cur_tipo}}
+                 </div>
+              </ion-col>
+            </ion-row>
+            
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    
+
 
 </ion-content>

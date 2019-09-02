@@ -1,19 +1,34 @@
+ion-card-header {   
+    max-height: 200px;
+}
+ion-card-content{
+    background:#fff;
+    ion-icon{
+        font-size: 30px;
+    }
+}
 .img{
     height: 120px;
     background: url('../../../../assets/imgs/futbol.jpg');
     background-position:left;
 }
 
-ion-card-header {       
-    max-height: 200px;
+ion-card-content{
+    padding: 0px 0px 0px 0px;
 }
-ion-card-content {
-    background:#fff;
+.card-content{
+    
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    text-align: center;   
 }
-
-/* Custom Skeleton Line Height and Margin */
-.custom-skeleton  {
-    line-height: 80px;
-    margin-top:0px;
-    margin-bottom: 0px;
-  }
+.card-content-title {
+    @extend .card-content;
+    font-size: 10px;
+}
+.card-content-subtitle {
+    @extend .card-content;
+    font-size: 15px;
+    color:darkgray;
+}
