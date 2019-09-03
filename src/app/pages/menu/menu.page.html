@@ -1,0 +1,42 @@
+  <app-header headerName="Menú">
+
+  </app-header>
+  <ion-content>
+    <div class="header">
+        <ion-grid fixed>
+            <ion-row padding>       
+              <ion-col padding text-center>
+                  <div class="main-header bounceIn">
+                      <div class="main-img">
+                        <ion-icon slot="start" src="assets/imgs/laptop-code-solid.svg"></ion-icon>
+                      </div>
+                      <div class="main-title">
+                          <ion-label>
+                              <h2>Seven ERP</h2>
+                              Servicios sociales
+                          </ion-label>
+                      </div>
+                    </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+    </div>
+
+  
+      
+    <div class="main content bounceIn">
+      <ion-grid fixed>
+        <ion-row padding>
+          <ion-col (click)="GoMenu(col)" padding size="4" *ngFor="let col of pagesMenu" button tappable>
+            <div class="card-icon">
+              <ion-icon slot="start" [name]="col.mainIcon" [src]="col.mainSrc"></ion-icon>
+            </div>
+            <div class="card-title">
+              <ion-label>{{col.mainTitle}}</ion-label>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  
+  </ion-content>

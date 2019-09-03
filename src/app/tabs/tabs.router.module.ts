@@ -57,12 +57,16 @@ const routes: Routes = [
               import('../pages/tu/tuplatu/tuplatu.module').then(m => m.TuplatuPageModule)
           }
         ]
-      },     
+      },  
+      {
+        path:'menu',
+        loadChildren: ()=>import('../pages/menu/menu.module').then(m=>m.MenuPageModule)
+      }   
     ]
   },
   {
     path: '',
-    redirectTo: 'tecuter',
+    redirectTo: '/menu',
     pathMatch: 'full'
   }
 ];

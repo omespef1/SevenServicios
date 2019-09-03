@@ -11,9 +11,7 @@ import { HttpManagerService } from '../httpManager/http-manager.service';
 @Injectable({
   providedIn: "root"
 })
-export class AuthService  {
-  // user: Observable<any>;
-  // public authState = new BehaviorSubject(null);
+export class AuthService  {  
    public stroToken:string;
   constructor(
     private router: Router,
@@ -32,11 +30,8 @@ export class AuthService  {
     return this._http.Post<TOAccess>("/login/authenticate",credentials).pipe(
       tap(async (userData: TOAccess) => {
         if (userData) {
-          if (userData.codeResult === 0) {
-            // this.authState.next(userData.objResult);
-           localStorage.setItem("user", JSON.stringify(userData));
-            // console.log(this.authState.value);
-            // return of(userData.objResult);
+          if (userData.codeResult === 0) {           
+           localStorage.setItem("user", JSON.stringify(userData));         
           }
         }
       })
@@ -45,9 +40,7 @@ export class AuthService  {
 
 
   loginWithFacebook(){
-    // this.fb.login(['public_profile', 'user_friends', 'email'])
-  // .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
-  // .catch(e => console.log('Error logging into Facebook', e));
+   
   }
 
   
@@ -60,7 +53,7 @@ export class AuthService  {
     return this._http.Post<T>(urlController,body);
   }
   async signOut() {
-    await this.storage.set("user", null);   
+    localStorage.setItem('user',null) ;
     this.stroToken="";
     this.router.navigateByUrl("/login");
   }

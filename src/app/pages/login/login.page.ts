@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
           "Ingreso exitoso",
           `Se ha logueado exitosamente con  ${resp.objResult.cli_noco} `
         );
-        this._nav.navigateRoot("main/gmplane", { animated: true });
+        this._nav.navigateRoot("tabs/menu", { animated: true });
       } else {
         this._alert.showAlert("Ingreso fallido", `${resp.errorMessage}`);
       }

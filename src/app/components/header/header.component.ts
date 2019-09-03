@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
     @Input() headerName:string;
-  constructor(private _auth: AuthService) { }
+  constructor(private _auth: AuthService,private _rout:Router) { }
 
   ngOnInit() {
 
@@ -16,9 +17,14 @@ export class HeaderComponent implements OnInit {
   }
 
   logged(){
+    console.log(this._auth.loadUser());
   return this._auth.loadUser()!=null;
   }
   logOut(){
     this._auth.signOut();
+  }
+
+  goMenu(){
+  this._rout.navigateByUrl('tabs/menu');
   }
 }

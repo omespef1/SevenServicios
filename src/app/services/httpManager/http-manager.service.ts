@@ -12,7 +12,7 @@ import { retry, catchError, filter } from "rxjs/operators";
   providedIn: "root"
 })
 export class HttpManagerService {
-  baseUrl: string = "http://132.147.157.140/rsevserv/api";
+  baseUrl: string = "http://localhost/rsevserv/api";
   private httpOptions: {
     headers: HttpHeaders
 };

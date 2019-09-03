@@ -3,6 +3,8 @@
 
 /** Ionic CSS Variables **/
 :root {
+
+  --ion-font-family: 'Rubik', sans-serif;
     ion-item {
         --background:transparent;       
     }
@@ -120,8 +122,27 @@
   --ion-color-light-tint: #f5f6f9;
 
 
-  --ion-font-family: 'Rubik', sans-serif;
+  
+
+
+
 }
+
+
+
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: bold;
+  src: url('../assets/fonts/Rubik-Bold.ttf');
+}
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../assets/fonts/Rubik-Light.ttf');
+}
+
 
 
 

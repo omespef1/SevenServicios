@@ -26,6 +26,7 @@ ion-card-content{
 .card-content-title {
     @extend .card-content;
     font-size: 10px;
+    font-weight: bold;
 }
 .card-content-subtitle {
     @extend .card-content;
