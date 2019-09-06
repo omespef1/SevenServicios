@@ -29,12 +29,32 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'suafili',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/su/suafili/suafili.module').then(m => m.SuafiliPageModule)
+          }
+        ]
+      },
+      {
         path: 'etcurso',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../pages/pl/plcacul/plcacul.module').then(m => m.PlcaculPageModule)
+              import('../pages/et/etcurso/etcurso.module').then(m => m.EtcursoPageModule)
+          }
+        ]
+      },
+      {
+        path: 'profile',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/profile/profile.module').then(m => m.ProfilePageModule)
           }
         ]
       },

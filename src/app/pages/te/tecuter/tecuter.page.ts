@@ -17,7 +17,7 @@ export class TecuterPage implements OnInit {
   }
 
   GetTeCuter(event?: any) {
-    this._http.Get<ToTransaction>("/tecuter").subscribe(resp => {
+    this._http.Get<ToTransaction>("/tecuter?").subscribe(resp => {
       this.tecuter = resp.ObjTransaction;
       if (event) event.target.complete();
     });

@@ -24,7 +24,7 @@ export class MenuPage implements OnInit {
   }
 
   GoMenu(main:mainMenu){
-    this._route.navigateByUrl(`tabs/${main.mainPath}`);
+    this._route.navigateByUrl(`tabs/${main.mainPath}`,);
   }
 
 }

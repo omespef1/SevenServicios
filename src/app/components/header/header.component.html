@@ -1,13 +1,21 @@
 <ion-header translucent>
     <ion-toolbar color="primary">
-        <ion-buttons slot="primary" *ngIf="logged()">
-            <ion-button (click)="logOut()">
+        <ion-buttons slot="primary">
+            <ion-button (click)="logOut()"  *ngIf="logged()">
               <ion-icon slot="icon-only" name="exit"></ion-icon>
             </ion-button> 
             <ion-button (click)="goMenu()">
                 <ion-icon slot="icon-only" name="home"></ion-icon>
-              </ion-button>                
-          </ion-buttons>
+              </ion-button>    
+                        
+            </ion-buttons >
+          
+        <ion-buttons slot="end">
+            <ion-button (click)="goProfile()">
+                <ion-icon slot="icon-only" name="person"></ion-icon>
+              </ion-button>    
+        </ion-buttons>
+
       <ion-title>{{headerName}}</ion-title>
     </ion-toolbar>
   </ion-header>

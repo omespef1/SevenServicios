@@ -17,7 +17,7 @@ export class TuplatuPage implements OnInit {
   }
 
   GetTuPlatu(event?: any) {
-    this._http.Get<ToTransaction>("/tuplatu").subscribe(resp => {
+    this._http.Get<ToTransaction>("/tuplatu?").subscribe(resp => {
       this.tuplatu = resp.ObjTransaction;
       if (event) event.target.complete();
     });

@@ -12,10 +12,12 @@ import { AuthService } from "../../../services/auth/auth.service";
   styleUrls: ["./gmplane.page.scss"]
 })
 export class GmplanePage implements OnInit {
+  loading=false;
   constructor(
     private _http: AuthService,
     private theme: ThemeService,
     private sanitizer: DomSanitizer
+
   ) {}
   gmplane: Gmplane[];
 
@@ -24,8 +26,10 @@ export class GmplanePage implements OnInit {
   }
 
   GetGmPlane(event?: any) {
-    return this._http.Get<ToTransaction>("/gmplane").subscribe(resp => {
+    this.loading=true;
+    return this._http.Get<ToTransaction>("/gmplane?").subscribe(resp => {
       console.log(resp);
+      this.loading=false;
       this.gmplane = resp.ObjTransaction;
       if (event) event.target.complete();
     });

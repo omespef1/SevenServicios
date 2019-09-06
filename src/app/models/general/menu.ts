@@ -3,4 +3,5 @@ export class mainMenu  {
     mainIcon:string;
     mainPath:string;
     mainSrc:string;
+    
   }

@@ -12,7 +12,9 @@ const routes: Routes = [
     redirectTo: "tabs/menu",
     pathMatch: "full"
   },
-  { path: 'menu', loadChildren: './pages/menu/menu.module#MenuPageModule' }
+  { path: 'menu', loadChildren: './pages/menu/menu.module#MenuPageModule' },
+  { path: 'suafili', loadChildren: './pages/su/suafili/suafili.module#SuafiliPageModule' },
+  { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' }
  
 ];
 @NgModule({

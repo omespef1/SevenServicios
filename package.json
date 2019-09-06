@@ -29,6 +29,7 @@
     "@ionic/storage": "^2.2.0",
     "animate.css": "^3.6.1",
     "cordova-ios": "^5.0.1",
+    "cordova-plugin-keychain-touch-id": "git+https://github.com/sjhoeksma/cordova-plugin-keychain-touch-id.git",
     "cordova-sqlite-storage": "^3.3.0",
     "core-js": "^2.5.4",
     "rxjs": "~6.5.1",
@@ -76,7 +77,10 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-keychain-touch-id": {
+        "FACEID_USAGE_DESCRIPTION": "For easy authentication"
+      }
     },
     "platforms": [
       "ios"

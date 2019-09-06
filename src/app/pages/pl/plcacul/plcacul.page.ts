@@ -17,7 +17,7 @@ export class PlcaculPage implements OnInit {
   }
 
   GetPlCacul(event?: any) {
-    this._http.Get<ToTransaction>("/plcacul").subscribe(resp => {
+    this._http.Get<ToTransaction>("/plcacul?").subscribe(resp => {
       this.plcacul = resp.ObjTransaction;
       if (event) event.target.complete();
     });

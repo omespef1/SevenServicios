@@ -25,7 +25,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {}
 
   signIn() {
-    this.user.emp_codi = 1;
+    this.user.emp_codi = 102;
     this.loading = true;
     console.log(this.user);
     this.auth.signIn(this.user).subscribe(resp => {

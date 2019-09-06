@@ -19,7 +19,7 @@ export class EtcursoPage implements OnInit {
   }
 
   GetEtCurso(event?:any) {
-    this._http.Get<ToTransaction>("/etcurso").subscribe(resp => {    
+    this._http.Get<ToTransaction>("/etcurso?").subscribe(resp => {    
       this.etcurso= resp.ObjTransaction;
       if(event)event.target.complete();
     });

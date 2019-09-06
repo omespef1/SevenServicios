@@ -17,7 +17,7 @@ export class DteendepPage implements OnInit {
   }
 
   GetDtEndep(event?: any) {
-    this._http.Get<ToTransaction>("/dtendep").subscribe(resp => {
+    this._http.Get<ToTransaction>("/dtendep?").subscribe(resp => {
       this.dtendep = resp.ObjTransaction;
       if (event) event.target.complete();
     });

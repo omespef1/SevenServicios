@@ -33,11 +33,10 @@ strToken ="";
             headers: new HttpHeaders(headerDict),
             observe: 'body'
           
-          };
-      
+          };         
           return this._http
-            .get<T>(`${this.baseUrl}${urlController}?emp_codi=1`,<object>options)
-            .pipe(
+            .get<T>(`${this.baseUrl}${urlController}emp_codi=102`,<object>options)
+            .pipe(              
               retry(3), // reintenta la petición 3 veces
               catchError(err => this.handleError(err)) // then handle the error                          
             );

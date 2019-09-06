@@ -47,7 +47,7 @@ export class AuthService  {
 
    Get<T>(urlController:string){      
                
-   return this._http.Get<T>(urlController, JSON.parse(localStorage.getItem('user')));         
+   return this._http.Get<T>(`${urlController}`, JSON.parse(localStorage.getItem('user')));         
   }
   Post<T>(urlController:string,body:any){
     return this._http.Post<T>(urlController,body);
