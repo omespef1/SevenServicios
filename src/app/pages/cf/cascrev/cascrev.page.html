@@ -1,0 +1,51 @@
+<app-header headerName="Solicitud de crédito">
+
+</app-header>
+
+<ion-content fullscrenn class="ion-padding">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+    <ion-list  *ngFor="let item of cascrev" lines="none">
+        <ng-container *ngIf="!loading">
+            <ion-list-header color="primary">      
+                <ion-label>
+                  <h1>Crédito No. {{item.top_codi}} {{item.scf_nume}}</h1>
+                  <p>{{item.scr_fech | date:'dd/MM/yyyy'}}</p>
+                </ion-label>
+              </ion-list-header>
+              <ion-item>
+                <ion-icon slot="start" name="arrow-round-forward"></ion-icon>
+                <ion-label>Línea de crédito</ion-label>
+                <ion-note slot="end">{{item.lic_nomb}}</ion-note>
+              </ion-item>            
+              <ion-item>
+                <ion-icon slot="start" name="cash"></ion-icon>
+                <ion-label>Valor crédito</ion-label>
+                <ion-note slot="end">{{item.scr_vsol}}</ion-note>
+              </ion-item>                        
+        </ng-container>        
+      </ion-list>
+
+      <ng-container *ngIf="loading">
+          <ion-list lines="none" *ngFor="let item of  [1,2,3] ">        
+              <ion-list-header color="primary">               
+                    <ion-skeleton-text animated width="50%"></ion-skeleton-text>                     
+                </ion-list-header>
+            <ion-item *ngFor="let item of  [1,2,3,4] ">
+                 <ion-skeleton-text animated width="100%"></ion-skeleton-text>                
+            </ion-item>
+            <ion-item color="success">
+                <ion-skeleton-text animated width="100%"></ion-skeleton-text>                
+           </ion-item>
+           
+          </ion-list>
+      </ng-container>
+
+
+      <div *ngIf="cascrev==null" class="alert alert-info" role="alert">
+         No tienes solicitudes de crédito actualmente
+        </div>
+      
+
+</ion-content>

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ThemeService } from '../services/theme/theme.service';
+import { TabsService } from '../services/tabs/tabs.service';
+import { mainMenu } from '../models/general/menu';
 
 @Component({
   selector: 'app-tabs',
@@ -7,7 +9,11 @@ import { ThemeService } from '../services/theme/theme.service';
   styleUrls: ['tabs.page.scss']
 })
 export class TabsPage {
+    
+  tabs:mainMenu[];
+  constructor(private _tabs:TabsService) {
 
-  constructor(private theme: ThemeService) {}
+    this.tabs = _tabs.tabs;
+  }
 
 }

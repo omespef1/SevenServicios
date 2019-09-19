@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { etcurso } from "../../../models/et/etcurso";
 import { ToTransaction } from '../../../models/general/totransaction';
-import { AuthService } from '../../../services/auth/auth.service';
+import { HttpManagerService } from '../../../services/httpManager/http-manager.service';
 
 @Component({
   selector: "app-etcurso",
@@ -10,8 +10,9 @@ import { AuthService } from '../../../services/auth/auth.service';
 })
 export class EtcursoPage implements OnInit {
   etcurso: etcurso[] = [];
-  constructor(private _http: AuthService) {
-
+  loading=false;
+  constructor(private _http: HttpManagerService) {
+   
   }
 
   ngOnInit() {
@@ -19,9 +20,11 @@ export class EtcursoPage implements OnInit {
   }
 
   GetEtCurso(event?:any) {
+  this.loading=true;
     this._http.Get<ToTransaction>("/etcurso?").subscribe(resp => {    
       this.etcurso= resp.ObjTransaction;
       if(event)event.target.complete();
+      this.loading=false;
     });
   }
 

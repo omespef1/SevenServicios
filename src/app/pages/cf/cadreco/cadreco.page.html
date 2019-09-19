@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      CRÉDITO NO. {{cfregob.top_codi}} {{cfregob.reg_nume}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscrenn class="ion-padding">
+  <ion-list *ngFor="let item of cfregob.cuotas" lines="none">
+    <ion-list-header color="success">
+      <ion-label>
+        <h1>Número de cuota : {{ item.dre_ncue}}</h1>
+      </ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-icon slot="start" name="alarm"></ion-icon>
+      <ion-label>Fecha
+      </ion-label>
+      <ion-note slot="end">{{item.dre_fech}}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="logo-usd"></ion-icon>
+      <ion-label>Valor cuota
+      </ion-label>
+      <ion-note slot="end">{{item.dre_vcuo}}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="logo-usd"></ion-icon>
+      <ion-label>Saldo
+      </ion-label>
+      <ion-note slot="end">{{item.dre_sald}}</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>

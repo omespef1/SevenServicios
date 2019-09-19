@@ -1,0 +1,65 @@
+<app-header headerName="Mis obligaciones">
+
+</app-header>
+<ion-content fullscreen class="ion-padding">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+  <ion-list  *ngFor="let item of caregob" lines="none">
+    <ng-container *ngIf="!loading">
+        <ion-list-header color="primary">      
+            <ion-label>
+              <h1>Crédito No. {{item.top_codi}} {{item.reg_nume}}</h1>
+              <p>{{item.reg_desc}}</p>
+            </ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-icon slot="start" name="arrow-round-forward"></ion-icon>
+            <ion-label>Línea de crédito</ion-label>
+            <ion-note slot="end">{{item.lic_codi}}</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-icon slot="start" name="alarm"></ion-icon>
+            <ion-label>Fecha</ion-label>
+            <ion-note slot="end">{{item.reg_fech}}</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-icon slot="start" name="cash"></ion-icon>
+            <ion-label>Valor crédito</ion-label>
+            <ion-note slot="end">{{item.reg_vtot | currency:'COP'}}</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-icon slot="start" name="logo-usd"></ion-icon>
+            <ion-label>Saldo</ion-label>
+            <ion-note slot="end">{{item.reg_vtot| currency:'COP'}}</ion-note>
+          </ion-item>
+          <ion-item text-center color="success"  button (click)="presentModalDetail(item)">
+              <ion-icon slot="start" name="eye"></ion-icon>
+              <ion-label>PAGOS Y CUOTAS</ion-label>       
+            </ion-item>
+    </ng-container>        
+  </ion-list>
+  <div *ngIf="caregob==null" class="alert alert-info" role="alert">
+      No tienes obligaciones pendientes
+     </div>
+    
+
+
+    <ng-container *ngIf="loading">
+        <ion-list lines="none" *ngFor="let item of  [1,2,3] ">        
+            <ion-list-header color="primary">               
+                  <ion-skeleton-text animated width="50%"></ion-skeleton-text>                     
+              </ion-list-header>
+          <ion-item *ngFor="let item of  [1,2,3,4] ">
+               <ion-skeleton-text animated width="100%"></ion-skeleton-text>                
+          </ion-item>
+          <ion-item color="success">
+              <ion-skeleton-text animated width="100%"></ion-skeleton-text>                
+         </ion-item>
+         
+        </ion-list>
+    </ng-container>
+    
+    
+    
+</ion-content>

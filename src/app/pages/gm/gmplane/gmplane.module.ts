@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { GmplanePage } from './gmplane.page';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { GntoperPage } from '../../gn/gntoper/gntoper.page';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ComponentsModule
   ],
-  declarations: [GmplanePage]
+  declarations: [GmplanePage,GntoperPage],
+  entryComponents:[GntoperPage]
 })
 export class GmplanePageModule {}

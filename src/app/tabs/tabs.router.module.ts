@@ -8,12 +8,16 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'gmplane',
+        path: 'gm',
         children: [
           {
-            path: '',
-            loadChildren: () =>
-              import('../pages/gm/gmplane/gmplane.module').then(m => m.GmplanePageModule),
+            path: 'gmplane',
+            loadChildren: ()=> import('../pages/gm/gmplane/gmplane.module').then(m=>m.GmplanePageModule),
+             canActivate:[AuthGuard]
+          },
+          {
+            path: 'gminfar',
+            loadChildren: ()=> import('../pages/gm/gminfar/gminfar.module').then(m=>m.GminfarPageModule),
              canActivate:[AuthGuard]
           }
         ]
@@ -79,9 +83,31 @@ const routes: Routes = [
         ]
       },  
       {
+        path: 'caregob',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/cf/cfregob/cfregob.module').then(m => m.CfregobPageModule),
+              canActivate:[AuthGuard]
+          }
+        ]
+      },  
+      {
+        path: 'cascrev',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/cf/cascrev/cascrev.module').then(m => m.CascrevPageModule),
+              canActivate:[AuthGuard]
+          }
+        ]
+      },  
+      {
         path:'menu',
         loadChildren: ()=>import('../pages/menu/menu.module').then(m=>m.MenuPageModule)
-      }   
+      }      
     ]
   },
   {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { dtendep } from "../../../models/dt/dtendep";
 import { ToTransaction } from "../../../models/general/totransaction";
-import { AuthService } from "../../../services/auth/auth.service";
+import { HttpManagerService } from '../../../services/httpManager/http-manager.service';
 
 @Component({
   selector: "app-dteendep",
@@ -10,14 +10,17 @@ import { AuthService } from "../../../services/auth/auth.service";
 })
 export class DteendepPage implements OnInit {
   dtendep: dtendep[] = [];
-  constructor(private _http: AuthService) {}
+  loading=false;
+  constructor(private _http: HttpManagerService) {}
 
   ngOnInit() {
     this.GetDtEndep();
   }
 
   GetDtEndep(event?: any) {
+    this.loading=true;
     this._http.Get<ToTransaction>("/dtendep?").subscribe(resp => {
+      this.loading=false;
       this.dtendep = resp.ObjTransaction;
       if (event) event.target.complete();
     });

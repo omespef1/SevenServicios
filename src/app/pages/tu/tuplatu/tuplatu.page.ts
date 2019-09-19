@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { tuplatu } from "../../../models/te/tuplatu";
 import { ToTransaction } from "../../../models/general/totransaction";
+import { HttpManagerService } from "../../../services/httpManager/http-manager.service";
 import { AuthService } from "../../../services/auth/auth.service";
 
 @Component({
@@ -10,20 +11,31 @@ import { AuthService } from "../../../services/auth/auth.service";
 })
 export class TuplatuPage implements OnInit {
   tuplatu: tuplatu[] = [];
-  constructor(private _http: AuthService) {}
+  loading = false;
+  showSkelet = false;
+  constructor(private _http: HttpManagerService, private _auth: AuthService) {}
 
   ngOnInit() {
     this.GetTuPlatu();
   }
 
   GetTuPlatu(event?: any) {
-    this._http.Get<ToTransaction>("/tuplatu?").subscribe(resp => {
-      this.tuplatu = resp.ObjTransaction;
-      if (event) event.target.complete();
-    });
+    this.loading = true;
+    this._http
+      .Get<ToTransaction>("/tuplatu?", this._auth.loadUser().strToken)
+      .subscribe(resp => {
+        this.tuplatu = resp.ObjTransaction;
+        if (event) event.target.complete();
+        this.loading = false;
+      });
   }
 
   doRefresh($event) {
     this.GetTuPlatu($event);
+    setTimeout(() => {
+      if (this.loading) {
+        this.showSkelet = true;
+      }
+    }, 1000);
   }
 }

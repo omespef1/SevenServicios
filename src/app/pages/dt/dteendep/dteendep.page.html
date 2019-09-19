@@ -1,6 +1,6 @@
 <app-header headerName="Deportes">
 </app-header>
-<ion-content>
+<ion-content fullscreen class="ion-padding">
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
@@ -19,7 +19,7 @@
                 <ion-col  size="3">
                     <div class="card-content"> 
                         <ion-label>                       
-                         <ion-icon slot="start" src="assets/imgs/laptop-code-solid.svg"></ion-icon>
+                         <ion-icon slot="start" src="assets/icon/laptop-code-solid.svg"></ion-icon>
                           </ion-label>
                     </div>
                     <div class="card-content-title"> 
@@ -50,7 +50,7 @@
                 <ion-col  size="3">
                     <div class="card-content"> 
                         <ion-label>                       
-                            <ion-icon slot="start" src="assets/imgs/clock-solid.svg"></ion-icon> 
+                            <ion-icon slot="start" src="assets/icon/clock-solid.svg"></ion-icon> 
                           </ion-label>
                     </div>
                     <div class="card-content-title"> 
@@ -65,7 +65,7 @@
                 <ion-col  size="3">
                     <div class="card-content"> 
                         <ion-label>                       
-                            <ion-icon slot="start" src="assets/imgs/clock-solid.svg"></ion-icon> 
+                            <ion-icon slot="start" src="assets/icon/clock-solid.svg"></ion-icon> 
                           </ion-label>
                     </div>
                     <div class="card-content-title"> 
@@ -83,9 +83,11 @@
       </ion-card>
 </div>
 
-
+<ion-item *ngIf="!dtendep" color="primary" class="item-alert">
+  <ion-label><h2>No se encontraron registros</h2></ion-label>
+</ion-item>
   <div *ngFor="let item of  [1,2,3,4,5] ">
-      <ion-card *ngIf="!dtendep">
+      <ion-card *ngIf="loading">
       <ion-skeleton-text class="custom-skeleton-card" animated></ion-skeleton-text>
       <ion-card-header>
         <ion-skeleton-text animated width="50%"></ion-skeleton-text>

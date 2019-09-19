@@ -1,27 +1,19 @@
 <app-header headerName="Mi Grupo familiar"></app-header>
 <ion-content fullscreen class="ion-padding">
   <ion-list lines="none" class="bounceIn"  *ngIf="suAfili">
-      <ion-item-divider>
+      <ion-list-header>
           <ion-label>Personas a cargo</ion-label>
-        </ion-item-divider>
-        <ion-item-group>
-            
+        </ion-list-header> 
+        
+
               <ion-item  detail  *ngFor="let afili of suAfili">
                   <ion-avatar slot="start">
-                    <img src="assets/imgs/user-tie-solid.svg">
-                  </ion-avatar>                
-                   <ion-label> 
-                      <ion-icon slot="start" name="person"></ion-icon>                                          
-                      <h3>{{ afili.afi_nom1}} {{afili.afi_nom2 }}</h3>
-                      <p> {{afili.afi_ape1}} {{afili.afi_ape2}}</p>
-                    </ion-label>  
-                      <ion-label>                       
-                        <ion-icon slot="start" src="assets/imgs/address-card-regular.svg"></ion-icon>                       
-                        <h3>Identificación</h3>
-                        <p>{{afili.afi_docu}}</p>
-                      </ion-label>                
+                    <img src="assets/icon/user-tie-solid.svg">
+                  </ion-avatar>                                          
                 </ion-item>
-        </ion-item-group>
+
+                
+       
           <div *ngIf="suAfili">
         <ion-item-divider>
             <ion-label>Conyugue</ion-label>
@@ -29,7 +21,7 @@
           <ion-item-group>
               <ion-item  detail>
                   <ion-avatar slot="start">
-                    <img src="assets/imgs/user-tie-solid.svg">
+                    <img src="assets/icon/user-tie-solid.svg">
                   </ion-avatar>                
                    <ion-label> 
                       <ion-icon slot="start" name="person"></ion-icon>                                          
@@ -37,7 +29,7 @@
                       <p> {{ suAfili[0].con_ape1}} {{ suAfili[0].con_ape2}}</p>
                     </ion-label>  
                       <ion-label>                       
-                        <ion-icon slot="start" src="assets/imgs/address-card-regular.svg"></ion-icon>                       
+                        <ion-icon slot="start" src="assets/icon/address-card-regular.svg"></ion-icon>                       
                         <h3>Identificación</h3>
                         <p>{{suAfili[0].con_docu}}</p>
                       </ion-label>                

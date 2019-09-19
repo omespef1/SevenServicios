@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { plcacul } from "src/app/models/pl/plcacul";
 import { ToTransaction } from "../../../models/general/totransaction";
-import { AuthService } from "../../../services/auth/auth.service";
+import { HttpManagerService } from '../../../services/httpManager/http-manager.service';
 
 @Component({
   selector: "app-plcacul",
@@ -10,7 +10,7 @@ import { AuthService } from "../../../services/auth/auth.service";
 })
 export class PlcaculPage implements OnInit {
   plcacul: plcacul[] = [];
-  constructor(private _http: AuthService) {}
+  constructor(private _http: HttpManagerService) {}
 
   ngOnInit() {
     this.GetPlCacul();

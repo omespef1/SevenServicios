@@ -22,7 +22,7 @@ export class AuthService  {
     this.loadUser();
   }
 
-   loadUser() {
+   loadUser():TOAccess {
     return JSON.parse(localStorage.getItem('user'));      
   }
   signIn(credentials: loginRequest) {  
@@ -45,13 +45,6 @@ export class AuthService  {
 
   
 
-   Get<T>(urlController:string){      
-               
-   return this._http.Get<T>(`${urlController}`, JSON.parse(localStorage.getItem('user')));         
-  }
-  Post<T>(urlController:string,body:any){
-    return this._http.Post<T>(urlController,body);
-  }
   async signOut() {
     localStorage.setItem('user',null) ;
     this.stroToken="";

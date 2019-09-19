@@ -1,7 +1,12 @@
 <ion-tabs>
 
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="gmplane">
+  <ion-tab-bar  slot="bottom">
+
+      <ion-tab-button  [tab]="tab.mainPath" *ngFor="let tab of tabs">
+          <ion-icon  [src]="tab.mainSrc" [name]="tab.mainIcon"></ion-icon>
+          <ion-label>{{tab.mainTitle}}</ion-label>
+        </ion-tab-button>
+    <!-- <ion-tab-button tab="gmplane">
       <ion-icon  src="assets/icon/dumbbell-solid.svg"></ion-icon>
       <ion-label>Planes</ion-label>
     </ion-tab-button>
@@ -25,6 +30,10 @@
         <ion-icon src="assets/icon/globe-africa-solid.svg"></ion-icon>
       <ion-label>Turismo</ion-label>
     </ion-tab-button>
+    <ion-tab-button tab="caregob">
+      <ion-icon src="assets/icon/money-check-alt-solid.svg"></ion-icon>
+    <ion-label>Obligaciones</ion-label>
+  </ion-tab-button> -->
     
   </ion-tab-bar>
 

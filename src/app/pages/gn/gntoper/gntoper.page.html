@@ -1,0 +1,15 @@
+<app-header headerName="Sede">
+
+</app-header>
+
+<ion-content fullscreen class="ion-padding">
+  <ion-list *ngFor="let item of gntoper">
+    <ion-item button tappable (click)="dismiss(item)">
+      <ion-icon slot="start" name="add"></ion-icon>
+      <ion-label>{{item.top_nomb}}</ion-label>      
+    </ion-item>    
+  </ion-list>
+  <div *ngIf="gntoper==null" class="alert alert-info" role="alert">
+      No se encontraron registros
+    </div>
+</ion-content>
