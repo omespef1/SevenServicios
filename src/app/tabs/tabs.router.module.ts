@@ -2,24 +2,20 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 import { AuthGuard } from '../guards/auth.guard';
+import { PlcaculPageModule } from '../pages/pl/plcacul/plcacul.module';
 const routes: Routes = [
   {
     path: '',
     component: TabsPage,
     children: [
       {
-        path: 'gm',
+        path: 'gmplane',
         children: [
           {
-            path: 'gmplane',
+            path: '',
             loadChildren: ()=> import('../pages/gm/gmplane/gmplane.module').then(m=>m.GmplanePageModule),
              canActivate:[AuthGuard]
-          },
-          {
-            path: 'gminfar',
-            loadChildren: ()=> import('../pages/gm/gminfar/gminfar.module').then(m=>m.GminfarPageModule),
-             canActivate:[AuthGuard]
-          }
+          }         
         ]
       },
       {
@@ -93,6 +89,17 @@ const routes: Routes = [
           }
         ]
       },  
+      {
+        path: 'plcacul',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/pl/plcacul/plcacul.module').then(m => m.PlcaculPageModule),
+              canActivate:[AuthGuard]
+          }
+        ]
+      }, 
       {
         path: 'cascrev',
         children: [

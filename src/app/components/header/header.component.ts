@@ -31,6 +31,7 @@ export class HeaderComponent implements OnInit {
   }
 
   goProfile(){
-    this._nav.navigateForward('tabs/profile');
+  
+    this._rout.navigateByUrl('tabs/profile');
   }
 }

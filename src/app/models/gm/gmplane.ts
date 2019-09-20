@@ -1,5 +1,5 @@
 export class Gmplane {
-  pla_codi: string;
+  pla_codi: number;
   pla_nomb: string;
   pla_esta: string;
   pro_cont: number;

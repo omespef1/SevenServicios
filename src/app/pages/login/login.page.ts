@@ -32,6 +32,7 @@ export class LoginPage implements OnInit {
       console.log(resp);
       this.loading = false;
       if (resp.codeResult == 0) {
+        localStorage.setItem("user", JSON.stringify(resp));    
         this._alert.showAlert(
           "Ingreso exitoso",
           `Se ha logueado exitosamente con  ${resp.objResult.cli_noco} `

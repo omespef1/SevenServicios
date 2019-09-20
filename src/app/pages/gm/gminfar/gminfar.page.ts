@@ -23,12 +23,7 @@ export class GminfarPage implements OnInit {
   }
 
 
-  SetNewGmInfar(){
-   
-  
-    
-    this._service.SetGmInfar(null);
-  }
+
 
   GetGmInfar(){
     this._service.GetGmInfar(this.user).subscribe(resp=>{

@@ -82,7 +82,7 @@
         </ion-grid>       
       </ion-card-content>    
      
-          <ion-button color="success" Expand="full" (click)="OpenGnToper()">
+          <ion-button color="success" Expand="full" (click)="OpenGnToper(plane)">
               <ion-icon slot="start" name="eye"></ion-icon>
              Inscribirme
             </ion-button>
@@ -90,9 +90,7 @@
     </ion-card>
     
   </ng-container>
-  <div *ngIf="gmplane==null" class="alert alert-info" role="alert">
-    No hay planes de gimnasio publicados en este momento
-  </div>
+
   <div *ngFor="let item of  [1,2,3,4,5] ">
     <ion-card *ngIf="loading">
       <ion-skeleton-text class="custom-skeleton-card" animated></ion-skeleton-text>
@@ -129,4 +127,5 @@
       </ion-card-content>
     </ion-card>
   </div>
+  <app-alert></app-alert>
 </ion-content>

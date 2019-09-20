@@ -12,7 +12,6 @@ import { AuthService } from "../../../services/auth/auth.service";
 export class TuplatuPage implements OnInit {
   tuplatu: tuplatu[] = [];
   loading = false;
-  showSkelet = false;
   constructor(private _http: HttpManagerService, private _auth: AuthService) {}
 
   ngOnInit() {
@@ -22,7 +21,7 @@ export class TuplatuPage implements OnInit {
   GetTuPlatu(event?: any) {
     this.loading = true;
     this._http
-      .Get<ToTransaction>("/tuplatu?", this._auth.loadUser().strToken)
+      .Get<ToTransaction>("/tuplatu?")
       .subscribe(resp => {
         this.tuplatu = resp.ObjTransaction;
         if (event) event.target.complete();
@@ -32,10 +31,6 @@ export class TuplatuPage implements OnInit {
 
   doRefresh($event) {
     this.GetTuPlatu($event);
-    setTimeout(() => {
-      if (this.loading) {
-        this.showSkelet = true;
-      }
-    }, 1000);
+
   }
 }

@@ -60,7 +60,7 @@
   </ion-card>
       -->
 
-      <ion-list id="skeleton" *ngIf="!suAfili">
+      <ion-list id="skeleton" *ngIf="loading">
           <ion-list-header>
             <ion-skeleton-text animated style="width: 80px"></ion-skeleton-text>
           </ion-list-header>
@@ -194,4 +194,6 @@
           </ion-item>
   
         </ion-list>
+
+        <app-alert></app-alert>
 </ion-content>

@@ -15,7 +15,6 @@ const routes: Routes = [
   { path: 'menu', loadChildren: './pages/menu/menu.module#MenuPageModule' },
   { path: 'suafili', loadChildren: './pages/su/suafili/suafili.module#SuafiliPageModule' },
   { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
-  { path: 'gntoper', loadChildren: './pages/gn/gntoper/gntoper.module#GntoperPageModule' },
   // { path: 'cfregob', loadChildren: './pages/cf/cfregob/cfregob.module#CfregobPageModule' }, 
     // { path: 'cascrev', loadChildren: './pages/cf/cascrev/cascrev.module#CascrevPageModule' }, 
       // { path: 'gminfar', loadChildren: './pages/gm/gminfar/gminfar.module#GminfarPageModule' },

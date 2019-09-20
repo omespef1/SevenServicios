@@ -40,7 +40,7 @@
     No hay registros publicados en este momento
    </div>
   <div *ngFor="let item of  [1,2,3,4,5] ">
-      <ion-card *ngIf="showSkelet">
+      <ion-card *ngIf="loading">
       <ion-skeleton-text class="custom-skeleton-card" animated></ion-skeleton-text>
       <ion-card-header>
         <ion-skeleton-text animated width="50%"></ion-skeleton-text>

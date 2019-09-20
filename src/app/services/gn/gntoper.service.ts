@@ -12,6 +12,6 @@ export class GntoperService {
 
 
   GetGnToper(){
-    return this._http.Get<transaction>('/GnToper?mod_codi=195&');
+    return this._http.Get<transaction>('/GmPfare?mod_codi=195&');
   }
 }

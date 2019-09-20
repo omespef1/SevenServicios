@@ -12,7 +12,7 @@ export class GminfarService {
   constructor(private _http:HttpManagerService) { }
 
 
-  SetGmInfar(inscription:gminfar){
+  SetGmInfar(inscription:gminfar,user:TOAccess){
     return this._http.Post<transaction>('/GmInfar',inscription)
   }
   GetGmInfar(user:TOAccess){

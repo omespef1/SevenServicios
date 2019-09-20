@@ -12,7 +12,7 @@ export class TabsService {
       {
         mainIcon: "",
         mainTitle: "Gimnasio",
-        mainPath: "gm/gmplane",
+        mainPath: "gmplane",
         mainSrc: "assets/icon/dumbbell-solid.svg"
       },
       {

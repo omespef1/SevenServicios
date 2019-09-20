@@ -5,8 +5,9 @@ import {
   HttpErrorResponse
 } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
-import { retry, catchError, filter } from "rxjs/operators";
+import { retry, catchError, filter, tap, map } from "rxjs/operators";
 import { Events } from "@ionic/angular";
+import { AlertService } from '../alert/alert.service';
 
 @Injectable({
   providedIn: "root"
@@ -17,7 +18,7 @@ export class HttpManagerService {
     headers: HttpHeaders;
   };
   strToken = "";
-  constructor(private _http: HttpClient, private _events: Events) {}
+  constructor(private _http: HttpClient, private _events: Events,private _alert:AlertService) {}
 
   Get<T>(urlController: string, strToken?: string) {
     console.log(strToken);
@@ -51,14 +52,19 @@ export class HttpManagerService {
     console.log(options);
     console.log(url);
     return this._http.get<T>(url, <object>options).pipe(
+      tap(resp=>{
+        console.log(resp);       
+      }), catchError(err => this.handleError(err)) // then handle the error
       // retry(1), // reintenta la petición 3 veces
-      catchError(err => this.handleError(err)) // then handle the error
+     
     );
 
     // return call;
   }
 
-  Post<T>(urlController: string, body: any, strToken?: string) {
+
+
+  Post<T>(urlController: string, body?: any, strToken?: string) {
     const headerAnonimous = {
       "Content-Type": "application/json",
       Accept: "application/json",
@@ -86,11 +92,16 @@ export class HttpManagerService {
     console.log(body);
     return this._http
       .post<T>(`${this.baseUrl}${urlController}`, body, <object>options)
-      .pipe(catchError(err => this.handleError(err)));
+      .pipe(
+        tap(resp=>{
+          console.log(resp);          
+        })
+        ,catchError(err => this.handleError(err))
+     );
   }
 
   private handleError(error: HttpErrorResponse) {
-    console.log(error);
+    console.log('entra a error');
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error("Ocurrió un error:", error.error.message);
@@ -102,10 +113,9 @@ export class HttpManagerService {
       );
 
       if (error.status == 401) {
+        console.log('saliendo...');
         this._events.publish("user:logOut");
-        return throwError(
-          "Su sesión ha caducado, o no se encuentra autorizado para realizar ingresar a la apliación."
-        );
+        this._alert.showAlert('Acceso no autorizado','Autenticación no válida con el servicio. Ingrese nuevamente')
       }
     }
     // return an observable with a user-facing error message
