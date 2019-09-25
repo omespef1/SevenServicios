@@ -89,9 +89,7 @@
       </ion-grid>
     </ion-card-content>
   </ion-card>
-  <ion-item *ngIf="!tecuter" color="primary" class="item-alert">
-    <ion-label><h2>No se encontraron registros</h2></ion-label>
-  </ion-item>
+  
        
   <div *ngFor="let item of  [1,2,3,4,5] ">
     <ion-card *ngIf="loading">
@@ -131,6 +129,6 @@
   </ion-card>
 </div>
 
-
+<app-alert></app-alert>
 
 </ion-content>

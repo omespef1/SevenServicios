@@ -9,14 +9,17 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'gmplane',
+        path: 'gm',
         children: [
           {
             path: '',
-            loadChildren: ()=> import('../pages/gm/gmplane/gmplane.module').then(m=>m.GmplanePageModule),
-             canActivate:[AuthGuard]
+            loadChildren: ()=> import('../pages/gm/gm-routing.module').then(m=>m.GmRoutingModule),          
           }         
         ]
+      },
+      {
+        path:'pl',
+        loadChildren: ()=> import('../pages/pl/pl-routing.module').then(pl=>pl.PlRoutingModule)
       },
       {
         path: 'dtendep',
@@ -89,17 +92,7 @@ const routes: Routes = [
           }
         ]
       },  
-      {
-        path: 'plcacul',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../pages/pl/plcacul/plcacul.module').then(m => m.PlcaculPageModule),
-              canActivate:[AuthGuard]
-          }
-        ]
-      }, 
+      
       {
         path: 'cascrev',
         children: [

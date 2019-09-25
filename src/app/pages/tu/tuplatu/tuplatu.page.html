@@ -36,9 +36,7 @@
       </ion-card>
 </div>
 
-<div *ngIf="tuplatu==null" class="alert alert-info" role="alert">
-    No hay registros publicados en este momento
-   </div>
+
   <div *ngFor="let item of  [1,2,3,4,5] ">
       <ion-card *ngIf="loading">
       <ion-skeleton-text class="custom-skeleton-card" animated></ion-skeleton-text>
@@ -76,4 +74,7 @@
       </ion-card-content>
     </ion-card>
   </div>
+  <app-alert>
+
+  </app-alert>
 </ion-content>

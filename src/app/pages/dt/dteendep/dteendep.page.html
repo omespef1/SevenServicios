@@ -83,9 +83,7 @@
       </ion-card>
 </div>
 
-<ion-item *ngIf="!dtendep" color="primary" class="item-alert">
-  <ion-label><h2>No se encontraron registros</h2></ion-label>
-</ion-item>
+
   <div *ngFor="let item of  [1,2,3,4,5] ">
       <ion-card *ngIf="loading">
       <ion-skeleton-text class="custom-skeleton-card" animated></ion-skeleton-text>
@@ -123,6 +121,6 @@
       </ion-card-content>
     </ion-card>
   </div>
-
+<app-alert></app-alert>
 </ion-content>
 

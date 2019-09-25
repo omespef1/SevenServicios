@@ -14,6 +14,7 @@ import { gminfar } from "../../../models/gm/gminfar";
 import { gntoper } from "../../../models/gn/gntoper";
 import { TOAccess } from "../../../models/general/totransaction";
 import { AlertComponent } from "../../../components/alert/alert.component";
+import { Router, NavigationExtras } from "@angular/router";
 
 @Component({
   selector: "app-gmplane",
@@ -31,7 +32,8 @@ export class GmplanePage implements OnInit {
     private sanitizer: DomSanitizer,
     private _auth: AuthService,
     private _modal: ModalController,
-    private _gmInfar: GminfarService
+    private _gmInfar: GminfarService,
+    private router: Router
   ) {
     this.user = this._auth.loadUser();
   }
@@ -42,17 +44,15 @@ export class GmplanePage implements OnInit {
 
   GetGmPlane(event?: any) {
     this.loading = true;
-    console.log(this._auth.loadUser().strToken);
-    return this._http
-      .Get<ToTransaction>("/gmplane?", this._auth.loadUser().strToken)
-      .subscribe(resp => {
-        this._alertC.ngOnDestroy();
-        console.log(resp);
-        this.loading = false;
-        this.gmplane = resp.ObjTransaction;
-        if (event) event.target.complete();
-        if (resp.Retorno == 1) this._alertC.show(resp.TxtError, "danger");
-      });
+
+    return this._http.Get<ToTransaction>("/gmplane?").subscribe(resp => {
+      this._alertC.ngOnDestroy();
+      console.log(resp);
+      this.loading = false;
+      this.gmplane = resp.ObjTransaction;
+      if (event) event.target.complete();
+      if (resp.Retorno == 1) this._alertC.show(resp.TxtError, "danger");
+    });
   }
 
   enableDark() {
@@ -70,11 +70,17 @@ export class GmplanePage implements OnInit {
     //this._gmInfar.SetGmInfar(null)
     this.GetGmPlane($event);
   }
-  async OpenGnToper(plan: Gmplane) {
-    const modal = await this._modal.create({
-      component: GntoperPage,
-      componentProps: { plan: plan }
-    });
-    return await modal.present();
+  openGmInfar(plan: Gmplane) {
+    let params: NavigationExtras = {
+      state: {
+        gmplane: plan
+      }
+    };
+    this.router.navigateByUrl("tabs/gm/gminfar", params);
+    // const modal = await this._modal.create({
+    //   component: GntoperPage,
+    //   componentProps: { plan: plan }
+    // });
+    // return await modal.present();
   }
 }

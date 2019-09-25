@@ -11,8 +11,8 @@ export class TabsService {
     this.tabs = [
       {
         mainIcon: "",
-        mainTitle: "Gimnasio",
-        mainPath: "gmplane",
+        mainTitle: "Gimnasios",
+        mainPath: "gm",
         mainSrc: "assets/icon/dumbbell-solid.svg"
       },
       {
@@ -38,49 +38,25 @@ export class TabsService {
         mainTitle: "Escuelas",
         mainPath: "etcurso",
         mainSrc: ""
-      },
-      {
-        mainIcon: "school",
-        mainTitle: "Cursos",
-        mainPath: "plcacul",
-        mainSrc: ""
-      },
+      },     
       {
         mainIcon: "",
         mainTitle: "Capacitaciones",
-        mainPath: "plcacul",
-        mainSrc: "assets/icon/money-check-alt-solid.svg"
-      },
-      // {
-      //   mainIcon: "",
-      //   mainTitle: "Servicios",
-      //   mainPath: "aereser",
-      //   mainSrc: "assets/icon/spa-solid.svg"
-      // },
-      // {
-      //   mainIcon: "bed",
-      //   mainTitle: "Alojamiento",
-      //   mainPath: "aereser",
-      //   mainSrc: ""
-      // },
-      // {
-      //   mainIcon: "",
-      //   mainTitle: "Eventos",
-      //   mainPath: "aereser",
-      //   mainSrc: "assets/icon/calendar-alt-solid.svg"
-      // },
+        mainPath: "pl",
+        mainSrc: "assets/icon/chalkboard-teacher-solid.svg"
+      },     
       {
         mainIcon:"",
         mainTitle: "Obligaciones",
         mainPath: "caregob",
-        mainSrc: "assets/icon/money-check-alt-solid.svg"
+        mainSrc: "assets/icon/coins-solid.svg"
 
       },
       {
         mainIcon:"",
-        mainTitle: "Solicitud de crédito",
+        mainTitle: "Créditos",
         mainPath: "cascrev",
-        mainSrc: "assets/icon/money-check-alt-solid.svg"
+        mainSrc: "assets/icon/business-time-solid.svg"
 
       }
       

@@ -1,7 +1,7 @@
 
 
 <app-header headerName="Capacitaciones y cursos"></app-header>
-<ion-content>
+<ion-content fullscreen class="ion-padding">
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
@@ -27,7 +27,7 @@
         <ion-card-content>
           <ion-grid>
             <ion-row>
-              <ion-col size="2">
+              <ion-col size="3">
                 <div class="card-content"> 
                     <ion-label>
                         <ion-icon slot="start" src="assets/icon/laptop-code-solid.svg"></ion-icon> 
@@ -44,7 +44,7 @@
                   </ion-label>
                </div>
             </ion-col>
-              <ion-col    size="2">
+              <ion-col    size="3">
                 <div class="card-content"> 
                     <ion-label>
                         <ion-icon slot="start" name="calendar"></ion-icon>                                
@@ -58,7 +58,7 @@
                </div>
                
               </ion-col>
-              <ion-col size="2">
+              <ion-col size="3">
                   <div class="card-content"> 
                       <ion-label>
                           <ion-icon slot="start"name="person"></ion-icon>          
@@ -83,28 +83,15 @@
                   <div class="card-content-subtitle"> 
                     {{item.cac_mpre}}
                  </div>
-              </ion-col>
-              <ion-col size="3">
-                  <div class="card-content"> 
-                      <ion-label>
-                          <ion-icon slot="start" src="assets/icon/clock-solid.svg"></ion-icon>       
-                        </ion-label>
-                  </div>
-                  <div class="card-content-title"> 
-                      <ion-label>
-                     Min. posteriores
-                    </ion-label>
-                  </div>
-                  <div class="card-content-subtitle"> 
-                    <ion-label>
-                    {{item.cac_mpos}}
-                  </ion-label>
-                 </div>
-              </ion-col>
+              </ion-col>             
             </ion-row>
             
           </ion-grid>
         </ion-card-content>
+        <ion-button color="success" Expand="full" (click)="openPlInfar(item)">
+            <ion-icon slot="start" name="eye"></ion-icon>
+           Inscribirme
+          </ion-button>
       </ion-card>
     
 <app-alert></app-alert>

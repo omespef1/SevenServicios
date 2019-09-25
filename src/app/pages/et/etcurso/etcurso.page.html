@@ -1,4 +1,4 @@
-<app-header headerName="Escuelas y cursos deportivos"></app-header>
+<app-header headerName="Cursos deportivos"></app-header>
 <ion-content fullscreen class="ion-padding">
      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
@@ -86,9 +86,7 @@
       </ion-card>
     
 
-      <ion-item *ngIf="!etcurso" color="primary" class="item-alert">
-        <ion-label><h2>No se encontraron registros</h2></ion-label>
-      </ion-item>
+    
            
       <div *ngFor="let item of  [1,2,3,4,5] ">
         <ion-card *ngIf="loading">
@@ -127,5 +125,8 @@
         </ion-card-content>
       </ion-card>
     </div>
+    <app-alert>
+
+    </app-alert>
 
 </ion-content>

@@ -1,8 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { tuplatu } from "../../../models/te/tuplatu";
 import { ToTransaction } from "../../../models/general/totransaction";
 import { HttpManagerService } from "../../../services/httpManager/http-manager.service";
 import { AuthService } from "../../../services/auth/auth.service";
+import { AlertComponent } from 'src/app/components/alert/alert.component';
 
 @Component({
   selector: "app-tuplatu",
@@ -12,6 +13,7 @@ import { AuthService } from "../../../services/auth/auth.service";
 export class TuplatuPage implements OnInit {
   tuplatu: tuplatu[] = [];
   loading = false;
+  @ViewChild(AlertComponent, { static: false }) _alert: AlertComponent;
   constructor(private _http: HttpManagerService, private _auth: AuthService) {}
 
   ngOnInit() {
@@ -26,6 +28,8 @@ export class TuplatuPage implements OnInit {
         this.tuplatu = resp.ObjTransaction;
         if (event) event.target.complete();
         this.loading = false;
+        if(resp.Retorno==1)
+        this._alert.show(resp.TxtError,'danger');
       });
   }
 

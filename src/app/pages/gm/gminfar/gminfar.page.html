@@ -1,13 +1,51 @@
-<app-header headerName="Seleccione sucursal">
+<app-header headerName="Inscripción">
 
 </app-header>
 
 <ion-content fullscreen class="ion-padding">
-  <ion-list>
-    <ion-item *ngFor="let item of gntoper">
-      <ion-icon slot="start" name="add"></ion-icon>
-      <ion-label>Input</ion-label>   
-    </ion-item>    
-  </ion-list>
+
+  <ion-list lines="none">
+      <ion-radio-group [(ngModel)]="sede">
+        <ion-list-header color="success">
+          <ion-label>Escoge la sede</ion-label>
+        </ion-list-header>
+    
+        
+    
+        <ion-item *ngFor="let item of gntoper">
+          <ion-icon slot="start" src="assets/icon/building-solid.svg"></ion-icon>
+          <ion-label>{{item.arb_nomb}}</ion-label>
+          <ion-radio slot="end" [value]="item"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+ 
+
+  <ion-list lines="none" >
+      <ion-list-header color="success">
+          <ion-label>¿Cuando quieres iniciar?</ion-label>
+        </ion-list-header>
+  <ion-item>
+      <ion-icon slot="start" name="alarm"></ion-icon>
+        <ion-label>Fecha de inicio</ion-label>
+        <ion-datetime [(ngModel)]="din_feci" display-format="DD.MM.YYYY"></ion-datetime>
+      
+      </ion-item>
+    </ion-list>
+
+
   
-</ion-content>
+ 
+  <ion-button [disabled]="this.sede==undefined || din_feci == undefined" (click)="pushInscription()" expand="block">
+    <ion-icon *ngIf="!loading" slot="start" name="clipboard"></ion-icon>
+    <ion-spinner *ngIf="loading" slot="start"></ion-spinner>
+    Inscribirme
+  </ion-button>
+  <ion-button  color="danger" (click)="dismiss()" expand="block">
+      <ion-icon slot="start" name="remove-circle"></ion-icon>
+      Cancelar
+    </ion-button>
+
+
+    <app-alert></app-alert>
+</ion-content> 
