@@ -15,7 +15,7 @@ import { gnconex } from '../../models/gn/gnconex';
   providedIn: "root"
 })
 export class HttpManagerService {
-  baseUrl: string="http://localhost/rsevserv/api";
+  baseUrl: string="http://132.147.157.140/rsevserv/api";
   centralizacionUrl:string;
   private httpOptions: {
     headers: HttpHeaders;
