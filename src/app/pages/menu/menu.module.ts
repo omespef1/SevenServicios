@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { MenuPage } from './menu.page';
 import { ComponentsModule } from '../../components/components.module';
+
 const routes: Routes = [
   {
     path: '',
@@ -24,5 +25,6 @@ ComponentsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [MenuPage]
+
 })
 export class MenuPageModule {}

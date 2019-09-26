@@ -32,3 +32,14 @@ ion-card-content{
     font-size: 15px;
     color:darkgray;
 }
+ion-item,ion-list{
+    --background:transparent;
+}
+ion-list {
+    border-radius: 10px;
+
+}
+
+ion-button {
+    margin:0px;
+}

@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { tuplatu } from "../../../models/te/tuplatu";
+import { tuplatu } from "../../../models/tu/tuplatu";
 import { ToTransaction } from "../../../models/general/totransaction";
 import { HttpManagerService } from "../../../services/httpManager/http-manager.service";
 import { AuthService } from "../../../services/auth/auth.service";
 import { AlertComponent } from 'src/app/components/alert/alert.component';
+import { TuplatuService } from '../../../services/tu/tuplatu.service';
 
 @Component({
   selector: "app-tuplatu",
@@ -14,7 +15,7 @@ export class TuplatuPage implements OnInit {
   tuplatu: tuplatu[] = [];
   loading = false;
   @ViewChild(AlertComponent, { static: false }) _alert: AlertComponent;
-  constructor(private _http: HttpManagerService, private _auth: AuthService) {}
+  constructor(private _service: TuplatuService, private _auth: AuthService) {}
 
   ngOnInit() {
     this.GetTuPlatu();
@@ -22,8 +23,8 @@ export class TuplatuPage implements OnInit {
 
   GetTuPlatu(event?: any) {
     this.loading = true;
-    this._http
-      .Get<ToTransaction>("/tuplatu?")
+    this._service
+      .GetTuPlatu()
       .subscribe(resp => {
         this.tuplatu = resp.ObjTransaction;
         if (event) event.target.complete();

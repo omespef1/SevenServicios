@@ -35,9 +35,17 @@
         </ion-row>
         <ion-row>
           <ion-col padding>
-            <ion-button [disabled]="!loginForm.form.valid" expand="block" (click)="signIn()" >INGRESAR
+            <ion-button  [disabled]="!loginForm.form.valid" expand="block" (click)="signIn()" >INGRESAR
                 <ion-icon *ngIf="!loading" slot="start" name="checkmark-circle"></ion-icon>
                 <ion-spinner *ngIf="loading" slot="start"></ion-spinner>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col padding>
+            <ion-button color="secondary"  expand="block" (click)="GetGnEmpre()" >CAMBIAR EMPRESA
+                <ion-icon slot="start" name="settings"></ion-icon>
+                
             </ion-button>
           </ion-col>
         </ion-row>

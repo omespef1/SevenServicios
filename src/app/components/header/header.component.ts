@@ -21,9 +21,6 @@ export class HeaderComponent implements OnInit {
    
   return this._auth.loadUser()!=null;
   }
-  logOut(){
-    this._auth.signOut();
-  }
 
   goMenu(){
   // this._rout.navigateByUrl('tabs/menu');
@@ -33,5 +30,8 @@ export class HeaderComponent implements OnInit {
   goProfile(){
   
     this._rout.navigateByUrl('tabs/profile');
+  }
+  goLogin(){
+    this._rout.navigateByUrl('login');
   }
 }

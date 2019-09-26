@@ -62,14 +62,8 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tecuter',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../pages/te/tecuter/tecuter.module').then(m => m.TecuterPageModule)
-          }
-        ]
+        path: 'te',
+        loadChildren:()=> import('../pages/te/te-routing.module').then(te=>te.TeRoutingModule)
       },
       {
         path: 'tuplatu',

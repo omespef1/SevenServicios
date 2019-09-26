@@ -4,7 +4,9 @@ import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
 import { loginRequest } from "../../models/general/totransaction";
 import { AlertService } from "../../services/alert/alert.service";
-import { NavController } from "@ionic/angular";
+import { NavController, ModalController } from '@ionic/angular';
+import { SessionsService } from '../../services/sessions/sessions.service';
+import { GnemprePage } from '../gn/gnempre/gnempre.page';
 
 @Component({
   selector: "app-login",
@@ -17,15 +19,23 @@ export class LoginPage implements OnInit {
   user: loginRequest = new loginRequest();
   constructor(
     private auth: AuthService,
-    private router: Router,
     private _alert: AlertService,
-    private _nav: NavController
+    private _nav: NavController,
+    private router:Router,
+    private _sesion:SessionsService,
+    private _modal:ModalController
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    
+  }
+
+
+
 
   signIn() {
-    this.user.emp_codi = 1;
+    this.user.emp_codi = this._sesion.GetGnEmpre().emp_codi;
     this.loading = true;
     console.log(this.user);
     this.auth.signIn(this.user).subscribe(resp => {
@@ -50,6 +60,20 @@ export class LoginPage implements OnInit {
   facebook(){
 
    this.auth.loginWithFacebook();
+  }
+
+
+  async GetGnEmpre() {
+   
+      const modal = await this._modal.create({
+        component: GnemprePage
+      });
+      modal.onDidDismiss().then(resp => {
+        console.log(resp);
+        this._sesion.SetGnEmpre(resp.data);
+      });
+      return await modal.present();
+   
   }
   // signIn(){
   //   this.loading=true;

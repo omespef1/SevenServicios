@@ -19,3 +19,10 @@ export interface TOAccess {
 
 
 }
+
+export interface ToTransactionCentralizacion {
+    $id:number;
+    State:boolean;
+    ObjResult:any;
+
+}

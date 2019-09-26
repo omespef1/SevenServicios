@@ -10,6 +10,7 @@ import { AlertService } from 'src/app/services/alert/alert.service';
 import { AlertComponent } from 'src/app/components/alert/alert.component';
 import { Gmplane } from 'src/app/models/gm/gmplane';
 import { Router } from '@angular/router';
+import { SessionsService } from '../../../services/sessions/sessions.service';
 
 @Component({
   selector: 'app-gminfar',
@@ -32,7 +33,8 @@ export class GminfarPage implements OnInit {
     private _gminfar: GminfarService,
     private _alert: AlertService,
     private auth: AuthService,
-    private router:Router
+    private router:Router,
+    private _sesion:SessionsService
   ) {
     this.user = this.auth.loadUser();
     this.plan = this.router.getCurrentNavigation().extras.state.gmplane;
@@ -88,7 +90,7 @@ export class GminfarPage implements OnInit {
 
     details.push(gmdinfa);
     this.gminfar = {
-      emp_codi: 1,
+      emp_codi: this._sesion.GetGnEmpre().emp_codi,
       top_codi: this.sede.top_codi,
       inf_fech: new Date(),
       cli_coda: this.user.objResult.cli_coda,
@@ -109,8 +111,11 @@ export class GminfarPage implements OnInit {
       this.loading=false;
       if(resp.Retorno==1)
       this._alertC.show(resp.TxtError,'danger');
-      else
-      this._alert.showAlert('Inscripción realizada!','Te has inscrito a este plan exitosamente!');
+      else{
+        this._alert.showAlert('Inscripción realizada!','Te has inscrito a este plan exitosamente!');
+        this.router.navigateByUrl('tabs/gm/gmplane')
+      }
+     
       
     })
   }

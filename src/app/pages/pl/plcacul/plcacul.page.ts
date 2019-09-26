@@ -4,6 +4,7 @@ import { ToTransaction } from "../../../models/general/totransaction";
 import { HttpManagerService } from "../../../services/httpManager/http-manager.service";
 import { AlertComponent } from "../../../components/alert/alert.component";
 import { Router, NavigationExtras } from "@angular/router";
+import { PlcaculService } from '../../../services/pl/plcacul.service';
 
 @Component({
   selector: "app-plcacul",
@@ -13,14 +14,14 @@ import { Router, NavigationExtras } from "@angular/router";
 export class PlcaculPage implements OnInit {
   plcacul: plcacul[] = [];
   @ViewChild(AlertComponent, { static: false }) _alertC: AlertComponent;
-  constructor(private _http: HttpManagerService, private router: Router) {}
+  constructor(private _service:PlcaculService, private router: Router) {}
 
   ngOnInit() {
     this.GetPlCacul();
   }
 
   GetPlCacul(event?: any) {
-    this._http.Get<ToTransaction>("/plcacul?").subscribe(resp => {
+    this._service.GetPlCacul().subscribe(resp => {
       this._alertC.ngOnDestroy();
       this.plcacul = resp.ObjTransaction;
       if (event) event.target.complete();

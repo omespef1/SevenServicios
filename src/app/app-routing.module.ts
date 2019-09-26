@@ -16,6 +16,9 @@ const routes: Routes = [
   { path: 'suafili', loadChildren: './pages/su/suafili/suafili.module#SuafiliPageModule' },
   { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
   { path: 'plinfar', loadChildren: './pages/pl/plinfar/plinfar.module#PlinfarPageModule' },
+  { path: 'teinfar', loadChildren: './pages/te/teinfar/teinfar.module#TeinfarPageModule' },
+  { path: 'gnconex', loadChildren: './pages/gn/gnconex/gnconex.module#GnconexPageModule' },
+  { path: 'gnempre', loadChildren: './pages/gn/gnempre/gnempre.module#GnemprePageModule' },
 
  
   

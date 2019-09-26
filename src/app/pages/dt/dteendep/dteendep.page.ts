@@ -3,6 +3,7 @@ import { dtendep } from "../../../models/dt/dtendep";
 import { ToTransaction } from "../../../models/general/totransaction";
 import { HttpManagerService } from '../../../services/httpManager/http-manager.service';
 import { AlertComponent } from '../../../components/alert/alert.component';
+import { DtendepService } from '../../../services/dt/dtendep.service';
 
 @Component({
   selector: "app-dteendep",
@@ -13,7 +14,7 @@ export class DteendepPage implements OnInit {
   dtendep: dtendep[] = [];
   loading=false;
   @ViewChild(AlertComponent,{static:false}) _alert:AlertComponent;
-  constructor(private _http: HttpManagerService) {}
+  constructor(private _service:DtendepService) {}
 
   ngOnInit() {
     this.GetDtEndep();
@@ -21,7 +22,7 @@ export class DteendepPage implements OnInit {
 
   GetDtEndep(event?: any) {
     this.loading=true;
-    this._http.Get<ToTransaction>("/dtendep?").subscribe(resp => {
+    this._service.GetDtEndep().subscribe(resp => {
       this.loading=false;
       this.dtendep = resp.ObjTransaction;
       if (event) event.target.complete();

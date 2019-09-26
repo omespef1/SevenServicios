@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Seleccione empresa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <ion-list>
+   <ion-item tappable *ngFor="let business of businessList" (click)="SetBusiness(business)">
+     <ion-icon slot="start" src="assets/icon/building-solid.svg"></ion-icon>
+     <ion-label>{{business.emp_nomb}}</ion-label>
+   </ion-item>
+ </ion-list>
+
+ <app-alert>
+
+ </app-alert>
+</ion-content>

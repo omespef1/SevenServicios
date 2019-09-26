@@ -10,6 +10,8 @@ import { Router } from "@angular/router";
 import { plcacul } from "../../../models/pl/plcacul";
 import { of } from "rxjs";
 import { plpfare } from '../../../models/pl/plpfare';
+import { AlertService } from '../../../services/alert/alert.service';
+import { SessionsService } from '../../../services/sessions/sessions.service';
 
 @Component({
   selector: "app-plinfar",
@@ -26,7 +28,9 @@ export class PlinfarPage implements OnInit {
     private _plPfare: PlPfareService,
     private _service: PlinfarService,
     private _auth: AuthService,
-    private router: Router
+    private router: Router,
+    private _alertS:AlertService,
+    private _sesion:SessionsService
   ) {
     this.user = this._auth.loadUser();
 
@@ -40,7 +44,7 @@ export class PlinfarPage implements OnInit {
   }
 
   GetPlPfare() {
-    this._plPfare.GetPlInfare().subscribe(resp => {
+    this._plPfare.GetPlPfare().subscribe(resp => {
       if (resp.Retorno == 1) {
         this._alert.show(resp.TxtError, "danger");
       }
@@ -51,7 +55,7 @@ export class PlinfarPage implements OnInit {
   SetPlInfar() {
     this.loading = true;
     let inscription: plinfar = {
-      emp_codi: this.user.objResult.emp_codi,
+      emp_codi: this._sesion.GetGnEmpre().emp_codi,
       arb_cods: this.sede.arb_codi,
       cli_coda: this.user.objResult.cli_coda,
       top_codi: this.sede.top_insc,
@@ -78,7 +82,7 @@ export class PlinfarPage implements OnInit {
       this.loading = false;
       if (resp.Retorno == 1) {
         this._alert.show(resp.TxtError, "danger");
-      } else this._alert.show("Iscripción realizada!", "success");
+      } else this._alertS.showAlert('Perfecto!','La inscripción ha sido realizada!')
     });
   }
 }

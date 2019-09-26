@@ -1,6 +1,43 @@
-<app-header headerName="Mi Grupo familiar"></app-header>
+<app-header headerName="Grupo familiar"></app-header>
 <ion-content fullscreen class="ion-padding">
-  <ion-list lines="none" class="bounceIn"  *ngIf="suAfili">
+    <ng-container *ngFor="let item of suAfili" class="bounceIn" >
+      <ion-list line="none">
+        <ion-list-header color="primary">      
+            <ion-label>
+              <h1>{{item.afi_nom1}} {{item.afi_ape1}}</h1>
+              <p>Persona a cargo</p>
+            </ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-icon slot="start" name="person"></ion-icon>
+            <ion-label>Nombres</ion-label>
+            <ion-note slot="end">{{item.afi_nom1}} {{item.afi_nom2}}</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-icon slot="start" name="person"></ion-icon>
+            <ion-label>Apellidos</ion-label>
+            <ion-note slot="end">{{item.afi_ape1}} {{item.afi_ape2}}</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-icon slot="start" name="today"></ion-icon>
+            <ion-label>Identificación</ion-label>
+            <ion-note slot="end">{{item.afi_docu}}</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-icon slot="start" name="thumbs-up"></ion-icon>
+            <ion-label>Categoría</ion-label>
+            <ion-note slot="end">{{item.afi_cate}}</ion-note>
+          </ion-item>
+          <ion-item>
+              <ion-icon slot="start" name="information-circle"></ion-icon>
+              <ion-label>Estado</ion-label>
+              <ion-note slot="end">{{item.afi_esta=='A'?'Activo':'Inactivo'}}</ion-note>
+            </ion-item>
+          </ion-list>
+    </ng-container>
+    
+    
+  <!-- <ion-list lines="none" class="bounceIn"  *ngIf="suAfili">
       <ion-list-header>
           <ion-label>Personas a cargo</ion-label>
         </ion-list-header> 
@@ -38,27 +75,9 @@
         </div>
             
           
-  </ion-list>
+  </ion-list> -->
 
-  <!-- <ion-card *ngFor="let afili of suAfili">
-    <ion-card-header>
-        <ion-card-title>{{ afili.afi_nom1}} {{afili.afi_nom2 }}</ion-card-title>
-      <ion-card-subtitle>{{afili.afi_ape1}} {{afili.afi_ape2}}</ion-card-subtitle>
-     
-    </ion-card-header>
-    <ion-card-content>
-        <ion-label>                                      
-            <h3>{{ afili.afi_nom1}} {{afili.afi_nom2 }}</h3>
-            <p> {{afili.afi_ape1}} {{afili.afi_ape2}}</p>
-          </ion-label> 
-          <ion-label>                       
-              <ion-icon slot="start" src="assets/imgs/address-card-regular.svg"></ion-icon>                       
-              <h3>Identificación</h3>
-              <p>{{afili.afi_docu}}</p>
-            </ion-label>                
-    </ion-card-content>
-  </ion-card>
-      -->
+
 
       <ion-list id="skeleton" *ngIf="loading">
           <ion-list-header>

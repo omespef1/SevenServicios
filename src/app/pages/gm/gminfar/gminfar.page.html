@@ -39,7 +39,7 @@
   <ion-button [disabled]="this.sede==undefined || din_feci == undefined" (click)="pushInscription()" expand="block">
     <ion-icon *ngIf="!loading" slot="start" name="clipboard"></ion-icon>
     <ion-spinner *ngIf="loading" slot="start"></ion-spinner>
-    Inscribirme
+    {{loading?'Espere...':'Inscribirme'}}
   </ion-button>
   <ion-button  color="danger" (click)="dismiss()" expand="block">
       <ion-icon slot="start" name="remove-circle"></ion-icon>

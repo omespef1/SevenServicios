@@ -5,6 +5,7 @@ import { AuthService } from '../../../services/auth/auth.service';
 import { ToTransaction, TOAccess } from '../../../models/general/totransaction';
 import { NavController, ModalController } from '@ionic/angular';
 import { CadrecoPage } from '../cadreco/cadreco.page';
+import { CaregobService } from '../../../services/ca/caregob.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class CfregobPage implements OnInit {
 loading=false;
   caregob:caregob[]= [];
   
-  constructor(private _http:HttpManagerService,private auth:AuthService,private modalController:ModalController) { }
+  constructor(private _service:CaregobService,private auth:AuthService,private modalController:ModalController) { }
   user:TOAccess;
   ngOnInit() {
     this.user = this.auth.loadUser();
@@ -28,7 +29,7 @@ loading=false;
   GetCaregob(event?:any){
     this.loading=true;
     console.log(this.user);
-     this._http.Get<ToTransaction>(`/CaRegob?cli_coda=${this.user.objResult.cli_coda}&`,this.user.strToken).subscribe(resp=>{
+     this._service.GetCaRegob(this.user).subscribe(resp=>{
     this.caregob = resp.ObjTransaction;
     this.loading=false;
     if (event) event.target.complete();

@@ -1,15 +1,4 @@
 
-ion-item {
-    border-radius: 5px;
-}
-
-ion-avatar {
-    img {
-        // border:3px dashed gray;
-        // max-width: 2rem;
-    }
-}
-
 #data {
     display: none;
   }
@@ -25,3 +14,15 @@ ion-avatar {
   .custom-skeleton ion-skeleton-text:last-child {
     margin-bottom: 5px;
   }
+
+  ion-item,ion-list{
+    --background:transparent;
+}
+ion-list {
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.12);
+
+}
+ion-list-header {
+    padding: 1em;
+}

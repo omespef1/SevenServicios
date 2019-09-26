@@ -13,10 +13,14 @@ import { HttpClientModule } from '@angular/common/http';
 //Modulo de componentes
 import { ComponentsModule } from './components/components.module';
 import { IonicStorageModule } from '@ionic/storage';
+import { GnemprePage } from './pages/gn/gnempre/gnempre.page';
+import { GnconexPage } from './pages/gn/gnconex/gnconex.page';
 // import { Facebook } from '@ionic-native/facebook/ngx';
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent,    GnemprePage,GnconexPage],
+  entryComponents: [
+    GnemprePage,GnconexPage
+  ],
   imports: [
     BrowserModule, 
     IonicModule.forRoot(

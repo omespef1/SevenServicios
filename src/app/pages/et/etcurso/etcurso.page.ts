@@ -3,6 +3,7 @@ import { etcurso } from "../../../models/et/etcurso";
 import { ToTransaction } from '../../../models/general/totransaction';
 import { HttpManagerService } from '../../../services/httpManager/http-manager.service';
 import { AlertComponent } from 'src/app/components/alert/alert.component';
+import { EtcursoService } from 'src/app/services/et/etcurso.service';
 
 @Component({
   selector: "app-etcurso",
@@ -13,7 +14,7 @@ export class EtcursoPage implements OnInit {
   @ViewChild(AlertComponent, { static: false }) _alertC: AlertComponent;
   etcurso: etcurso[] = [];
   loading=false;
-  constructor(private _http: HttpManagerService) {
+  constructor(private _service:EtcursoService) {
    
   }
 
@@ -23,7 +24,7 @@ export class EtcursoPage implements OnInit {
 
   GetEtCurso(event?:any) {
   this.loading=true;
-    this._http.Get<ToTransaction>("/etcurso?").subscribe(resp => {    
+    this._service.GetEtCurso().subscribe(resp => {    
       this.etcurso= resp.ObjTransaction;
       if(event)event.target.complete();
       this.loading=false;

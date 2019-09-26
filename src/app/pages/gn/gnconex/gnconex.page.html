@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Seleccione cliente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <ion-list>
+   <ion-item tappable *ngFor="let business of businessList" (click)="SetBusiness(business)">
+     <ion-icon slot="start" name="home"></ion-icon>
+     <ion-label>{{business.CNX_NOMB}}</ion-label>
+   </ion-item>
+ </ion-list>
+</ion-content>

@@ -1,0 +1,31 @@
+<app-header headerName="Inscripción">
+
+</app-header>
+
+<ion-content fullscreen class="ion-padding">
+  <form #teinfarForm="ngForm" (ngSubmit)="SetTeInfar()">
+      <ion-list lines="none">
+          <ion-radio-group name="sede" [(ngModel)]="sede" required>
+            <ion-list-header color="success">
+              <ion-label>Escoge la sede</ion-label>
+            </ion-list-header>                  
+            <ion-item  *ngFor="let item of tepfare">
+              <ion-icon slot="start" src="assets/icon/building-solid.svg"></ion-icon>
+              <ion-label>{{item.arb_nomb}}</ion-label>
+              <ion-radio slot="end" [value]="item"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+        <ion-button type="submit" [disabled]="!teinfarForm.form.valid" color="primary"  expand="block">
+            <ion-icon *ngIf="!loading" slot="start" name="clipboard"></ion-icon>
+            <ion-spinner *ngIf="loading" slot="start"></ion-spinner>
+            Inscribirme
+          </ion-button>
+  </form>
+
+
+
+  <app-alert>
+
+  </app-alert>
+</ion-content>

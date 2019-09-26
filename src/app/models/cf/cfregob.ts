@@ -6,6 +6,7 @@ export class caregob {
     lic_codi:number;
     lic_nomb:string;
     reg_vtot:number;
+    reg_desc:string;
     cuotas: cadrego[];
 }
 

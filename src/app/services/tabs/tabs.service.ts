@@ -24,7 +24,7 @@ export class TabsService {
       {
         mainIcon: "contact",
         mainTitle: "Tercera edad",
-        mainPath: "tecuter",
+        mainPath: "te",
         mainSrc: ""
       },
       {
