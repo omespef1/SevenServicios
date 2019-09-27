@@ -33,6 +33,7 @@
     "animate.css": "^3.6.1",
     "bootstrap": "^4.3.1",
     "cordova-android": "8.1.0",
+    "cordova-browser": "6.0.0",
     "cordova-ios": "^5.0.1",
     "cordova-plugin-browsertab": "^0.2.0",
     "cordova-plugin-compat": "^1.2.0",
@@ -94,7 +95,8 @@
     },
     "platforms": [
       "ios",
-      "android"
+      "android",
+      "browser"
     ]
   }
 }
