@@ -26,7 +26,7 @@ export class HttpManagerService {
 
   Get<T>(urlController: string, strToken?: string) {
     let gnconex:gnconex= JSON.parse(localStorage.getItem('GnConex'));
-    // this.baseUrl = gnconex.CNX_IPSR;
+     this.baseUrl = gnconex.CNX_IPSR;
     console.log(strToken);
     const headerAnonimous = {
       "Content-Type": "application/json",
@@ -73,7 +73,7 @@ export class HttpManagerService {
 
   Post<T>(urlController: string, body?: any, strToken?: string) {
     let gnconex:gnconex= JSON.parse(localStorage.getItem('GnConex'));
-    // this.baseUrl = gnconex.CNX_IPSR;
+    this.baseUrl = gnconex.CNX_IPSR;
     const headerAnonimous = {
       "Content-Type": "application/json",
       Accept: "application/json",

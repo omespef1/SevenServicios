@@ -13,6 +13,7 @@ import { PlcaculService } from '../../../services/pl/plcacul.service';
 })
 export class PlcaculPage implements OnInit {
   plcacul: plcacul[] = [];
+  loading=false;
   @ViewChild(AlertComponent, { static: false }) _alertC: AlertComponent;
   constructor(private _service:PlcaculService, private router: Router) {}
 
@@ -21,10 +22,12 @@ export class PlcaculPage implements OnInit {
   }
 
   GetPlCacul(event?: any) {
+    this.loading=true;
     this._service.GetPlCacul().subscribe(resp => {
       this._alertC.ngOnDestroy();
       this.plcacul = resp.ObjTransaction;
       if (event) event.target.complete();
+      this.loading=false;
       if (resp.Retorno == 1) this._alertC.show(resp.TxtError, 'danger');
     });
   }

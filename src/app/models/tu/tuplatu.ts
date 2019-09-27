@@ -6,4 +6,6 @@ export class tuplatu {
   cas_cont: number;
   pla_pdev: string;
   pla_cssf: string;
+  cut_mpos:number;
+  cut_mpre:number;
 }

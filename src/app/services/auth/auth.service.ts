@@ -38,7 +38,7 @@ export class AuthService  {
   
 
   async signOut() {
-    localStorage.setItem('user',null) ;
+  
     this.stroToken="";
     this.router.navigateByUrl("/login");
   }

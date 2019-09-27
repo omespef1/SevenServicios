@@ -82,7 +82,10 @@ export class PlinfarPage implements OnInit {
       this.loading = false;
       if (resp.Retorno == 1) {
         this._alert.show(resp.TxtError, "danger");
-      } else this._alertS.showAlert('Perfecto!','La inscripción ha sido realizada!')
+      } else{
+        this._alertS.showAlert('Perfecto!','La inscripción ha sido realizada!')
+        this.router.navigateByUrl('tabs/pl/plcacul')
+      } 
     });
   }
 }

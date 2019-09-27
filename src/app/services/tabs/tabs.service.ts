@@ -31,7 +31,7 @@ export class TabsService {
         mainIcon: "",
         mainTitle: "Turismo",
         mainPath: "tuplatu",
-        mainSrc: "assets/icon/globe-africa-solid.svg"
+        mainSrc: "assets/icon/globe-americas-solid.svg"
       },
       {
         mainIcon: "school",
