@@ -12,11 +12,6 @@ const routes: Routes = [
   {
     path: "",
     component: LoginPage
-  },
-  {
-    path: "gnempre",
-    loadChildren: () =>
-      import("../gn/gnempre/gnempre.module").then(g => g.GnemprePageModule)
   }
 ];
 

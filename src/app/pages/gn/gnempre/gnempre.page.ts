@@ -11,6 +11,7 @@ import { AlertComponent } from "../../../components/alert/alert.component";
 })
 export class GnemprePage implements OnInit {
   businessList: gnempre[] = [];
+  loading=false;
   @ViewChild(AlertComponent, { static: false }) _alert: AlertComponent;
   constructor(
     private _modal: ModalController,
@@ -22,7 +23,9 @@ export class GnemprePage implements OnInit {
   }
 
   GetGnEmpre() {
+    this.loading=true;
     this._service.GetGnEmpre().subscribe(resp => {
+      this.loading=false;
       if (resp.Retorno == 0) {
         this.businessList = resp.ObjTransaction;
       } else {
