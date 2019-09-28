@@ -15,6 +15,8 @@ import { ComponentsModule } from './components/components.module';
 import { IonicStorageModule } from '@ionic/storage';
 import { GnemprePage } from './pages/gn/gnempre/gnempre.page';
 import { GnconexPage } from './pages/gn/gnconex/gnconex.page';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 // import { Facebook } from '@ionic-native/facebook/ngx';
 @NgModule({
   declarations: [AppComponent,    GnemprePage,GnconexPage],
@@ -33,6 +35,7 @@ import { GnconexPage } from './pages/gn/gnconex/gnconex.page';
     HttpClientModule,
     ComponentsModule,
     IonicStorageModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     // Facebook,

@@ -66,8 +66,8 @@ export class GminfarPage implements OnInit {
       });
   }
 
-  dismiss(gntoper: gntoper) {
-    this._modal.dismiss(gntoper);
+  dismiss() {
+    this._modal.dismiss();
   }
 
 

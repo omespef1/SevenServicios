@@ -64,7 +64,7 @@ export class GntoperPage implements OnInit {
       });
   }
 
-  dismiss(gntoper: gntoper) {
+  dismiss() {
     this._modal.dismiss(gntoper);
   }
 
