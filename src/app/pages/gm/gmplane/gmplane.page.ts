@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild, Input, Renderer } from '@angular/core';
 import { HttpEvent } from "@angular/common/http";
 import { ToTransaction } from "src/app/models/general/totransaction";
 import { Gmplane } from "../../../models/gm/gmplane";
@@ -26,6 +26,7 @@ export class GmplanePage implements OnInit {
   loading = false;
   user: TOAccess;
   gmplane: Gmplane[];
+  test:false;
   @ViewChild(AlertComponent, { static: false }) _alertC: AlertComponent;
   constructor(
     private theme: ThemeService,
@@ -40,6 +41,7 @@ export class GmplanePage implements OnInit {
   }
 
   ngOnInit() {
+    // this.renderer.setElementStyle(this.cardContent.nativeElement, "webkitTransition", "max-height 500ms, padding 500ms");
     this.GetGmPlane();
   }
 
@@ -84,4 +86,24 @@ export class GmplanePage implements OnInit {
     // });
     // return await modal.present();
   }
+
+  // toggleAccordion() {
+  //   if (this.accordionExapanded) {
+  //     this.renderer.setElementStyle(this.cardContent.nativeElement, "max-height", "0px");
+  //     this.renderer.setElementStyle(this.cardContent.nativeElement, "padding", "0px 16px");
+
+  //   } else {
+  //     this.renderer.setElementStyle(this.cardContent.nativeElement, "max-height", "600px");
+  //     this.renderer.setElementStyle(this.cardContent.nativeElement, "padding", "13px 16px");
+
+  //   }
+
+  //   this.accordionExapanded = !this.accordionExapanded;
+  //   // this.icon = this.icon == "eye-off" ? "eye" : "eye-off";
+
+  // }
+
+  
+
+
 }

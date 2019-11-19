@@ -6,15 +6,9 @@
       </ion-refresher>
 
 <div *ngIf="dtendep">
-    <ion-card *ngFor="let item of dtendep" class="bounceIn">
-        <div class="img">
-        </div>
-        <ion-card-header>    
-          <!-- <ion-card-subtitle>Awesome Subtitle</ion-card-subtitle> -->
-          <ion-card-title>{{item.end_nomb}}</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-         <ion-grid fixed>
+
+    <app-toggable-card [title]="item.end_nomb"  imgParam="futbol.jpg" *ngFor="let item of dtendep" class="bounceIn">
+        <ion-grid fixed>
             <ion-row>
                 <ion-col  size="3">
                     <div class="card-content"> 
@@ -78,9 +72,19 @@
                    </div>
                 </ion-col>           
               </ion-row>
-         </ion-grid>
+         </ion-grid>        
+    </app-toggable-card>
+    <!-- <ion-card *ngFor="let item of dtendep" class="bounceIn">
+        <div class="img">
+        </div>
+        <ion-card-header>    
+         
+          <ion-card-title>{{item.end_nomb}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+        
         </ion-card-content>
-      </ion-card>
+      </ion-card> -->
 </div>
 
 

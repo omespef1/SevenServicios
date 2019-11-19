@@ -4,21 +4,25 @@ import { IonicModule } from '@ionic/angular';
 
 import { HeaderComponent } from './header/header.component';
 import { AlertComponent } from './alert/alert.component';
+import { ToggableCardComponent } from './cards/toggable-card/toggable-card.component';
+
 
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    AlertComponent
+    AlertComponent,
+    ToggableCardComponent
   ],
   imports: [
     CommonModule   ,
-    IonicModule
+    IonicModule,
   ],
   exports: [
     HeaderComponent,
-    AlertComponent
+    AlertComponent,
+    ToggableCardComponent
   ]
 })
 export class ComponentsModule { }

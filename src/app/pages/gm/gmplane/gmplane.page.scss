@@ -14,7 +14,7 @@ ion-card-content{
 }
 .img{
     height: 120px;
-    background: url('../../../../assets/imgs/gym.png');
+    // background: url('../../../../assets/imgs/gym.png');
     background-position:top;
 }
 
@@ -42,3 +42,6 @@ ion-card-content{
     border-radius: 5px;
 }
 
+ion-button {
+    margin:0px;
+}

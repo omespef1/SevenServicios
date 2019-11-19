@@ -1,3 +1,9 @@
+.light {
+    background: white;
+}
+.dark {
+    background: #F2F2F2;
+}
 ion-card {
     ion-button {
         margin:0px;
@@ -5,6 +11,7 @@ ion-card {
     }
     ion-card-header {   
         max-height: 200px;
+    
     }
     ion-card-content{
         background:#fff;
@@ -14,8 +21,8 @@ ion-card {
     }
     .img{
         height: 120px;
-        background: url('../../../../assets/imgs/turismo.jpg');
-        background-position:bottom;
+        // background: url('../../../../assets/imgs/gym.png');
+        background-position:top;
     }
     
     ion-card-content{
@@ -41,6 +48,9 @@ ion-card {
     .item-alert {
         border-radius: 5px;
     }
+    
     ion-button {
         margin:0px;
     }
+
+

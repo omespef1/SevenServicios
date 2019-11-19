@@ -5,16 +5,95 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ng-container *ngIf="!loading">
-    <ion-card *ngFor="let plane of gmplane">
+  
+           
+      <app-toggable-card [title]="plane.pla_nomb" imgParam="gym.png" [subTitle]="plane.pla_clas" *ngFor="let plane of gmplane">
+          <div #bodyArea>
+              <ion-grid fixed>
+                  <ion-row>
+                    <ion-col size="3">
+                      <div class="card-content">
+                        <ion-label>
+                          <ion-icon slot="start" src="assets/icon/laptop-code-solid.svg"></ion-icon>
+                        </ion-label>
+                      </div>
+                      <div class="card-content-title">
+                        Código
+                      </div>
+                      <div class="card-content-subtitle">
+                        <ion-label>
+                          {{plane.pla_codi}}
+                        </ion-label>
+                      </div>
+                    </ion-col>
+        
+                    <ion-col size="3">
+                      <div class="card-content">
+                        <ion-label>
+                          <ion-icon slot="start" name="calendar"></ion-icon>
+                        </ion-label>
+                      </div>
+                      <div class="card-content-title">
+                        Meses
+                      </div>
+                      <div class="card-content-subtitle">
+                        <ion-label>
+                          {{plane.pla_mese}}
+                        </ion-label>
+                      </div>
+                    </ion-col>
+                    <ion-col size="3">
+                      <div class="card-content">
+                        <ion-label>
+                          <ion-icon slot="start" name="person"></ion-icon>
+                        </ion-label>
+                      </div>
+                      <div class="card-content-title">
+                        Edad mínima
+                      </div>
+                      <div class="card-content-subtitle">
+                        <ion-label>
+                          {{plane.pla_emin}}
+                        </ion-label>
+                      </div>
+                    </ion-col>
+                    <ion-col size="3">
+                      <div class="card-content">
+                        <ion-label>
+                          <ion-icon slot="start" src="assets/icon/route-solid.svg"></ion-icon>
+                        </ion-label>
+                      </div>
+                      <div class="card-content-title">
+                        Requiere rutina
+                      </div>
+                      <div class="card-content-subtitle">
+                        <ion-label>
+                          {{plane.pla_rrut=='N'?'No':'Si'}}
+                        </ion-label>
+                      </div>
+                    </ion-col>
+                   
+                  </ion-row>          
+                </ion-grid> 
+          </div>
+       
+        <div #divArea>
+            <ion-button  color="success" Expand="full" (click)="openGmInfar(plane)">
+                <ion-icon slot="start" name="eye"></ion-icon>
+               Inscribirme
+              </ion-button>
+          
+        </div>
+        
+      </app-toggable-card>
 
-      <div class="img">
-      </div>
-      <ion-card-header>
+      
+      <!-- <ion-card-header (click)="toggleAccordion()">
         <ion-card-title>{{plane.pla_nomb}}</ion-card-title>
         <ion-card-subtitle>Clases:{{plane.pla_clas}}</ion-card-subtitle>
       </ion-card-header>
-      <ion-card-content>
-        <ion-grid fixed>
+      <ion-card-content #cc> -->
+        <!-- <ion-grid fixed>
           <ion-row>
             <ion-col size="3">
               <div class="card-content">
@@ -79,15 +158,12 @@
             </ion-col>
            
           </ion-row>          
-        </ion-grid>       
-      </ion-card-content>    
+        </ion-grid>        -->
+      <!-- </ion-card-content>     -->
      
-          <ion-button color="success" Expand="full" (click)="openGmInfar(plane)">
-              <ion-icon slot="start" name="eye"></ion-icon>
-             Inscribirme
-            </ion-button>
+          
      
-    </ion-card>
+   
     
   </ng-container>
 
