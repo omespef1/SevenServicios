@@ -4,6 +4,10 @@
 .dark {
     background: #F2F2F2;
 }
+
+ion-item{
+    --background:white;
+}
 ion-card {
     ion-button {
         margin:0px;

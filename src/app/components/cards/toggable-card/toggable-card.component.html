@@ -1,7 +1,16 @@
 <div class="container">
-    <ion-card [ngClass]="isMenuOpen?'dark':'light'" >
-      <div tappable (click)="isMenuOpen=!isMenuOpen">
-        <div  *ngIf="isMenuOpen" [@slideOutIn]  [ngStyle]="{background: 'url(assets/imgs/' + imgParam + ')'}"  class="img">
+    <ion-item lines="full"  tappable (click)="isMenuOpen=!isMenuOpen">        
+      <ion-button fill="outline" slot="end" >
+        <ion-icon slot="end" [name]="!isMenuOpen?'add-circle':'remove-circle'">
+
+        </ion-icon> Ver
+      </ion-button>
+        <ion-label>{{title}}</ion-label>
+     
+      </ion-item>
+    <ion-card *ngIf="isMenuOpen" [@slideInOut]  [ngClass]="isMenuOpen?'dark':'light'" >
+      <div >
+        <div   [ngStyle]="{background: 'url(assets/imgs/' + imgParam + ')'}"  class="img">
           </div>
       <ion-card-header>
         
@@ -16,7 +25,7 @@
         </ion-item>
        
       </ion-card-header>
-      <div *ngIf="isMenuOpen" [@slideInOut]>
+      <div >
       <ion-card-content>
         <ng-content>
     
