@@ -19,10 +19,15 @@ import { GnconexPage } from './pages/gn/gnconex/gnconex.page';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 // import { Facebook } from '@ionic-native/facebook/ngx';
+import { TecasisAprtPage } from './pages/te/tecasis-aprt/tecasis-aprt.page';
+import { PipesModule } from './pipes/pipes.module';
+import { TecasisCaprPage } from './pages/te/tecasis-capr/tecasis-capr.page';
+import { PlcasisAprtPage } from './pages/pl/plcasis-aprt/plcasis-aprt.page';
+import { PlcasisCaprPage } from './pages/pl/plcasis-capr/plcasis-capr.page';
 @NgModule({
-  declarations: [AppComponent,    GnemprePage,GnconexPage],
+  declarations: [AppComponent,    GnemprePage,GnconexPage, TecasisAprtPage, TecasisCaprPage, PlcasisAprtPage, PlcasisCaprPage],
   entryComponents: [
-    GnemprePage,GnconexPage
+    GnemprePage, GnconexPage, TecasisAprtPage, TecasisCaprPage, PlcasisAprtPage, PlcasisCaprPage
   ],
   imports: [
     BrowserModule, 
@@ -38,6 +43,7 @@ import { environment } from '../environments/environment';
     ComponentsModule,
     IonicStorageModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    PipesModule
   ],
   providers: [
     // Facebook,

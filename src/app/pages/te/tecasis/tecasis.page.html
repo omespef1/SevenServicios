@@ -1,0 +1,31 @@
+<app-header headerName="Consulta Asistencias"></app-header>
+
+<ion-content>  
+  <ion-item>
+    <ion-label>Fecha Inicial</ion-label>
+    <ion-datetime displayFormat="MM/DD/YYYY" 
+                  min="1994-03-14"
+                  (ionChange)="CambioFechaInic($event)"
+                  name="asi_fein"></ion-datetime>          
+  </ion-item>
+  <ion-item>
+    <ion-label>Fecha Final</ion-label>
+    <ion-datetime displayFormat="MM/DD/YYYY"  
+                  min="1994-03-14"
+                  (ionChange)="CambioFechaFini($event)"
+                  name="asi_fefi"></ion-datetime>                               
+  </ion-item>
+
+  <ion-item [disabled]="enableButton" (click)="GetAsistenciasTE()">    
+    <ion-label>Apertura</ion-label>
+    <ion-note slot="end"> {{apc_desc}} </ion-note>
+  </ion-item>
+
+  <ion-button expand="full" 
+                color="primary" 
+                type="submit"
+                [disabled]="enableButton"
+                (click)="BuscarAsis()">                
+      Buscar Asistencias
+    </ion-button>
+</ion-content>
