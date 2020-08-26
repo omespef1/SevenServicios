@@ -16,7 +16,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of  Plapert | filtro:textoBuscar: 'apc_desc'" (click)="SetApertura(Plapert)">
+    <ion-item *ngFor="let item of  Plapert | filtro:textoBuscar: 'apc_desc'" (click)="SetApertura(item)">
       <ion-icon slot="start" src="assets/icon/calendar-alt-solid.svg"></ion-icon>
       <ion-label>{{item.apc_desc}}</ion-label>
     </ion-item>

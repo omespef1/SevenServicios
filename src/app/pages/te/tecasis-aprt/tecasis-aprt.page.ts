@@ -15,7 +15,7 @@ export class TecasisAprtPage implements OnInit {
   @Input() asi_fefi;
   loading = false;
   user: TOAccess;
-  Teapert: teapert[];
+  Teapert: teapert[] = [];
   textoBuscar = '';
   @ViewChild(AlertComponent,{'static': false}) _alertC: AlertComponent;
 

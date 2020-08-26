@@ -13,19 +13,7 @@ export class TecaperService {
   constructor(private _http: HttpManagerService, private sesion: SessionsService, private http: HttpClient, private _sesion:SessionsService) { }
 
   getCAperturas(user: TOAccess, asi_fein: Date, asi_fefi: Date, apc_cont: number) {
-    let headers = new Headers();
-    const headerAuth = {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      "Access-Control-Allow-Headers": "Content-Type",
-      "Access-Control-Allow-Origin": "*",
-      Authorization: user.strToken
-    };
-    headers = new HttpHeaders(headerAuth);
-    let options: any = {
-      headers: headers,
-      observe: "body"
-    };
+  
 
     if (apc_cont !== 0) {
     return this._http.Get<transaction>(`TeCasis/GetCasisTE?emp_codi=${this._sesion.GetGnEmpre().emp_codi}&cli_coda=${user.objResult.cli_coda}&asi_fein=${asi_fein}&asi_fefi=${asi_fefi}&apc_cont=${apc_cont}`,user.strToken)

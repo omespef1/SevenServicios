@@ -25,14 +25,6 @@ const routes: Routes = [
 { path: 'tecasis',
   loadChildren: () => import('../te/tecasis/tecasis.module').then(te => te.TecasisPageModule)
 },
-{
-  path: 'tecasis-aprt',
-  loadChildren: () => import('../te/tecasis-aprt/tecasis-aprt.module').then(te => te.TecasisAprtPageModule)
-},
-{
-  path: 'tecasis-capr',
-  loadChildren: () => import('../te/tecasis-capr/tecasis-capr.module').then(te => te.TecasisCaprPageModule)
-}
 ];
 
 @NgModule({

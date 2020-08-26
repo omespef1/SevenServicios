@@ -25,14 +25,6 @@ const routes: Routes = [
       {
         path: 'plcasis',
         loadChildren: () => import('../pl/plcasis/plcasis.module').then(pl => pl.PlcasisPageModule)
-      },
-      {
-        path: 'plcasis-capr',
-        loadChildren: () => import('../pl/plcasis-capr/plcasis-capr.module').then(pl => pl.PlcasisCaprPageModule)
-      },
-      {
-        path: 'plcasis-aprt',
-        loadChildren: () => import('../pl/plcasis-aprt/plcasis-aprt.module').then(pl => pl.PlcasisAprtPageModule)
       }
 
 

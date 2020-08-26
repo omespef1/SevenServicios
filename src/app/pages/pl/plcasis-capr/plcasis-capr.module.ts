@@ -1,26 +1,26 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+// import { NgModule } from '@angular/core';
+// import { CommonModule } from '@angular/common';
+// import { FormsModule } from '@angular/forms';
+// import { Routes, RouterModule } from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+// import { IonicModule } from '@ionic/angular';
 
-import { PlcasisCaprPage } from './plcasis-capr.page';
+// import { PlcasisCaprPage } from './plcasis-capr.page';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: PlcasisCaprPage
-  }
-];
+// const routes: Routes = [
+//   {
+//     path: '',
+//     component: PlcasisCaprPage
+//   }
+// ];
 
-@NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RouterModule.forChild(routes)
-  ],
-  declarations: [PlcasisCaprPage]
-})
-export class PlcasisCaprPageModule {}
+// @NgModule({
+//   imports: [
+//     CommonModule,
+//     FormsModule,
+//     IonicModule,
+//     RouterModule.forChild(routes)
+//   ],
+//   declarations: [PlcasisCaprPage]
+// })
+// export class PlcasisCaprPageModule {}
