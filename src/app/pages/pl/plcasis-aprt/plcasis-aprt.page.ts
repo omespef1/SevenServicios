@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { TOAccess, ToTransaction } from '../../../models/general/totransaction';
 import { plapert } from '../../../models/pl/plapert';
-import { AlertComponent } from '../../../components/alert/alert.component';
 import { PlapertService } from '../../../services/pl/plapert.service';
 import { ModalController } from '@ionic/angular';
+import { AlertService } from '../../../services/alert/alert.service';
 
 @Component({
   selector: 'app-plcasis-aprt',
@@ -17,10 +17,10 @@ export class PlcasisAprtPage implements OnInit {
   user: TOAccess;
   Plapert: plapert[];
   textoBuscar = '';
-  @ViewChild(AlertComponent,{'static': false}) _alertC: AlertComponent;
 
   constructor(private _service: PlapertService,
-              private _modal: ModalController) { }
+              private _modal: ModalController,
+              private _alert: AlertService) { }
 
   ngOnInit() {
     this.getAperturas();
@@ -29,10 +29,11 @@ export class PlcasisAprtPage implements OnInit {
   getAperturas() {
     this.loading = true;
     let user: TOAccess = JSON.parse(localStorage.getItem("user"));
-    this._service.getAperturas(user, this.asi_fefi, this.asi_fefi).subscribe((resp: ToTransaction) => {
-      this.Plapert = resp.ObjTransaction;
+    this._service.getAperturas(user, this.asi_fein, this.asi_fefi).subscribe((resp: ToTransaction) => {
       if (resp.Retorno == 1) {
-        this._alertC.show(resp.TxtError, 'danger');
+        this._alert.showAlert('Retorno', resp.TxtError);
+      } else {
+        this.Plapert = resp.ObjTransaction;
       }
       this.loading = false;
       console.log(resp);

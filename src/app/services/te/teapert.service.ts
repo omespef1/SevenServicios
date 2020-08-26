@@ -13,7 +13,8 @@ export class TeapertService {
     headers: HttpHeaders;
   };
 
-  constructor(private _http: HttpManagerService, private sesion: SessionsService, private http: HttpClient, private _sesion:SessionsService) { }
+  constructor(private _http: HttpManagerService, 
+              private _sesion: SessionsService) { }
 
   getAperturas(user: TOAccess, asi_fein: Date, asi_fefi: Date) {
 

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DatePipe } from "@angular/common";
+import { AuthGuard } from '../../guards/auth.guard';
 
 
 const routes: Routes = [
@@ -11,19 +12,22 @@ const routes: Routes = [
 },
 {
   path: 'teinfar',
-  loadChildren: () => import('../te/teinfar/teinfar.module').then(te => te.TeinfarPageModule)
+  loadChildren: () => import('../te/teinfar/teinfar.module').then(te => te.TeinfarPageModule),
+  canActivate: [AuthGuard]
 },
 {
   path : '',
   // redirectTo:'tecuter'
-  redirectTo : 'tesmenu'
+  redirectTo : 'tesmenu'  
 },
 {
   path: 'tesmenu',
   loadChildren: () => import('../te/tesmenu/tesmenu.module').then(te => te.TesmenuPageModule)
 },
-{ path: 'tecasis',
-  loadChildren: () => import('../te/tecasis/tecasis.module').then(te => te.TecasisPageModule)
+{ 
+  path: 'tecasis',
+  loadChildren: () => import('../te/tecasis/tecasis.module').then(te => te.TecasisPageModule),
+  canActivate: [AuthGuard]
 },
 ];
 

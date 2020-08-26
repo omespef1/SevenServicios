@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { TOAccess, ToTransaction } from '../../../models/general/totransaction';
 import { tecaper } from '../../../models/te/tecapr';
 import { TecaperService } from '../../../services/te/tecaper.service';
-import { AlertComponent } from '../../../components/alert/alert.component';
 import { ModalController } from '@ionic/angular';
+import { AlertService } from '../../../services/alert/alert.service';
 
 @Component({
   selector: 'app-tecasis-capr',
@@ -17,10 +17,10 @@ export class TecasisCaprPage implements OnInit {
   loading = false;
   user: TOAccess;
   TeCaper: tecaper[];
-  @ViewChild(AlertComponent,{'static': false}) _alertC: AlertComponent;
 
   constructor(private _service: TecaperService,
-              private modalCtrl: ModalController) { }
+              private modalCtrl: ModalController,
+              private _alert: AlertService) { }
 
   ngOnInit() {
     this.getCAperturas();
@@ -32,7 +32,7 @@ export class TecasisCaprPage implements OnInit {
     this._service.getCAperturas(user, this.asi_fein, this.asi_fefi, this.apc_cont).subscribe((resp: ToTransaction) => {
       this.TeCaper = resp.ObjTransaction;
       if (resp.Retorno == 1) {
-        this._alertC.show(resp.TxtError, 'danger');
+        this._alert.showAlert('Retorno', resp.TxtError);
       }
       this.loading = false;
       console.log(resp);

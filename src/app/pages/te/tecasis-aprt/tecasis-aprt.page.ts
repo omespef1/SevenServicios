@@ -2,8 +2,9 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { TeapertService } from '../../../services/te/teapert.service';
 import { TOAccess, ToTransaction } from '../../../models/general/totransaction';
 import { teapert } from '../../../models/te/teapert';
-import { AlertComponent } from '../../../components/alert/alert.component';
 import { ModalController } from '@ionic/angular';
+import { user } from '../../ae/aereser/models/models';
+import { AlertService } from '../../../services/alert/alert.service';
 
 @Component({
   selector: 'app-tecasis-aprt',
@@ -17,10 +18,10 @@ export class TecasisAprtPage implements OnInit {
   user: TOAccess;
   Teapert: teapert[] = [];
   textoBuscar = '';
-  @ViewChild(AlertComponent,{'static': false}) _alertC: AlertComponent;
 
   constructor(private _service: TeapertService,
-              private _modal: ModalController) { }
+              private _modal: ModalController,
+              private _alert: AlertService) { }
 
   ngOnInit() {
     this.getAperturas();
@@ -29,10 +30,11 @@ export class TecasisAprtPage implements OnInit {
   getAperturas() {
     this.loading = true;
     let user: TOAccess = JSON.parse(localStorage.getItem("user"));
-    this._service.getAperturas(user, this.asi_fefi, this.asi_fefi).subscribe((resp: ToTransaction) => {
-      this.Teapert = resp.ObjTransaction;
+    this._service.getAperturas(user, this.asi_fein, this.asi_fefi).subscribe((resp: ToTransaction) => {
       if (resp.Retorno == 1) {
-        this._alertC.show(resp.TxtError, 'danger');
+        this._alert.showAlert('Retorno', resp.TxtError);
+      } else {
+        this.Teapert = resp.ObjTransaction;
       }
       this.loading = false;
       console.log(resp);

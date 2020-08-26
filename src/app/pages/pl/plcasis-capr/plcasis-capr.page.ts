@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { TOAccess, ToTransaction } from '../../../models/general/totransaction';
 import { plcaper } from '../../../models/pl/plcapr';
-import { AlertComponent } from '../../../components/alert/alert.component';
 import { PlcaperService } from '../../../services/pl/plcaper.service';
 import { ModalController } from '@ionic/angular';
+import { AlertService } from '../../../services/alert/alert.service';
 
 @Component({
   selector: 'app-plcasis-capr',
@@ -17,10 +17,10 @@ export class PlcasisCaprPage implements OnInit {
   loading = false;
   user: TOAccess;
   PlCaper: plcaper[];
-  @ViewChild(AlertComponent,{'static': false}) _alertC: AlertComponent;
 
   constructor(private _service: PlcaperService,
-              private modalCtrl: ModalController) { }
+              private modalCtrl: ModalController,
+              private _alert: AlertService) { }
 
   ngOnInit() {
     this.getCAperturas();
@@ -32,7 +32,7 @@ export class PlcasisCaprPage implements OnInit {
     this._service.getCAperturas(user, this.asi_fein, this.asi_fefi, this.apc_cont).subscribe((resp: ToTransaction) => {
       this.PlCaper = resp.ObjTransaction;
       if (resp.Retorno == 1) {
-        this._alertC.show(resp.TxtError, 'danger');
+        this._alert.showAlert('Retono', resp.TxtError);
       }
       this.loading = false;
       console.log(resp);

@@ -12,7 +12,8 @@ const routes: Routes = [
       },
       {
         path:'plinfar',
-        loadChildren:()=> import('../pl/plinfar/plinfar.module').then(c=>c.PlinfarPageModule)
+        loadChildren:() => import('../pl/plinfar/plinfar.module').then(c => c.PlinfarPageModule),
+        canActivate: [AuthGuard]
       } ,
       {
         path: '',
@@ -24,7 +25,8 @@ const routes: Routes = [
       },
       {
         path: 'plcasis',
-        loadChildren: () => import('../pl/plcasis/plcasis.module').then(pl => pl.PlcasisPageModule)
+        loadChildren: () => import('../pl/plcasis/plcasis.module').then(pl => pl.PlcasisPageModule),
+        canActivate: [AuthGuard]
       }
 
 

@@ -10,7 +10,8 @@ import { transaction } from '../../pages/ae/aereser/models/models';
 })
 export class TecaperService {
 
-  constructor(private _http: HttpManagerService, private sesion: SessionsService, private http: HttpClient, private _sesion:SessionsService) { }
+  constructor(private _http: HttpManagerService,
+              private _sesion: SessionsService) { }
 
   getCAperturas(user: TOAccess, asi_fein: Date, asi_fefi: Date, apc_cont: number) {
   

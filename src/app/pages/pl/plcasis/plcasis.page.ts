@@ -98,14 +98,13 @@ export class PlcasisPage implements OnInit {
     await modal.present();
 
     await modal.onDidDismiss().then(resp => {
-      if (resp != null) {
+      if (resp.data == null) {
         this.apc_desc = "";
         this.apc_cont = 0;
       } else {
-        this.Plaprt = resp.data;
         console.log(this.Plaprt);
-        this.apc_desc = this.Plaprt[0].apc_desc;
-        this.apc_cont = this.Plaprt[0].apc_cont;
+        this.apc_desc = resp.data.apc_desc;
+        this.apc_cont = resp.data.apc_cont;
       }
     });
     }

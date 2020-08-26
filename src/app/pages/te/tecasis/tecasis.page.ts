@@ -97,14 +97,13 @@ export class TecasisPage implements OnInit {
     await modal.present();
 
     await modal.onDidDismiss().then(resp => {
-      if (resp != null) {
+      if (resp.data == null) {
         this.apc_desc = "";
         this.apc_cont = 0;
       } else {
-      this.Teapert = resp.data;
       console.log(this.Teapert);
-      this.apc_desc = this.Teapert[0].apc_desc;
-      this.apc_cont = this.Teapert[0].apc_cont;
+      this.apc_desc = resp.data.apc_desc;
+      this.apc_cont = resp.data.apc_cont;
       }
     });
     }
