@@ -1,5 +1,5 @@
 export const centralizacionUrl :string= "https://sac.digitalware.co:442/Seven_Crm/Centralizacion/api/";
-export const appVersion:string = '19.0.11.0';
+export const appVersion:string = '20.0.8.0';
 export const appCopyright = 'SEVEN-ERP © 1992-2019';
 export const appGooglePlayUrl = "";
 export const appAppStoreUrl = "";
