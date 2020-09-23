@@ -17,7 +17,7 @@ export class PlsmenuPage implements OnInit {
     this.smenu = [
       {
         mainIcon: "eye",
-        mainTitle: "Inscripciones",
+        mainTitle: "Planes",
         mainPath: "pl/plcacul",
         mainSrc: ""
       },

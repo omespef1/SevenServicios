@@ -17,7 +17,7 @@ export class TesmenuPage implements OnInit {
     this.smenu = [
       {
         mainIcon: "eye",
-        mainTitle: "Inscripciones",
+        mainTitle: "Planes",
         mainPath: "te/tecuter",
         mainSrc: ""
       },
