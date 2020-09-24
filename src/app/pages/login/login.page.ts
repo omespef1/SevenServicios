@@ -7,6 +7,8 @@ import { AlertService } from "../../services/alert/alert.service";
 import { NavController, ModalController } from '@ionic/angular';
 import { SessionsService } from '../../services/sessions/sessions.service';
 import { GnemprePage } from '../gn/gnempre/gnempre.page';
+import { gnconex } from '../../models/gn/gnconex';
+import { GnconexPage } from '../gn/gnconex/gnconex.page';
 
 @Component({
   selector: "app-login",
@@ -17,6 +19,8 @@ export class LoginPage implements OnInit {
   loading = false;
   showPass=false;
   user: loginRequest = new loginRequest();
+  logo: any = 'assets/imgs/logo.png';
+
   constructor(
     private auth: AuthService,
     private _alert: AlertService,
@@ -26,15 +30,30 @@ export class LoginPage implements OnInit {
     private _modal:ModalController
   ) {}
 
-  ngOnInit() {
-
-    
+  async ngOnInit() {
+    await this.GetGnConex();
   }
 
+  async GetGnConex() {
+    if (this._sesion.GetGnConex() == null) {
+      const modal = await this._modal.create({
+        component: GnconexPage
+      });
+      modal.onDidDismiss().then(resp => {
+        console.log(resp.data);
+        this._sesion.SetGnConex(resp.data);
+         this.GetGnEmpre();
+         let gnconex: gnconex = JSON.parse(localStorage.getItem('GnConex'));
+         this.logo = gnconex.CNX_LOGO;
+      });
+      return await modal.present();
+    } else {
+      let gnconex: gnconex = JSON.parse(localStorage.getItem('GnConex'));
+      this.logo = gnconex.CNX_LOGO;
+    }
+  }
 
-
-
-  signIn() {
+  signIn() {        
     this.user.emp_codi = this._sesion.GetGnEmpre().emp_codi;
     this.loading = true;
     console.log(this.user);
@@ -51,20 +70,18 @@ export class LoginPage implements OnInit {
       } else {
         this._alert.showAlert("Ingreso fallido", `${resp.errorMessage}`);
       }
-    },err=> {
-      this.loading=false;
-      this._alert.showAlert('Error',err);
+    }, err => {
+      this.loading = false;
+      this._alert.showAlert('Error', err);
     });
   }
 
-  facebook(){
-
+  facebook() {
    this.auth.loginWithFacebook();
   }
 
 
   async GetGnEmpre() {
-   
       const modal = await this._modal.create({
         component: GnemprePage
       });
@@ -73,7 +90,6 @@ export class LoginPage implements OnInit {
         this._sesion.SetGnEmpre(resp.data);
       });
       return await modal.present();
-   
   }
   // signIn(){
   //   this.loading=true;

@@ -1,0 +1,16 @@
+<app-header headerName="Créditos"></app-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row padding>
+      <ion-col (click)="GoPage(col)" padding size="4" *ngFor="let col of smenu" button tappable>
+        <div class="card-icon">
+          <ion-icon slot="start" [name]="col.mainIcon" [src]="col.mainSrc"></ion-icon>
+        </div>
+        <div class="card-title">
+          <ion-label>{{ col.mainTitle }}</ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>  
+</ion-content>

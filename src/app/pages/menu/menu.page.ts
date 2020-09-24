@@ -6,6 +6,7 @@ import { SessionsService } from "src/app/services/sessions/sessions.service";
 import { ModalController } from "@ionic/angular";
 import { GnconexPage } from "../gn/gnconex/gnconex.page";
 import { GnemprePage } from "../gn/gnempre/gnempre.page";
+import { gnconex } from '../../models/gn/gnconex';
 
 @Component({
   selector: "app-menu",
@@ -13,7 +14,10 @@ import { GnemprePage } from "../gn/gnempre/gnempre.page";
   styleUrls: ["./menu.page.scss"]
 })
 export class MenuPage implements OnInit {
+  CNX_NOMB: String = "Digital Ware";
+  logo: any = 'assets/imgs/logo.png';
   pagesMenu: mainMenu[] = [];
+
   constructor(
     private _route: Router,
     private _tabs: TabsService,
@@ -25,7 +29,7 @@ export class MenuPage implements OnInit {
   }
 
   async ngOnInit() {
-    await this.GetGnConex();    
+    await this.GetGnConex();
   }
 
   GoMenu(main: mainMenu) {
@@ -41,8 +45,15 @@ export class MenuPage implements OnInit {
         console.log(resp.data);
         this._sesion.SetGnConex(resp.data);
          this.GetGnEmpre();
+         let gnconex: gnconex = JSON.parse(localStorage.getItem('GnConex'));
+         this.CNX_NOMB = gnconex.CNX_NOMB;
+         this.logo = gnconex.CNX_LOGO;
       });
       return await modal.present();
+    } else {
+      let gnconex: gnconex = JSON.parse(localStorage.getItem('GnConex'));
+      this.CNX_NOMB = gnconex.CNX_NOMB;
+      this.logo = gnconex.CNX_LOGO;
     }
   }
 

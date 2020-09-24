@@ -1,7 +1,7 @@
 import { Component, OnInit, ɵConsole } from '@angular/core';
 import { caregob } from 'src/app/models/cf/cfregob';
 import { HttpManagerService } from '../../../services/httpManager/http-manager.service';
-import { AuthService } from '../../../services/auth/auth.service';
+import { AuthService } from "../../../services/auth/auth.service";
 import { ToTransaction, TOAccess } from '../../../models/general/totransaction';
 import { NavController, ModalController } from '@ionic/angular';
 import { CadrecoPage } from '../cadreco/cadreco.page';
@@ -14,33 +14,36 @@ import { CaregobService } from '../../../services/ca/caregob.service';
   styleUrls: ['./cfregob.page.scss'],
 })
 export class CfregobPage implements OnInit {
+  user: TOAccess;
+  caregob: caregob[] = [];
+  loading = false;
 
-loading=false;
-  caregob:caregob[]= [];
-  
-  constructor(private _service:CaregobService,private auth:AuthService,private modalController:ModalController) { }
-  user:TOAccess;
+  constructor(private _service: CaregobService,
+              private auth: AuthService,
+              private modalController: ModalController) {
+                this.user = auth.loadUser();
+              }
+
   ngOnInit() {
-    this.user = this.auth.loadUser();
     this.GetCaregob();
-    
   }
 
-  GetCaregob(event?:any){
-    this.loading=true;
+  GetCaregob(event?: any) {
+    this.loading = true;
     console.log(this.user);
-     this._service.GetCaRegob(this.user).subscribe(resp=>{
-    this.caregob = resp.ObjTransaction;
-    this.loading=false;
-    if (event) event.target.complete();
-  },error=>console.log(error));
+    this._service.GetCaRegob(this.user).subscribe(resp => {
+      this.caregob = resp.ObjTransaction;
+      this.loading = false;
+      if (event) event.target.complete();
+    },
+    error => console.log(error));
   }
 
   doRefresh($event) {
     this.GetCaregob($event);
   }
 
-  async presentModalDetail(caregob:caregob) {
+  async presentModalDetail(caregob: caregob) {
     const modal = await this.modalController.create({
       component: CadrecoPage,
       componentProps: {

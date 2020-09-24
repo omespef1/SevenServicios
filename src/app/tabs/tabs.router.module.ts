@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 import { AuthGuard } from '../guards/auth.guard';
-import { PlcaculPageModule } from '../pages/pl/plcacul/plcacul.module';
+
 const routes: Routes = [
   {
     path: '',
@@ -13,13 +13,13 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: ()=> import('../pages/gm/gm-routing.module').then(m=>m.GmRoutingModule),          
-          }         
+            loadChildren: () => import('../pages/gm/gm-routing.module').then(m=>m.GmRoutingModule),
+          }
         ]
       },
       {
-        path:'pl',
-        loadChildren: ()=> import('../pages/pl/pl-routing.module').then(pl=>pl.PlRoutingModule)
+        path: 'pl',
+        loadChildren: () => import('../pages/pl/pl-routing.module').then(pl => pl.PlRoutingModule)
       },
       {
         path: 'dtendep',
@@ -63,7 +63,7 @@ const routes: Routes = [
       },
       {
         path: 'te',
-        loadChildren:()=> import('../pages/te/te-routing.module').then(te=>te.TeRoutingModule)
+        loadChildren: () => import('../pages/te/te-routing.module').then(te => te.TeRoutingModule)
       },
       {
         path: 'tuplatu',
@@ -74,34 +74,21 @@ const routes: Routes = [
               import('../pages/tu/tuplatu/tuplatu.module').then(m => m.TuplatuPageModule)
           }
         ]
-      },  
+      },
       {
-        path: 'caregob',
+        path: 'cf',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../pages/cf/cfregob/cfregob.module').then(m => m.CfregobPageModule),
-              canActivate:[AuthGuard]
+              import('../pages/cf/cf-routing.module').then(cf => cf.CfRoutingModule)
           }
         ]
-      },  
-      
-      {
-        path: 'cascrev',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../pages/cf/cascrev/cascrev.module').then(m => m.CascrevPageModule),
-              canActivate:[AuthGuard]
-          }
-        ]
-      },  
+      },
       {
         path:'menu',
         loadChildren: ()=>import('../pages/menu/menu.module').then(m=>m.MenuPageModule)
-      }      
+      }
     ]
   },
   {

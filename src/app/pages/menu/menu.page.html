@@ -7,12 +7,15 @@
             <ion-row padding>       
               <ion-col padding text-center>
                   <div class="main-header bounceIn">
-                      <div class="main-img">
+                      <!-- <div class="main-img">
                         <ion-icon slot="start" src="assets/icon/laptop-code-solid.svg"></ion-icon>
-                      </div>
+                      </div> -->
+                      <ion-col text-center >
+                        <img text-center [src]="logo" class="imgLogo">
+                      </ion-col>
                       <div class="main-title">
                           <ion-label>
-                              <h2>Seven ERP</h2>
+                              <h2>{{CNX_NOMB}}</h2>
                               Cajas de compensación
                           </ion-label>
                       </div>

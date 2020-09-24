@@ -11,35 +11,31 @@ import { HttpManagerService } from '../httpManager/http-manager.service';
 @Injectable({
   providedIn: "root"
 })
-export class AuthService  {  
-   public stroToken:string;
-  constructor(
-    private router: Router,
-    private storage: Storage,
-    private _http:HttpManagerService
-    // private fb: Facebook
-  ) {
-    this.loadUser();
+export class AuthService  {
+    public stroToken: string;
+    constructor(private router: Router,
+                private storage: Storage,
+                private _http: HttpManagerService
+                // private fb: Facebook
+                ) {
+                    this.loadUser();
+                  }
+
+  loadUser(): TOAccess {
+    return JSON.parse(localStorage.getItem('user'));
   }
 
-   loadUser():TOAccess {
-    return JSON.parse(localStorage.getItem('user'));      
-  }
-  signIn(credentials: loginRequest) {  
+  signIn(credentials: loginRequest) {
     console.log(credentials);
-    return this._http.Post<TOAccess>("/login/authenticate",credentials);
+    return this._http.Post<TOAccess>("/login/authenticate", credentials);
   }
 
+  loginWithFacebook() {
 
-  loginWithFacebook(){
-   
   }
-
-  
 
   async signOut() {
-  
-    this.stroToken="";
+    this.stroToken = "";
     this.router.navigateByUrl("/login");
   }
 

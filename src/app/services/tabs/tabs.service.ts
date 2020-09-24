@@ -38,28 +38,33 @@ export class TabsService {
         mainTitle: "Escuelas",
         mainPath: "etcurso",
         mainSrc: ""
-      },     
+      },
       {
         mainIcon: "",
         mainTitle: "Capacitaciones",
         mainPath: "pl",
         mainSrc: "assets/icon/chalkboard-teacher-solid.svg"
-      },     
-      {
-        mainIcon:"",
-        mainTitle: "Obligaciones",
-        mainPath: "caregob",
-        mainSrc: "assets/icon/coins-solid.svg"
-
       },
       {
         mainIcon:"",
         mainTitle: "Créditos",
-        mainPath: "cascrev",
+        mainPath: "cf",
         mainSrc: "assets/icon/business-time-solid.svg"
 
       }
-      
+      // {
+      //   mainIcon:"",
+      //   mainTitle: "Obligaciones",
+      //   mainPath: "caregob",
+      //   mainSrc: "assets/icon/coins-solid.svg"
+
+      // },
+      // {
+      //   mainIcon:"",
+      //   mainTitle: "Créditos",
+      //   mainPath: "cascrev",
+      //   mainSrc: "assets/icon/business-time-solid.svg"
+      // }
     ];
   }
 

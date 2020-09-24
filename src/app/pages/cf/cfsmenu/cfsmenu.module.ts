@@ -5,19 +5,17 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CfregobPage } from './cfregob.page';
+import { CfsmenuPage } from './cfsmenu.page';
 import { ComponentsModule } from '../../../components/components.module';
-import { CadrecoPage } from '../cadreco/cadreco.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: CfregobPage
+    component: CfsmenuPage
   }
 ];
 
 @NgModule({
-
   imports: [
     CommonModule,
     FormsModule,
@@ -25,9 +23,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ComponentsModule
   ],
-  declarations: [CfregobPage, CadrecoPage],
-  entryComponents:[
-    CadrecoPage
-  ]
+  declarations: [CfsmenuPage]
 })
-export class CfregobPageModule {}
+export class CfsmenuPageModule {}

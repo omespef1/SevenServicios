@@ -12,7 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class SessionsService {
 
-  constructor(private _http:HttpManagerService) { }
+  constructor(private _http: HttpManagerService) { }
 
 
   signIn(credentials: loginRequest) {   
@@ -27,23 +27,25 @@ export class SessionsService {
     );
   }
 
-  SetGnConex(business:gnconex){
+  SetGnConex(business: gnconex) {
     localStorage.setItem('GnConex', JSON.stringify(business));
   }
-  GetGnConex(){
-   return  JSON.parse(localStorage.getItem('GnConex'));
+
+  GetGnConex() {
+   return JSON.parse(localStorage.getItem('GnConex'));
   }
 
-  SetGnEmpre(business:gnempre){
+  SetGnEmpre(business: gnempre) {
     localStorage.setItem('GnEmpre', JSON.stringify(business));
   }
-  GetGnEmpre():gnempre{
+
+  GetGnEmpre(): gnempre {
     return JSON.parse(localStorage.getItem('GnEmpre'));
   }
-  erraseStorage(){
+
+  erraseStorage() {
     localStorage.removeItem('GnEmpre')
     localStorage.removeItem('GnConex')
     localStorage.removeItem('user')
-    
   }
 }

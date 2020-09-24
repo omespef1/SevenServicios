@@ -16,19 +16,19 @@ export class TOSoRsoci {
   
     }
   }
-  export interface item {
+export interface item {
     Ite_nomb: string;
     Ite_codi: string;
     Tit_cont: number;
     Ite_cont: number;
   }
   
-  export interface itemSource {
+export interface itemSource {
     items: item[];
     icon: string;
     title: string;
   }
-  export class pqr {
+export class pqr {
     public emp_codi: number;
     public inp_feve: Date;
     public inp_esta: string;
@@ -50,7 +50,7 @@ export class TOSoRsoci {
     }
   }
   
-  export class user {
+export class user {
     Soc_nomb: string;
     Soc_apel: string;
     Soc_tele: string;
@@ -75,19 +75,19 @@ export class TOSoRsoci {
   
     }
   }
-  export interface transaction {
+export interface transaction {
     Retorno: number;
     TxtError: string;
     ObjTransaction: any;
   }
   
-  export interface disponibility {
+export interface disponibility {
     title: string;
     startTime: Date;
     endTime: Date;
     allDay: boolean;
   }
-  export interface booking {
+export interface booking {
     Emp_codi: number;
     Res_fini: Date;
     Res_fina: Date;
@@ -108,7 +108,7 @@ export class TOSoRsoci {
     arb_sucu: number;
     cotizacionExpress: boolean;
   }
-  export class booking {  
+export class booking {  
     Emp_codi: number;
     Res_fini: Date;
     Res_fina: Date;
@@ -131,17 +131,17 @@ export class TOSoRsoci {
     AccomodationSpaces:space[]=[];
    
   }
-  export class room {
+export class room {
     type:string;
     guests:number;
   }
   
-  export class ToUpdatetMultiBooking {
+export class ToUpdatetMultiBooking {
      Ids:any[]=[];
      emp_codi:number;
   }
   
-  export class space {
+export class space {
     Esp_cont:number;
     Esp_codi:number;
     Esp_nomb:string;
@@ -163,7 +163,7 @@ export class TOSoRsoci {
   }
   
   
-  export class disponibilityRequest {
+export class disponibilityRequest {
     public Cla_cont: number = 0;
     public pro_cont: number = 0;
     public year: number = 0;
@@ -183,7 +183,7 @@ export class TOSoRsoci {
   
   }
   
-  export class disponibilityRequestEvent {
+export class disponibilityRequestEvent {
     public dho_hori: string;
     public dho_horf: string;
     public esp_capa: number;
@@ -193,7 +193,7 @@ export class TOSoRsoci {
   
   }
   
-  export class disponibilityResponseEvent {
+export class disponibilityResponseEvent {
     public esp_cont: number;
     public esp_nomb: string;
     public dho_hori: string;
@@ -208,7 +208,7 @@ export class TOSoRsoci {
   }
   
   
-  export class factory {
+export class factory {
     public class: any;
     public agend: any;
     public space: any;
@@ -217,10 +217,9 @@ export class TOSoRsoci {
     public thirdPartie: any = { Ter_codi: 0 };
     public optionDisp: any = { OpDisp: "" };
     constructor() {
-  
     }
   }
-  export interface Ifactory {
+export interface Ifactory {
     class: any;
     agend: any;
     space: any;
@@ -228,15 +227,14 @@ export class TOSoRsoci {
     user: any;
     thirdPartie: any;
     optionDisp: any;
-  
   }
-  export interface DisponibilityTime {
+export interface DisponibilityTime {
     FechaInicio: Date;
     FechaFin: Date;
     esp_cont: number;
     Estado: string;
   }
-  export interface GnConex {
+export interface GnConex {
     CNX_IPSR: string;
     CNX_BACK: string;
     CNX_LOGO: string;
@@ -246,21 +244,21 @@ export class TOSoRsoci {
     CNX_CTER: string;
     CNX_FCLA: string;
   }
-  export interface GnEmpre {
+export interface GnEmpre {
     Emp_Codi: number;
     Emp_Nomb: string;
   }
-  export interface GnAppDw {
+export interface GnAppDw {
     App_Cont: number;
     App_Nomb: string;
     App_Vers: string;
   }
-  export interface GnDigfl {
+export interface GnDigfl {
     dig_codi: string;
     dig_valo: string;
     dig_nomb: string;
   }
-  export interface bookingInfo {
+export interface bookingInfo {
     Emp_Codi: number,
     Cla_nomb: string;
     Cla_foto: string;
@@ -293,7 +291,7 @@ export class TOSoRsoci {
     esp_capa:number;
   }
   
-  export interface payment {
+export interface payment {
     valor: number;
     sbe_codi: string;
     sbe_ncar: string;
@@ -303,7 +301,7 @@ export class TOSoRsoci {
     dpa_tabla:string;
   
   }
-  export interface paymentOut {
+export interface paymentOut {
     pap_tkid:number;
     pap_esta: string;
     pap_proc: string;
@@ -311,7 +309,7 @@ export class TOSoRsoci {
     pad_vpag: number;
    
   }
-  export interface bankTransactDone {
+export interface bankTransactDone {
     EntityCode: string,
     TicketId: string,
     TrazabilityCode: string,
@@ -330,7 +328,7 @@ export class TOSoRsoci {
     AuthReferenceArray: string[],
     SrvCode :string
   } 
-  export interface agreement {
+export interface agreement {
     Osa_Bmpr:string;
     Osa_Link: string;
     Osa_Nomb: string;
@@ -339,7 +337,7 @@ export class TOSoRsoci {
    
   }
   
-  export class ecmcomp {
+export class ecmcomp {
     emp_codi:number;
     mco_nomb: string;
     mco_codi: string;
@@ -349,7 +347,7 @@ export class TOSoRsoci {
    detalles :ecdemco [];
   }
   
-  export interface ecdemco {
+export interface ecdemco {
     pro_cont:number,
     pro_nomb: string,
     pro_codi: string,
@@ -359,7 +357,7 @@ export class TOSoRsoci {
     tip_codi:number,
   }
   
-  export interface product {
+export interface product {
     pro_cont:number,
     des_visu:string,
     pro_nomb:string,
@@ -370,12 +368,12 @@ export class TOSoRsoci {
     checked:boolean
   
   } 
-  export interface gntoper {
+export interface gntoper {
     top_codi:number,
     top_nomb:string
   
   }
-  export class eccotiz {
+export class eccotiz {
     emp_codi:number;
     top_codi	:number 		;	
      top_nomb:string;
@@ -398,7 +396,7 @@ export class TOSoRsoci {
   }
   
   
-  export class EcDespa {
+export class EcDespa {
     des_capa:number;
     des_cont:number;
     Esp_nomb:string;
@@ -406,19 +404,19 @@ export class TOSoRsoci {
     Res_cont:number;
     hijos: EcDphij[];
   };
-  export class EcDphij {
+export class EcDphij {
     pro_codi:string;
     pro_nomb:string;
     dph_cant:number;
   
   };
-  export class liquidation {
+export class liquidation {
     subTotal:number;
     totalImpuestos:number;
     valorTotal:number;
   };
   
-  export interface gn_papse {
+export interface gn_papse {
     pap_tkid:number,
     pap_esta:string,
     sbe_codi:number,
@@ -426,7 +424,7 @@ export class TOSoRsoci {
     aud_ufac:Date,
     detail: gn_dpaps[],
   }
-  export interface gn_dpaps{
+export interface gn_dpaps{
     pap_tkid:number,
     dpa_tcnt:number,
     dpa_tbla:string,
@@ -437,14 +435,14 @@ export class TOSoRsoci {
   
   }
   
-  export class ae_param {
+export class ae_param {
   
     cla_ceve:number;
     cla_cont:number;
   
   }
   
-  export interface pageApp {
+export interface pageApp {
   
     urlIcon:string;
     name:string;

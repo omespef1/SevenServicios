@@ -12,8 +12,9 @@ import { TOAccess } from '../../../models/general/totransaction';
 export class CascrevPage implements OnInit {
   user: TOAccess;
   cascrev: cascrev[];
-  loading=false;
-  constructor(private _service: CascrevService, private auth: AuthService) {
+  loading = false;
+  constructor(private _service: CascrevService,
+              private auth: AuthService) {
     this.user = auth.loadUser();
   }
 
@@ -21,12 +22,12 @@ export class CascrevPage implements OnInit {
     this.GetCaScrev();
   }
   GetCaScrev($event?:any) {
-    this.loading=true;
-    this._service.GetCaScrev(this.user).subscribe(resp => {   
+    this.loading = true;
+    this._service.GetCaScrev(this.user).subscribe(resp => {
       console.log(resp)   ;
       this.cascrev = resp.ObjTransaction;
       if ($event) $event.target.complete();
-      this.loading=false;
+      this.loading = false;
     });
   }
 
