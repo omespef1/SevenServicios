@@ -4,6 +4,7 @@ import { ToTransaction } from '../../../models/general/totransaction';
 import { HttpManagerService } from '../../../services/httpManager/http-manager.service';
 import { AlertComponent } from 'src/app/components/alert/alert.component';
 import { EtcursoService } from 'src/app/services/et/etcurso.service';
+import { gnconex } from '../../../models/gn/gnconex';
 
 @Component({
   selector: "app-etcurso",
@@ -14,12 +15,16 @@ export class EtcursoPage implements OnInit {
   @ViewChild(AlertComponent, { static: false }) _alertC: AlertComponent;
   etcurso: etcurso[] = [];
   loading=false;
+  logo: any = 'assets/imgs/logo.png';
+
   constructor(private _service:EtcursoService) {
    
   }
 
   ngOnInit() {
     this.GetEtCurso();
+    let gnconex: gnconex = JSON.parse(localStorage.getItem('GnConex'));
+    this.logo = gnconex.CNX_LOGO;
   }
 
   GetEtCurso(event?:any) {

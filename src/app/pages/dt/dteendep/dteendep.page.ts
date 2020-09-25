@@ -4,6 +4,7 @@ import { ToTransaction } from "../../../models/general/totransaction";
 import { HttpManagerService } from '../../../services/httpManager/http-manager.service';
 import { AlertComponent } from '../../../components/alert/alert.component';
 import { DtendepService } from '../../../services/dt/dtendep.service';
+import { gnconex } from '../../../models/gn/gnconex';
 
 @Component({
   selector: "app-dteendep",
@@ -12,12 +13,15 @@ import { DtendepService } from '../../../services/dt/dtendep.service';
 })
 export class DteendepPage implements OnInit {
   dtendep: dtendep[] = [];
-  loading=false;
+  loading = false;
+  logo: any = 'assets/imgs/logo.png';
   @ViewChild(AlertComponent,{static:false}) _alert:AlertComponent;
   constructor(private _service:DtendepService) {}
 
   ngOnInit() {
     this.GetDtEndep();
+    let gnconex: gnconex = JSON.parse(localStorage.getItem('GnConex'));
+    this.logo = gnconex.CNX_LOGO;
   }
 
   GetDtEndep(event?: any) {

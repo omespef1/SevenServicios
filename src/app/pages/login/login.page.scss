@@ -8,10 +8,18 @@
 .btn-forgot {
     @extend .btn;
     color:#A0A2A9;    
+    border-width: 1px;
+  border-style: solid;
+  border-color: white;
+  border-radius: var(--border-radius);
 }
 .btn-signup{
 color:#FF0062;
 @extend .btn;
+border-width: 1px;
+  border-style: solid;
+  border-color: white;
+  border-radius: var(--border-radius);
 }
 .btn-facebook {  
    --background:#3B5998;       
@@ -86,4 +94,19 @@ color:#FF0062;
 .loginColM{
   margin-top: 10%;
 }
+}
+.header {
+  background: var(--ion-color-primary);
+}
+.main-title{
+  color:white;
+}
+.icon{
+  color:white;
+}
+.btn-ingr{
+  border-width: 1px;
+  border-style: solid;
+  border-color: white;
+  border-radius: var(--border-radius);
 }

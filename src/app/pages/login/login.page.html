@@ -3,18 +3,18 @@
 </app-header>
 
 <ion-content>
-  <div>
+  <div class="header">
     <form autocomplete="off" (ngSubmit)="signIn();" #loginForm="ngForm" class="bounceIn">
       <ion-grid fixed>
         <ion-row padding>
           <ion-col padding text-center>
-          <ion-col text-center >
-            <img text-center [src]="logo" class="imgLogo">
+            <ion-col text-center >
+              <img text-center [src]="logo" class="imgLogo">
+            </ion-col>
+            <ion-col padding class="main-title">
+              <h2><b>BIENVENIDO!</b></h2>
+            </ion-col>
           </ion-col>
-          <ion-col padding>
-            <h2><b>BIENVENIDO!</b></h2>
-          </ion-col>
-        </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
@@ -22,7 +22,7 @@
               <!-- <ion-label position="stacked">Email</ion-label> -->
               <ion-input position="fixed" required autofocus="true" name="email" clear-input type="text" placeholder="Identificación"
                 [(ngModel)]="user.Username"></ion-input>
-              <ion-icon name="person" slot="start"></ion-icon>
+              <ion-icon name="person" slot="start" class="icon"></ion-icon>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -33,14 +33,14 @@
               <!-- <ion-label strong position="stacked">Password</ion-label> -->
               <ion-input required  [type]="showPass?'text':'password'" clear-input placeholder="Password" name="password"
                 [(ngModel)]="user.Password"></ion-input>
-              <ion-icon name="lock" slot="start"></ion-icon>
-              <ion-icon  (click)="showPass=!showPass" button [name]="showPass==true?'eye-off':'eye'" slot="end"></ion-icon>
+              <ion-icon name="lock" slot="start" class="icon"></ion-icon>
+              <ion-icon  (click)="showPass=!showPass" button [name]="showPass==true?'eye-off':'eye'" slot="end" class="icon"></ion-icon>
             </ion-item>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col padding>
-            <ion-button  [disabled]="!loginForm.form.valid" expand="block" (click)="signIn()" >INGRESAR
+            <ion-button  [disabled]="!loginForm.form.valid" expand="block" (click)="signIn()" class="btn-ingr">INGRESAR
                 <ion-icon *ngIf="!loading" slot="start" name="checkmark-circle"></ion-icon>
                 <ion-spinner *ngIf="loading" slot="start"></ion-spinner>
             </ion-button>
@@ -86,13 +86,4 @@
       </ion-grid>
     </form>
   </div>
-
-
-
-
-
-
-
-
-
 </ion-content>

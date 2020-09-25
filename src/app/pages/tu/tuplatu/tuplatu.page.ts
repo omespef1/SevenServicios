@@ -5,6 +5,7 @@ import { HttpManagerService } from "../../../services/httpManager/http-manager.s
 import { AuthService } from "../../../services/auth/auth.service";
 import { AlertComponent } from 'src/app/components/alert/alert.component';
 import { TuplatuService } from '../../../services/tu/tuplatu.service';
+import { gnconex } from '../../../models/gn/gnconex';
 
 @Component({
   selector: "app-tuplatu",
@@ -14,11 +15,15 @@ import { TuplatuService } from '../../../services/tu/tuplatu.service';
 export class TuplatuPage implements OnInit {
   tuplatu: tuplatu[] = [];
   loading = false;
+  logo: any = 'assets/imgs/logo.png';
+
   @ViewChild(AlertComponent, { static: false }) _alert: AlertComponent;
   constructor(private _service: TuplatuService, private _auth: AuthService) {}
 
   ngOnInit() {
     this.GetTuPlatu();
+    let gnconex: gnconex = JSON.parse(localStorage.getItem('GnConex'));
+    this.logo = gnconex.CNX_LOGO;
   }
 
   GetTuPlatu(event?: any) {

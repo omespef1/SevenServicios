@@ -5,6 +5,7 @@ import { HttpManagerService } from "../../../services/httpManager/http-manager.s
 import { AlertComponent } from "../../../components/alert/alert.component";
 import { Router, NavigationExtras } from "@angular/router";
 import { PlcaculService } from '../../../services/pl/plcacul.service';
+import { gnconex } from '../../../models/gn/gnconex';
 
 @Component({
   selector: "app-plcacul",
@@ -13,12 +14,16 @@ import { PlcaculService } from '../../../services/pl/plcacul.service';
 })
 export class PlcaculPage implements OnInit {
   plcacul: plcacul[] = [];
-  loading=false;
+  loading = false;
+  logo: any = 'assets/imgs/logo.png';
+
   @ViewChild(AlertComponent, { static: false }) _alertC: AlertComponent;
   constructor(private _service:PlcaculService, private router: Router) {}
 
   ngOnInit() {
     this.GetPlCacul();
+    let gnconex: gnconex = JSON.parse(localStorage.getItem('GnConex'));
+    this.logo = gnconex.CNX_LOGO;
   }
 
   GetPlCacul(event?: any) {

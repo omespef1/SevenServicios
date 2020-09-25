@@ -16,6 +16,7 @@ import { TOAccess } from "../../../models/general/totransaction";
 import { AlertComponent } from "../../../components/alert/alert.component";
 import { Router, NavigationExtras } from "@angular/router";
 import { GmplaneService } from '../../../services/gm/gmplane.service';
+import { gnconex } from '../../../models/gn/gnconex';
 
 @Component({
   selector: "app-gmplane",
@@ -26,7 +27,9 @@ export class GmplanePage implements OnInit {
   loading = false;
   user: TOAccess;
   gmplane: Gmplane[];
-  test:false;
+  test: false;
+  logo: any = 'assets/imgs/logo.png';
+
   @ViewChild(AlertComponent, { static: false }) _alertC: AlertComponent;
   constructor(
     private theme: ThemeService,
@@ -43,6 +46,8 @@ export class GmplanePage implements OnInit {
   ngOnInit() {
     // this.renderer.setElementStyle(this.cardContent.nativeElement, "webkitTransition", "max-height 500ms, padding 500ms");
     this.GetGmPlane();
+    let gnconex: gnconex = JSON.parse(localStorage.getItem('GnConex'));
+    this.logo = gnconex.CNX_LOGO;
   }
 
   GetGmPlane(event?: any) {

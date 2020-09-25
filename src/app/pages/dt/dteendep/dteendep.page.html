@@ -1,6 +1,13 @@
 <app-header headerName="Deportes">
 </app-header>
 <ion-content fullscreen class="ion-padding">
+  <ion-row padding>
+    <ion-col padding text-center>
+      <ion-col>
+        <img text-center [src]="logo" class="imgLogo">
+      </ion-col>
+    </ion-col>
+  </ion-row>
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>

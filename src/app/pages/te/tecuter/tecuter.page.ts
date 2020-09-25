@@ -5,6 +5,7 @@ import { HttpManagerService } from "../../../services/httpManager/http-manager.s
 import { AlertComponent } from "src/app/components/alert/alert.component";
 import { Router, NavigationExtras } from '@angular/router';
 import { TecuterService } from '../../../services/te/tecuter.service';
+import { gnconex } from '../../../models/gn/gnconex';
 
 @Component({
   selector: "app-tecuter",
@@ -14,11 +15,15 @@ import { TecuterService } from '../../../services/te/tecuter.service';
 export class TecuterPage implements OnInit {
   tecuter: tecuter[] = [];
   loading = false;
+  logo: any = 'assets/imgs/logo.png';
+
   @ViewChild(AlertComponent, { static: false }) _alert: AlertComponent;
   constructor(private _service:TecuterService,private router:Router) {}
 
   ngOnInit() {
     this.GetTeCuter();
+    let gnconex: gnconex = JSON.parse(localStorage.getItem('GnConex'));
+    this.logo = gnconex.CNX_LOGO;
   }
 
   GetTeCuter(event?: any) {    
