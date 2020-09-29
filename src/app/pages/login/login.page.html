@@ -21,7 +21,7 @@
             <ion-item>
               <!-- <ion-label position="stacked">Email</ion-label> -->
               <ion-input position="fixed" required autofocus="true" name="email" clear-input type="text" placeholder="Identificación"
-                [(ngModel)]="user.Username"></ion-input>
+                [(ngModel)]="user.Username" class="main-title"></ion-input>
               <ion-icon name="person" slot="start" class="icon"></ion-icon>
             </ion-item>
           </ion-col>
@@ -32,7 +32,7 @@
             <ion-item>
               <!-- <ion-label strong position="stacked">Password</ion-label> -->
               <ion-input required  [type]="showPass?'text':'password'" clear-input placeholder="Password" name="password"
-                [(ngModel)]="user.Password"></ion-input>
+                [(ngModel)]="user.Password" class="main-title"></ion-input>
               <ion-icon name="lock" slot="start" class="icon"></ion-icon>
               <ion-icon  (click)="showPass=!showPass" button [name]="showPass==true?'eye-off':'eye'" slot="end" class="icon"></ion-icon>
             </ion-item>
@@ -48,7 +48,7 @@
         </ion-row>
         <ion-row>
           <ion-col padding>
-            <ion-button color="secondary"  expand="block" (click)="GetGnEmpre()" >CAMBIAR EMPRESA
+            <ion-button expand="block" (click)="GetGnEmpre()" class="btn-corp">CAMBIAR EMPRESA
                 <ion-icon slot="start" name="settings"></ion-icon>
                 
             </ion-button>

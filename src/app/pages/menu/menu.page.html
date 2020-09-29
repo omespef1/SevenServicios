@@ -32,7 +32,7 @@
         <ion-row padding>
           <ion-col (click)="GoMenu(col)" padding size="4" *ngFor="let col of pagesMenu" button tappable>
             <div class="card-icon">
-              <ion-icon slot="start" [name]="col.mainIcon" [src]="col.mainSrc"></ion-icon>
+              <ion-icon slot="start" [name]="col.mainIcon" [src]="col.mainSrc" color="secondary"></ion-icon>
             </div>
             <div class="card-title">
               <ion-label>{{col.mainTitle}}</ion-label>
