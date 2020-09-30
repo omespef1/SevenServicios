@@ -10,15 +10,13 @@
     color:#A0A2A9;    
     border-width: 1px;
   border-style: solid;
-  border-color: white;
   border-radius: var(--border-radius);
 }
 .btn-signup{
-color:#15559D;
+color:#a2bd30;
 @extend .btn;
 border-width: 1px;
   border-style: solid;
-  border-color: white;
   border-radius: var(--border-radius);
 }
 .btn-facebook {  
@@ -99,22 +97,20 @@ border-width: 1px;
   background: var(--ion-color-primary);
 }
 .main-title{
-  color:white;
+  background: var(--ion-color-primary);
 }
 .icon{
-  color:white;
+  color: #000000;
 }
 .btn-ingr{
   border-width: 1px;
   border-style: solid;
-  border-color: white;
+  --background: #006731;
   border-radius: var(--border-radius);
 }
 .btn-corp{
-  --background:#15559D;       
-   --border-radius:5px;
-   border-width: 1px;
+  border-width: 1px;
   border-style: solid;
-  border-color: white;
+  --background: #a2bd30;
   border-radius: var(--border-radius);
 }

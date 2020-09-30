@@ -207,3 +207,27 @@
     -webkit-animation-name: pulse;
     animation-name: pulse;
   }
+  
+  ion-tab-button.tab-selected {
+    --color-selected: var(--ion-color-tertiary);
+  }
+
+  .picker-button.sc-ion-picker-ios{
+    color:  black;
+  }
+
+  .alert-button.sc-ion-alert-ios{
+    color:  black;
+  }
+
+  .picker-button.sc-ion-picker-md{
+    color:  black;
+  }
+
+  .alert-button.sc-ion-alert-md{
+    color:  black;
+  }
+
+  ion-radio {   
+    --color-checked: #000000;
+  }
