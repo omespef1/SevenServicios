@@ -7,8 +7,7 @@ import { DatePipe } from "@angular/common";
 const routes: Routes = [
       {
         path: 'plcacul',
-        loadChildren: () =>
-          import('../pl/plcacul/plcacul.module').then(m => m.PlcaculPageModule),
+        loadChildren: () => import('../pl/plcacul/plcacul.module').then(m => m.PlcaculPageModule),
       },
       {
         path:'plinfar',
@@ -27,9 +26,11 @@ const routes: Routes = [
         path: 'plcasis',
         loadChildren: () => import('../pl/plcasis/plcasis.module').then(pl => pl.PlcasisPageModule),
         canActivate: [AuthGuard]
+      },
+      { path: 'plasist', 
+        loadChildren: () => import('../pl/plasist/plasist.module').then(pl => pl.PlasistPageModule),
+        canActivate: [AuthGuard]
       }
-
-
 ];
 
 @NgModule({

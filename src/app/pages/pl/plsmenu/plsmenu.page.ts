@@ -23,6 +23,12 @@ export class PlsmenuPage implements OnInit {
       },
       {
         mainIcon: "clipboard",
+        mainTitle: "Asistencias",
+        mainPath: "pl/plasist",
+        mainSrc: ""
+      },
+      {
+        mainIcon: "clipboard",
         mainTitle: "Consultas de Asistencias",
         mainPath: "pl/plcasis",
         mainSrc: ""
