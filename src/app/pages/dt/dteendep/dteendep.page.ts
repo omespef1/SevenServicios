@@ -5,6 +5,7 @@ import { HttpManagerService } from '../../../services/httpManager/http-manager.s
 import { AlertComponent } from '../../../components/alert/alert.component';
 import { DtendepService } from '../../../services/dt/dtendep.service';
 import { gnconex } from '../../../models/gn/gnconex';
+import { ConfigService } from "src/app/services/config/config.service";
 
 @Component({
   selector: "app-dteendep",
@@ -16,12 +17,14 @@ export class DteendepPage implements OnInit {
   loading = false;
   logo: any = 'assets/imgs/logo.png';
   @ViewChild(AlertComponent,{static:false}) _alert:AlertComponent;
-  constructor(private _service:DtendepService) {}
+  constructor(private _service:DtendepService, private configService:ConfigService) {}
 
   ngOnInit() {
     this.GetDtEndep();
-    let gnconex: gnconex = JSON.parse(localStorage.getItem('GnConex'));
-    this.logo = gnconex.CNX_LOGO;
+    this.GetLogo();
+  }
+  GetLogo(){
+    this.logo =  this.configService.Get().CNX_LOGO;
   }
 
   GetDtEndep(event?: any) {

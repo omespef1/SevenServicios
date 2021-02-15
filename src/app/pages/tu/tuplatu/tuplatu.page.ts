@@ -6,6 +6,7 @@ import { AuthService } from "../../../services/auth/auth.service";
 import { AlertComponent } from 'src/app/components/alert/alert.component';
 import { TuplatuService } from '../../../services/tu/tuplatu.service';
 import { gnconex } from '../../../models/gn/gnconex';
+import { ConfigService } from "src/app/services/config/config.service";
 
 @Component({
   selector: "app-tuplatu",
@@ -18,13 +19,18 @@ export class TuplatuPage implements OnInit {
   logo: any = 'assets/imgs/logo.png';
 
   @ViewChild(AlertComponent, { static: false }) _alert: AlertComponent;
-  constructor(private _service: TuplatuService, private _auth: AuthService) {}
+  constructor(private _service: TuplatuService,
+    private configService:ConfigService, private _auth: AuthService) {}
 
   ngOnInit() {
     this.GetTuPlatu();
-    let gnconex: gnconex = JSON.parse(localStorage.getItem('GnConex'));
-    this.logo = gnconex.CNX_LOGO;
+    this.GetLogo();
   }
+
+  GetLogo(){
+    this.logo =  this.configService.Get().CNX_LOGO;
+  }
+
 
   GetTuPlatu(event?: any) {
     this.loading = true;

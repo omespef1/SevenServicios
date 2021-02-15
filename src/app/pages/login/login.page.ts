@@ -9,6 +9,7 @@ import { SessionsService } from '../../services/sessions/sessions.service';
 import { GnemprePage } from '../gn/gnempre/gnempre.page';
 import { gnconex } from '../../models/gn/gnconex';
 import { GnconexPage } from '../gn/gnconex/gnconex.page';
+import { ConfigService } from "src/app/services/config/config.service";
 
 @Component({
   selector: "app-login",
@@ -27,7 +28,8 @@ export class LoginPage implements OnInit {
     private _nav: NavController,
     private router:Router,
     private _sesion:SessionsService,
-    private _modal:ModalController
+    private _modal:ModalController,
+    private configService:ConfigService
   ) {}
 
   async ngOnInit() {
@@ -43,15 +45,18 @@ export class LoginPage implements OnInit {
         console.log(resp.data);
         this._sesion.SetGnConex(resp.data);
          this.GetGnEmpre();
-         let gnconex: gnconex = JSON.parse(localStorage.getItem('GnConex'));
-         this.logo = gnconex.CNX_LOGO;
+       this.GetLogo();
       });
       return await modal.present();
     } else {
-      let gnconex: gnconex = JSON.parse(localStorage.getItem('GnConex'));
-      this.logo = gnconex.CNX_LOGO;
+      this.GetLogo();
     }
   }
+
+  GetLogo(){
+    this.logo =  this.configService.Get().CNX_LOGO;
+  }
+
 
   signIn() {        
     this.user.emp_codi = this._sesion.GetGnEmpre().emp_codi;

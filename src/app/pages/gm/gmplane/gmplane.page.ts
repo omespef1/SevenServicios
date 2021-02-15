@@ -1,22 +1,15 @@
-import { Component, OnInit, ViewChild, Input, Renderer } from '@angular/core';
-import { HttpEvent } from "@angular/common/http";
-import { ToTransaction } from "src/app/models/general/totransaction";
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Gmplane } from "../../../models/gm/gmplane";
 import { ThemeService } from "../../../services/theme/theme.service";
 import { DomSanitizer } from "@angular/platform-browser";
-import { HttpManagerService } from "../../../services/httpManager/http-manager.service";
 import { AuthService } from "../../../services/auth/auth.service";
-import { ModalController, AlertController } from "@ionic/angular";
-import { GntoperPage } from "../../gn/gntoper/gntoper.page";
-import { AlertService } from "../../../services/alert/alert.service";
+import { ModalController } from "@ionic/angular";
 import { GminfarService } from "../../../services/gm/gminfar.service";
-import { gminfar } from "../../../models/gm/gminfar";
-import { gntoper } from "../../../models/gn/gntoper";
 import { TOAccess } from "../../../models/general/totransaction";
 import { AlertComponent } from "../../../components/alert/alert.component";
 import { Router, NavigationExtras } from "@angular/router";
 import { GmplaneService } from '../../../services/gm/gmplane.service';
-import { gnconex } from '../../../models/gn/gnconex';
+import { ConfigService } from 'src/app/services/config/config.service';
 
 @Component({
   selector: "app-gmplane",
@@ -38,7 +31,8 @@ export class GmplanePage implements OnInit {
     private _modal: ModalController,
     private _gmInfar: GminfarService,
     private router: Router,
-    private _service:GmplaneService
+    private _service:GmplaneService,
+    private configService:ConfigService
   ) {
     this.user = this._auth.loadUser();
   }
@@ -46,8 +40,10 @@ export class GmplanePage implements OnInit {
   ngOnInit() {
     // this.renderer.setElementStyle(this.cardContent.nativeElement, "webkitTransition", "max-height 500ms, padding 500ms");
     this.GetGmPlane();
-    let gnconex: gnconex = JSON.parse(localStorage.getItem('GnConex'));
-    this.logo = gnconex.CNX_LOGO;
+    this.GetLogo();
+  }
+  GetLogo(){
+    this.logo =  this.configService.Get().CNX_LOGO;
   }
 
   GetGmPlane(event?: any) {

@@ -1,11 +1,9 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { tecuter } from "../../../models/te/tecuter";
-import { ToTransaction } from "../../../models/general/totransaction";
-import { HttpManagerService } from "../../../services/httpManager/http-manager.service";
 import { AlertComponent } from "src/app/components/alert/alert.component";
 import { Router, NavigationExtras } from '@angular/router';
 import { TecuterService } from '../../../services/te/tecuter.service';
-import { gnconex } from '../../../models/gn/gnconex';
+import { ConfigService } from "src/app/services/config/config.service";
 
 @Component({
   selector: "app-tecuter",
@@ -18,13 +16,18 @@ export class TecuterPage implements OnInit {
   logo: any = 'assets/imgs/logo.png';
 
   @ViewChild(AlertComponent, { static: false }) _alert: AlertComponent;
-  constructor(private _service:TecuterService,private router:Router) {}
+  constructor(private _service:TecuterService,
+    private configService:ConfigService,private router:Router) {}
 
   ngOnInit() {
     this.GetTeCuter();
-    let gnconex: gnconex = JSON.parse(localStorage.getItem('GnConex'));
-    this.logo = gnconex.CNX_LOGO;
+   this.GetLogo();
   }
+
+  GetLogo(){
+    this.logo =  this.configService.Get().CNX_LOGO;
+  }
+
 
   GetTeCuter(event?: any) {    
     this.loading = true;

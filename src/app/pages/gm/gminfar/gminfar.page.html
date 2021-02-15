@@ -37,9 +37,21 @@
   
  
   <ion-button [disabled]="this.sede==undefined || din_feci == undefined" (click)="pushInscription()" expand="block" class="btn-insc">
-    <ion-icon *ngIf="!loading" slot="start" name="clipboard"></ion-icon>
-    <ion-spinner *ngIf="loading" slot="start"></ion-spinner>
-    {{loading?'Espere...':'Inscribirme'}}
+   
+    <ng-container *ngIf="_gminfar.loading | async;else notLoading">
+      <ion-spinner  slot="start"></ion-spinner>
+      Cargando...               
+     </ng-container>
+    <ng-template #notLoading>
+      <ion-icon  slot="start" name="clipboard"></ion-icon>     
+      Incribirme
+    </ng-template>
+    
+    
+
+    
+
+
   </ion-button>
   <ion-button  color="danger" (click)="dismiss()" expand="block">
       <ion-icon slot="start" name="remove-circle"></ion-icon>

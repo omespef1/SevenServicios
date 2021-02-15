@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { etcurso } from "../../../models/et/etcurso";
-import { ToTransaction } from '../../../models/general/totransaction';
-import { HttpManagerService } from '../../../services/httpManager/http-manager.service';
 import { AlertComponent } from 'src/app/components/alert/alert.component';
 import { EtcursoService } from 'src/app/services/et/etcurso.service';
 import { gnconex } from '../../../models/gn/gnconex';
+import { ConfigService } from "src/app/services/config/config.service";
 
 @Component({
   selector: "app-etcurso",
@@ -17,14 +16,18 @@ export class EtcursoPage implements OnInit {
   loading=false;
   logo: any = 'assets/imgs/logo.png';
 
-  constructor(private _service:EtcursoService) {
+  constructor(private _service:EtcursoService,
+    private configService:ConfigService) {
    
   }
 
   ngOnInit() {
     this.GetEtCurso();
-    let gnconex: gnconex = JSON.parse(localStorage.getItem('GnConex'));
-    this.logo = gnconex.CNX_LOGO;
+
+  }
+
+  GetLogo(){
+    this.logo =  this.configService.Get().CNX_LOGO;
   }
 
   GetEtCurso(event?:any) {

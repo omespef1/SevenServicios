@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { plcacul } from "src/app/models/pl/plcacul";
-import { ToTransaction } from "../../../models/general/totransaction";
-import { HttpManagerService } from "../../../services/httpManager/http-manager.service";
 import { AlertComponent } from "../../../components/alert/alert.component";
 import { Router, NavigationExtras } from "@angular/router";
 import { PlcaculService } from '../../../services/pl/plcacul.service';
 import { gnconex } from '../../../models/gn/gnconex';
+import { ConfigService } from "src/app/services/config/config.service";
 
 @Component({
   selector: "app-plcacul",
@@ -18,12 +17,18 @@ export class PlcaculPage implements OnInit {
   logo: any = 'assets/imgs/logo.png';
 
   @ViewChild(AlertComponent, { static: false }) _alertC: AlertComponent;
-  constructor(private _service:PlcaculService, private router: Router) {}
+  constructor(private _service:PlcaculService,
+    private configService:ConfigService,
+    private router: Router) {}
 
   ngOnInit() {
     this.GetPlCacul();
-    let gnconex: gnconex = JSON.parse(localStorage.getItem('GnConex'));
-    this.logo = gnconex.CNX_LOGO;
+   
+   
+  }
+
+  GetLogo(){
+    this.logo =  this.configService.Get().CNX_LOGO;
   }
 
   GetPlCacul(event?: any) {

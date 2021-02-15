@@ -10,23 +10,25 @@ import { Events } from "@ionic/angular";
 import { AlertService } from '../alert/alert.service';
 import { centralizacionUrl } from '../../../assets/config/config';
 import { gnconex } from '../../models/gn/gnconex';
+import { ConfigService } from "../config/config.service";
 
 @Injectable({
   providedIn: "root"
 })
 export class HttpManagerService {
   baseUrl: string;
-  centralizacionUrl:string;
+  centralizacionUrl: string;
   private httpOptions: {
     headers: HttpHeaders;
   };
   strToken = "";
-  constructor(private _http: HttpClient, private _events: Events,private _alert:AlertService) {
+  constructor(private _http: HttpClient,
+    private configService: ConfigService,
+    private _events: Events, private _alert: AlertService) {
   }
 
   Get<T>(urlController: string, strToken?: string) {
-    let gnconex:gnconex= JSON.parse(localStorage.getItem('GnConex'));
-     this.baseUrl = gnconex.CNX_IPSR;
+    this.baseUrl = this.configService.Get().CNX_IPSR;
     console.log(strToken);
     const headerAnonimous = {
       "Content-Type": "application/json",
@@ -58,12 +60,12 @@ export class HttpManagerService {
     console.log(options);
     console.log(url);
     return this._http.get<T>(url, <object>options).pipe(
-      tap(resp=>{
+      tap(resp => {
         retry(3), // reintenta la petición 3 veces
-        console.log(resp);       
+          console.log(resp);
       }), catchError(err => this.handleError(err)) // then handle the error
-      
-     
+
+
     );
 
     // return call;
@@ -72,8 +74,8 @@ export class HttpManagerService {
 
 
   Post<T>(urlController: string, body?: any, strToken?: string) {
-    let gnconex:gnconex= JSON.parse(localStorage.getItem('GnConex'));
-    this.baseUrl = gnconex.CNX_IPSR;
+
+    this.baseUrl = this.configService.Get().CNX_IPSR;
     const headerAnonimous = {
       "Content-Type": "application/json",
       Accept: "application/json",
@@ -102,23 +104,23 @@ export class HttpManagerService {
     return this._http
       .post<T>(`${this.baseUrl}${urlController}`, body, <object>options)
       .pipe(
-        tap(resp=>{
+        tap(resp => {
           retry(3);
-          console.log(resp);          
+          console.log(resp);
         })
-        ,catchError(err => this.handleError(err))
-     );
+        , catchError(err => this.handleError(err))
+      );
   }
 
 
-  GetCentralizacion<T>(urlController: string) {   
+  GetCentralizacion<T>(urlController: string) {
     const headerAnonimous = {
       "Content-Type": "application/json",
       Accept: "application/json",
       "Access-Control-Allow-Headers": "Content-Type",
       "Access-Control-Allow-Origin": "*"
     };
-    let headers = new HttpHeaders(headerAnonimous); 
+    let headers = new HttpHeaders(headerAnonimous);
     let options: any = {
       headers: headers,
       observe: "body"
@@ -128,12 +130,12 @@ export class HttpManagerService {
     console.log(options);
     console.log(url);
     return this._http.get<T>(url, <object>options).pipe(
-      tap(resp=>{
+      tap(resp => {
         retry(3), // reintenta la petición 3 veces
-        console.log(resp);       
+          console.log(resp);
       }), catchError(err => this.handleError(err)) // then handle the error
-       
-     
+
+
     );
 
     // return call;
@@ -155,9 +157,9 @@ export class HttpManagerService {
       if (error.status == 401) {
         console.log('saliendo...');
         this._events.publish("user:logOut");
-        this._alert.showAlert('Acceso no autorizado','Autenticación no válida con el servicio. Ingrese nuevamente')
-      }else {
-        this._alert.showAlert('Error de conexión',`Código de error: ${error.status}`);
+        this._alert.showAlert('Acceso no autorizado', 'Autenticación no válida con el servicio. Ingrese nuevamente')
+      } else {
+        this._alert.showAlert('Error de conexión', `Código de error: ${error.status}`);
       }
 
     }

@@ -30,7 +30,7 @@ export class GminfarPage implements OnInit {
   constructor(
     private _service: GntoperService,
     private _modal: ModalController,
-    private _gminfar: GminfarService,
+    public _gminfar: GminfarService,
     private _alert: AlertService,
     private auth: AuthService,
     private router:Router,
@@ -117,6 +117,8 @@ export class GminfarPage implements OnInit {
       }
      
       
+    },err=>{
+      this._gminfar.loading.next(false);
     })
   }
 }
