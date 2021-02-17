@@ -19,13 +19,15 @@ export class TesmenuPage implements OnInit {
         mainIcon: "eye",
         mainTitle: "Planes",
         mainPath: "te/tecuter",
-        mainSrc: ""
+        mainSrc: "",
+        mainDisable: false
       },
       {
         mainIcon: "clipboard",
         mainTitle: "Consultas de Asistencias",
         mainPath: "te/tecasis",
-        mainSrc: ""
+        mainSrc: "",
+        mainDisable: false
       }
     ];
    }

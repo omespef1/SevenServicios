@@ -1,5 +1,16 @@
 <app-header headerName="Consulta Asistencias"></app-header>
 
 <ion-content>
+    <ion-item>
+        <ion-icon slot="start" src="assets/icon/pencil.svg" class="icons"></ion-icon>
+        <ion-label position="floating">Descripción</ion-label>
+        <ion-textarea></ion-textarea>
+    </ion-item>
 
+    <ion-item>    
+        <!-- (click)="GetAsistenciasPL()" -->
+        <ion-icon slot="start" src="assets/icon/chalkboard-teacher-solid.svg"></ion-icon>
+        <ion-label>Apertura</ion-label>
+        <ion-note slot="end"> {{""}} </ion-note>
+      </ion-item>
 </ion-content>

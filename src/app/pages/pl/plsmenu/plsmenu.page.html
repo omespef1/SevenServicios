@@ -1,14 +1,16 @@
 <app-header headerName="Capacitaciones"></app-header>
 
 <ion-content>
-  <ion-row padding>
+  <ion-row padding>    
     <ion-col (click)="GoPage(col)" padding size="4" *ngFor="let col of smenu" button tappable>
+      <ion-item [disabled]="col.mainDisable">
       <div class="card-icon">
         <ion-icon slot="start" [name]="col.mainIcon" [src]="col.mainSrc" color="secondary"></ion-icon>
       </div>
       <div class="card-title">
         <ion-label>{{ col.mainTitle }}</ion-label>
       </div>
-    </ion-col>
+    </ion-item>
+    </ion-col>  
   </ion-row>
 </ion-content>

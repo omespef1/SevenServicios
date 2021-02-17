@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { TeapertService } from '../../../services/te/teapert.service';
+import { TecasisService } from '../../../services/te/tecasis.service';
 import { TOAccess, ToTransaction } from '../../../models/general/totransaction';
 import { teapert } from '../../../models/te/teapert';
 import { ModalController } from '@ionic/angular';
@@ -19,7 +19,7 @@ export class TecasisAprtPage implements OnInit {
   Teapert: teapert[] = [];
   textoBuscar = '';
 
-  constructor(private _service: TeapertService,
+  constructor(private _service: TecasisService,
               private _modal: ModalController,
               private _alert: AlertService) { }
 
@@ -30,7 +30,7 @@ export class TecasisAprtPage implements OnInit {
   getAperturas() {
     this.loading = true;
     let user: TOAccess = JSON.parse(localStorage.getItem("user"));
-    this._service.getAperturas(user, this.asi_fein, this.asi_fefi).subscribe((resp: ToTransaction) => {
+    this._service.GetAsistenciasTE(user, this.asi_fein, this.asi_fefi).subscribe((resp: ToTransaction) => {
       if (resp.Retorno == 1) {
         this._alert.showAlert('Retorno', resp.TxtError);
       } else {

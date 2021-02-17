@@ -23,8 +23,7 @@ export class PlcaculPage implements OnInit {
 
   ngOnInit() {
     this.GetPlCacul();
-   
-   
+    this.GetLogo();   
   }
 
   GetLogo(){

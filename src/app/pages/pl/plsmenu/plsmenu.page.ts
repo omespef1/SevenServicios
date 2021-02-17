@@ -19,19 +19,22 @@ export class PlsmenuPage implements OnInit {
         mainIcon: "eye",
         mainTitle: "Planes",
         mainPath: "pl/plcacul",
-        mainSrc: ""
+        mainSrc: "",
+        mainDisable: false
       },
       {
         mainIcon: "clipboard",
         mainTitle: "Asistencias",
         mainPath: "pl/plasist",
-        mainSrc: ""
+        mainSrc: "",
+        mainDisable: true
       },
       {
-        mainIcon: "clipboard",
+        mainIcon: "calendar",
         mainTitle: "Consultas de Asistencias",
         mainPath: "pl/plcasis",
-        mainSrc: ""
+        mainSrc: "",
+        mainDisable: false
       }
     ];
   }
