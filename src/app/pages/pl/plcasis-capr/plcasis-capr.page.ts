@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { TOAccess, ToTransaction } from '../../../models/general/totransaction';
 import { plcaper } from '../../../models/pl/plcapr';
-import { PlcaperService } from '../../../services/pl/plcaper.service';
+import { PlcasisService } from '../../../services/pl/plcasis.service';
 import { ModalController } from '@ionic/angular';
 import { AlertService } from '../../../services/alert/alert.service';
 
@@ -18,7 +18,7 @@ export class PlcasisCaprPage implements OnInit {
   user: TOAccess;
   PlCaper: plcaper[];
 
-  constructor(private _service: PlcaperService,
+  constructor(private _service: PlcasisService,
               private modalCtrl: ModalController,
               private _alert: AlertService) { }
 
@@ -29,7 +29,7 @@ export class PlcasisCaprPage implements OnInit {
   getCAperturas() {
     this.loading = true;
     let user: TOAccess = JSON.parse(localStorage.getItem("user"));
-    this._service.getCAperturas(user, this.asi_fein, this.asi_fefi, this.apc_cont).subscribe((resp: ToTransaction) => {
+    this._service.GetCasisPL(user, this.asi_fein, this.asi_fefi, this.apc_cont).subscribe((resp: ToTransaction) => {
       this.PlCaper = resp.ObjTransaction;
       if (resp.Retorno == 1) {
         this._alert.showAlert('Retono', resp.TxtError);

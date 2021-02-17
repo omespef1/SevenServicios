@@ -4,6 +4,7 @@ import { SessionsService } from '../sessions/sessions.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TOAccess } from '../../models/general/totransaction';
 import { transaction } from '../../pages/ae/aereser/models/models';
+import { plasist } from '../../models/pl/plasist';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,15 @@ export class PlapertService {
               private http: HttpClient, 
               private _sesion: SessionsService) { }
 
-  getAperturas(user: TOAccess, asi_fein: Date, asi_fefi: Date) {
-    return this._http.Get<transaction>(`PlCasis/GetAsistenciasPL?emp_codi=${this._sesion.GetGnEmpre().emp_codi}&cli_coda=${user.objResult.cli_coda}&asi_fein=${asi_fein}&asi_fefi=${asi_fefi}`, user.strToken)
-    
+  getAperturas(user: TOAccess){
+    return this._http.Get<transaction>(`PlAsist/getAperturas?emp_codi=${this._sesion.GetGnEmpre().emp_codi}&ter_coda=${user.objResult.cli_coda}`,user.strToken)
+  }
+
+  setPlAsist(plasist: plasist, user: TOAccess) {
+    return this._http.Post<transaction>('/plasist/setPlAsist',plasist, user.strToken);
+  }
+
+  CambiarEstado(user: TOAccess, asi_cont: number, asi_esta: string) {
+    return this._http.Get<transaction>(`PlAsist/CambiarEstado?emp_codi=${this._sesion.GetGnEmpre().emp_codi}&asi_cont=${asi_cont}&asi_esta=${asi_esta}`,user.strToken)    
   }
 }

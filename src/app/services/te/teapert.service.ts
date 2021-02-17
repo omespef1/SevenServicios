@@ -4,6 +4,7 @@ import { SessionsService } from '../sessions/sessions.service';
 import { transaction } from 'src/app/pages/ae/aereser/models/models';
 import { TOAccess } from 'src/app/models/general/totransaction';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { teasist } from '../../models/te/teasist';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,19 @@ export class TeapertService {
   };
 
   constructor(private _http: HttpManagerService, 
+              private sesion: SessionsService, 
+              private http: HttpClient, 
               private _sesion: SessionsService) { }
 
-  getAperturas(user: TOAccess, asi_fein: Date, asi_fefi: Date) {
-
-    return this._http.Get<transaction>(`TeCasis/GetAsistenciasTE?emp_codi=${this._sesion.GetGnEmpre().emp_codi}&cli_coda=${user.objResult.cli_coda}&asi_fein=${asi_fein}&asi_fefi=${asi_fefi}`,user.strToken)
-    // return this.http.get<transaction>('http://localhost/RSevSer/api/TeCasis/GetAsistenciasTE?emp_codi=675&cli_coda=65769477&asi_fein=2000-01-01&asi_fefi=2020-08-19', <object>options);
+  getAperturas(user: TOAccess){
+    return this._http.Get<transaction>(`TeAsist/getAperturas?emp_codi=${this._sesion.GetGnEmpre().emp_codi}&ter_coda=${user.objResult.cli_coda}`,user.strToken)
   }
+
+  setPlAsist(tecasis: teasist, user: TOAccess) {
+    return this._http.Post<transaction>('Teasist/setTeAsist', teasist, user.strToken);
+  }
+
+  CambiarEstado(user: TOAccess, asi_cont: number, asi_esta: string) {
+    return this._http.Get<transaction>(`TeAsist/CambiarEstado?emp_codi=${this._sesion.GetGnEmpre().emp_codi}&asi_cont=${asi_cont}&asi_esta=${asi_esta}`,user.strToken)    
+  }  
 }

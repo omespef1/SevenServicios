@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { TOAccess, ToTransaction } from '../../../models/general/totransaction';
 import { tecaper } from '../../../models/te/tecapr';
-import { TecaperService } from '../../../services/te/tecaper.service';
+import { TecasisService } from '../../../services/te/tecasis.service';
 import { ModalController } from '@ionic/angular';
 import { AlertService } from '../../../services/alert/alert.service';
 
@@ -18,7 +18,7 @@ export class TecasisCaprPage implements OnInit {
   user: TOAccess;
   TeCaper: tecaper[];
 
-  constructor(private _service: TecaperService,
+  constructor(private _service: TecasisService,
               private modalCtrl: ModalController,
               private _alert: AlertService) { }
 
@@ -29,7 +29,7 @@ export class TecasisCaprPage implements OnInit {
   getCAperturas() {
     this.loading = true;
     let user: TOAccess = JSON.parse(localStorage.getItem("user"));
-    this._service.getCAperturas(user, this.asi_fein, this.asi_fefi, this.apc_cont).subscribe((resp: ToTransaction) => {
+    this._service.GetCasisTE(user, this.asi_fein, this.asi_fefi, this.apc_cont).subscribe((resp: ToTransaction) => {
       this.TeCaper = resp.ObjTransaction;
       if (resp.Retorno == 1) {
         this._alert.showAlert('Retorno', resp.TxtError);

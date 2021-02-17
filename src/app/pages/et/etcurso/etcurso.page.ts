@@ -23,7 +23,7 @@ export class EtcursoPage implements OnInit {
 
   ngOnInit() {
     this.GetEtCurso();
-
+    this.GetLogo();
   }
 
   GetLogo(){

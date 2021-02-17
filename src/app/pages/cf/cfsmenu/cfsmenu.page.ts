@@ -21,13 +21,15 @@ export class CfsmenuPage implements OnInit {
         mainIcon: "",
         mainTitle: "Solicitud de Creditos",
         mainPath: "cf/cascrev",
-        mainSrc: "assets/icon/business-time-solid.svg"
+        mainSrc: "assets/icon/business-time-solid.svg",
+        mainDisable: false
       },
       {
         mainIcon: "assets/icon/coins-solid.svg",
         mainTitle: "Cuotas Crédito",
         mainPath: "cf/caregob",
-        mainSrc: "assets/icon/coins-solid.svg"
+        mainSrc: "assets/icon/coins-solid.svg",
+        mainDisable: false
       }
     ];
   }
