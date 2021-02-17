@@ -8,16 +8,11 @@
         <ion-label>{{title}}</ion-label>
      
       </ion-item>
-    <ion-card *ngIf="isMenuOpen" [@slideInOut]  [ngClass]="isMenuOpen?'dark':'light'" >
+    <ion-card *ngIf="isMenuOpen" [ngClass]="isMenuOpen?'dark':'light'" >
       <div >
         <div   [ngStyle]="{background: 'url(assets/imgs/' + imgParam + ')'}"  class="img">
           </div>
-      <ion-card-header>
-        
-      
-            
-              <!-- <ion-card-subtitle>{{subTitle}}
-              </ion-card-subtitle> -->
+      <ion-card-header>                                   
               <ion-item lines="none">
                   <ion-card-title>{{title}}
                     </ion-card-title>
