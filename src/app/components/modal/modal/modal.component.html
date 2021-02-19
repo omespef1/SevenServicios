@@ -1,0 +1,30 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Seleccione</ion-title>
+    <ion-buttons slot="end">
+      <ion-button   slot="icon-only" (click)="chooseItem()">
+        <ion-icon color="secondary"  name="close-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+   
+  </ion-toolbar>
+  <ion-searchbar (ionChange)="search($event)" placeholder="Buscar" showCancelButton="focus"></ion-searchbar>
+</ion-header>
+<ion-content>
+
+  <ion-list lines="none" inset="true">
+    <ion-item *ngFor="let item of data">
+      <ion-icon [name]="source.icon" slot="start">
+      </ion-icon>
+      <ion-label>
+       {{item.name}}
+      </ion-label>
+      <ion-button color="secondary" fill="outline"   slot="end" (click)="chooseItem(item)">
+      
+        <ion-icon name="checkmark-circle" slot="end"></ion-icon>
+        Seleccionar
+      </ion-button>
+    </ion-item> 
+  </ion-list>
+</ion-content>

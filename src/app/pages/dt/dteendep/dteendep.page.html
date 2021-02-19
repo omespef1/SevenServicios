@@ -79,6 +79,14 @@
                    </div>
                 </ion-col>           
               </ion-row>
+
+              <div #divArea>
+                <ion-button  color="success" Expand="full" (click)="openDtInfar(item)">
+                    <ion-icon slot="start" name="eye"></ion-icon>
+                   Inscribirme
+                  </ion-button>
+              
+            </div>
          </ion-grid>        
     </app-toggable-card>
     <!-- <ion-card *ngFor="let item of dtendep" class="bounceIn">

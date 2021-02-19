@@ -8,6 +8,9 @@ import { GnconexPage } from "../gn/gnconex/gnconex.page";
 import { GnemprePage } from "../gn/gnempre/gnempre.page";
 import { gnconex } from '../../models/gn/gnconex';
 import { ConfigService } from "src/app/services/config/config.service";
+import { ModalComponent } from '../../components/modal/modal/modal.component';
+import { Item } from '../../models/general/items';
+import { ModalModel } from '../../models/general/modal.model';
 
 @Component({
   selector: "app-menu",
@@ -72,4 +75,30 @@ export class MenuPage implements OnInit {
       return await modal.present();
     }
   }
+
+  // async testModal() {
+
+  //   let items: Item[]=[];
+  //   items.push({ name:'Prueba',id:1 })
+  //   items.push({ name:'Prueba2',id:2 })
+
+  //   const modalParam :ModalModel = {
+
+  //     icon:'add-circle-outline',
+  //     source:items
+  //   }
+  //   const modal = await this._modal.create({
+  //     component: ModalComponent,
+  //     componentProps: {  'source': modalParam} 
+  //   });
+   
+  //   await modal.present();
+
+  //    modal.onDidDismiss().then((data)=>{
+  //      console.log(data.data);
+  //    })
+ 
+  // }
+
+
 }

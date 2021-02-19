@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { HeaderComponent } from './header/header.component';
 import { AlertComponent } from './alert/alert.component';
 import { ToggableCardComponent } from './cards/toggable-card/toggable-card.component';
+import { ModalComponent } from './modal/modal/modal.component';
 
 
 
@@ -13,7 +14,8 @@ import { ToggableCardComponent } from './cards/toggable-card/toggable-card.compo
   declarations: [
     HeaderComponent,
     AlertComponent,
-    ToggableCardComponent
+    ToggableCardComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule   ,

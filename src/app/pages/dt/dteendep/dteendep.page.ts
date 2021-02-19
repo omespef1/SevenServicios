@@ -6,6 +6,7 @@ import { AlertComponent } from '../../../components/alert/alert.component';
 import { DtendepService } from '../../../services/dt/dtendep.service';
 import { gnconex } from '../../../models/gn/gnconex';
 import { ConfigService } from "src/app/services/config/config.service";
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: "app-dteendep",
@@ -17,7 +18,8 @@ export class DteendepPage implements OnInit {
   loading = false;
   logo: any = 'assets/imgs/logo.png';
   @ViewChild(AlertComponent,{static:false}) _alert:AlertComponent;
-  constructor(private _service:DtendepService, private configService:ConfigService) {}
+  constructor(private _service:DtendepService, private configService:ConfigService,
+    private router:Router) {}
 
   ngOnInit() {
     this.GetDtEndep();
@@ -39,5 +41,14 @@ export class DteendepPage implements OnInit {
   }
   doRefresh($event) {
     this.GetDtEndep($event);
+  }
+
+  openDtInfar(item:dtendep){
+    let params: NavigationExtras = {
+      state: {
+        dtendep: item
+      }
+    };
+    this.router.navigateByUrl("tabs/dt/dtinfar", params);
   }
 }

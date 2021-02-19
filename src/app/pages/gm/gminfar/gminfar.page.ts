@@ -11,6 +11,7 @@ import { AlertComponent } from 'src/app/components/alert/alert.component';
 import { Gmplane } from 'src/app/models/gm/gmplane';
 import { Router } from '@angular/router';
 import { SessionsService } from '../../../services/sessions/sessions.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-gminfar',
@@ -110,9 +111,21 @@ export class GminfarPage implements OnInit {
       console.log(resp);
       this.loading=false;
       if(resp.Retorno==1)
-      this._alertC.show(resp.TxtError,'danger');
+     {
+      Swal.fire({
+        title: 'Error!',
+        text: resp.TxtError,
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
+      })
+     }
       else{
-        this._alert.showAlert('Inscripción realizada!','Te has inscrito a este plan exitosamente!');
+        Swal.fire({
+          title: 'Genial!',
+          text: 'Inscripción realizada!',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
         this.router.navigateByUrl('tabs/gm/gmplane')
       }
      
