@@ -2,15 +2,13 @@
 
 <ion-content>
   <ion-row padding>    
-    <ion-col (click)="GoPage(col)" padding size="4" *ngFor="let col of smenu" button tappable>
-      <ion-item [disabled]="col.mainDisable">
-      <div class="card-icon">
-        <ion-icon slot="start" [name]="col.mainIcon" [src]="col.mainSrc" color="secondary"></ion-icon>
-      </div>
-      <div class="card-title">
+    <ion-col  no-padding size="4" *ngFor="let col of smenu" button tappable>
+      <ion-button  fill="block" class="btn-assistancy"  [disabled]="col.mainTitle == 'Asistencias' && enableMenu == false" (click)="GoPage(col)">
+        <ion-icon class="icon-assistancy" slot="icon-only" [name]="col.mainIcon" [src]="col.mainSrc" color="secondary"></ion-icon>
+      </ion-button>
+      <div text-center class="label-assistancy">
         <ion-label>{{ col.mainTitle }}</ion-label>
       </div>
-    </ion-item>
     </ion-col>  
   </ion-row>
 </ion-content>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PickerController, AlertController, ModalController } from '@ionic/angular';
 import { PlcasisAprtPage } from '../plcasis-aprt/plcasis-aprt.page';
-import { plapert } from '../../../models/pl/plapert';
+import { plapert } from '../../../models/pl/plcapr';
 import { PlcasisCaprPage } from '../plcasis-capr/plcasis-capr.page';
 import { DatePipe } from "@angular/common";
 

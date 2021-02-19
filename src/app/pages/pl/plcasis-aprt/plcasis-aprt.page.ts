@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { TOAccess, ToTransaction } from '../../../models/general/totransaction';
-import { plapert } from '../../../models/pl/plapert';
+import { plapert } from '../../../models/pl/plcapr';
 import { PlcasisService } from '../../../services/pl/plcasis.service';
 import { ModalController } from '@ionic/angular';
 import { AlertService } from '../../../services/alert/alert.service';

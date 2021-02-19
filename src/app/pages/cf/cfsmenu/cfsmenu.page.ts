@@ -10,7 +10,6 @@ import { user } from '../../ae/aereser/models/models';
   styleUrls: ['./cfsmenu.page.scss'],
 })
 export class CfsmenuPage implements OnInit {
-
   user: TOAccess;
   smenu: mainSmenu[] = [];
 
@@ -21,15 +20,13 @@ export class CfsmenuPage implements OnInit {
         mainIcon: "",
         mainTitle: "Solicitud de Creditos",
         mainPath: "cf/cascrev",
-        mainSrc: "assets/icon/business-time-solid.svg",
-        mainDisable: false
+        mainSrc: "assets/icon/business-time-solid.svg"
       },
       {
         mainIcon: "assets/icon/coins-solid.svg",
         mainTitle: "Cuotas Crédito",
         mainPath: "cf/caregob",
-        mainSrc: "assets/icon/coins-solid.svg",
-        mainDisable: false
+        mainSrc: "assets/icon/coins-solid.svg"
       }
     ];
   }

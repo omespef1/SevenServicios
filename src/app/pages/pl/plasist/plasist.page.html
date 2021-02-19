@@ -4,13 +4,22 @@
     <ion-item>
         <ion-icon slot="start" src="assets/icon/pencil.svg" class="icons"></ion-icon>
         <ion-label position="floating">Descripción</ion-label>
-        <ion-textarea></ion-textarea>
+        <ion-textarea>
+            <ion-input type="text" [(ngModel)]="asi_desc"></ion-input>
+        </ion-textarea>
     </ion-item>
 
-    <ion-item>    
-        <!-- (click)="GetAsistenciasPL()" -->
+    <ion-item (click)="getAperturas()">
         <ion-icon slot="start" src="assets/icon/chalkboard-teacher-solid.svg"></ion-icon>
-        <ion-label>Apertura</ion-label>
+        <ion-label>Curso</ion-label>
         <ion-note slot="end"> {{""}} </ion-note>
-      </ion-item>
+    </ion-item>
+
+    <ion-button expand="block" 
+                class="btn-cons"
+                type="submit"
+                [disabled]="enableButton"
+                (click)="marcarAsistencias()">
+            Marcar Asistencias
+    </ion-button>
 </ion-content>

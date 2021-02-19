@@ -11,5 +11,4 @@ export class mainSmenu{
     mainIcon: string;
     mainPath: string;
     mainSrc: string;
-    mainDisable: boolean;
 }
