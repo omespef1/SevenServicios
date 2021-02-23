@@ -21,10 +21,14 @@ import { ModalComponent } from './modal/modal/modal.component';
     CommonModule   ,
     IonicModule,
   ],
+  entryComponents:[
+    ModalComponent
+  ],
   exports: [
     HeaderComponent,
     AlertComponent,
-    ToggableCardComponent
+    ToggableCardComponent,
+    
   ]
 })
 export class ComponentsModule { }

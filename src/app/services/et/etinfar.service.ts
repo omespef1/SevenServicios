@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { map } from 'rxjs/operators';
-import { EtInfar } from '../../models/et/EtInfar';
+import { EtInfar } from '../../models/et/etinfar';
 import { TOAccess, ToTransaction } from '../../models/general/totransaction';
 import { HttpManagerService } from '../httpManager/http-manager.service';
 
