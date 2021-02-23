@@ -9,7 +9,7 @@
       <ion-item>
         <ion-icon slot="start" name="alarm"></ion-icon>
         <ion-label>Fecha de inicio</ion-label>
-        <ion-datetime name="din_feci"  [(ngModel)]="din_feci" display-format="DD.MM.YYYY"></ion-datetime>
+        <ion-datetime name="initDate"  [(ngModel)]="initDate" display-format="DD.MM.YYYY"></ion-datetime>
       </ion-item>
       <ion-item button (click)="openModal()">
         <ion-icon slot="start" name="business"></ion-icon>
@@ -19,7 +19,7 @@
       
     </ion-list>
 
-    <ion-button  [disabled]="this.campus==undefined || din_feci == undefined || loading" (click)="ShowConfirm()"  fill="solid" color="secondary" expand="block">
+    <ion-button  [disabled]="this.campus==undefined || initDate == undefined || loading" (click)="ShowConfirm()"  fill="solid" color="secondary" expand="block">
       <ng-container *ngIf="dtInfarService.loading | async;else notLoading">
         <ion-spinner  slot="start"></ion-spinner>
         Cargando...               
