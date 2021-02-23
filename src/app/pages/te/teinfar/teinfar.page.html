@@ -3,8 +3,8 @@
 </app-header>
 
 <ion-content fullscreen class="ion-padding">
-  <form #teinfarForm="ngForm" (ngSubmit)="SetTeInfar()">
-      <ion-list lines="none">
+  <form #teinfarForm="ngForm" >
+      <!-- <ion-list lines="none">
           <ion-radio-group name="sede" [(ngModel)]="sede" required>
             <ion-list-header color="success">
               <ion-label>Escoge la sede</ion-label>
@@ -15,8 +15,22 @@
               <ion-radio slot="end" [value]="item"></ion-radio>
             </ion-item>
           </ion-radio-group>
+        </ion-list> -->
+
+        <ion-list lines="none" inset="true">
+          <ion-item>
+            <ion-icon slot="start" name="alarm"></ion-icon>
+            <ion-label>Fecha de inicio</ion-label>
+            <ion-datetime name="din_feci"  [(ngModel)]="din_feci" display-format="DD.MM.YYYY"></ion-datetime>
+          </ion-item>
+          <ion-item button (click)="openModal()">
+            <ion-icon slot="start" name="business"></ion-icon>
+            <ion-label>Sede</ion-label>
+            <ion-note *ngIf="campus" slot="end"> {{campus.TOP_NOMB}} </ion-note>
+          </ion-item>
+          
         </ion-list>
-        <ion-button type="submit" [disabled]="!teinfarForm.form.valid" color="primary"  expand="block">
+        <ion-button (click)="ShowConfirm()" type="submit"  color="secondary"  expand="block">
             <ion-icon *ngIf="!loading" slot="start" name="clipboard"></ion-icon>
             <ion-spinner *ngIf="loading" slot="start"></ion-spinner>
             Inscribirme

@@ -80,12 +80,7 @@ export class GmplanePage implements OnInit {
         gmplane: plan
       }
     };
-    this.router.navigateByUrl("tabs/gm/gminfar", params);
-    // const modal = await this._modal.create({
-    //   component: GntoperPage,
-    //   componentProps: { plan: plan }
-    // });
-    // return await modal.present();
+    this.router.navigateByUrl("tabs/gm/gminfar", params);    
   }
 
   // toggleAccordion() {

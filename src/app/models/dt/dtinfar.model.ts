@@ -1,30 +1,25 @@
 export class DtInfar {
-emp_codi:number;
-inf_cont:number;
-top_codi:number;
-inf_nume:number;
-inf_fech:Date;
-inf_anop:number;
-inf_mesp:number;
-inf_diap:number;
-inf_nech:number;
-inf_desc:string;
-cli_codi:number;
-dcl_icac:number;
-arb_sucu:number;
-inf_esta:string;
-inf_esti:string;
-inf_pcor:string;
-inf_icde:string;
-inf_icrm:string;
-inf_envc:string;
-fac_cont:number;
-mte_cont:number;
-inf_vato:number;
-cas_cont:number;
-aud_usua:string;
-aud_esta:string;
-aud_ufac:Date;
-ite_fuin:string;
-dcl_codd:string;
+    emp_codi :number;
+    top_codi :number;
+    inf_nume :number;
+    inf_fech :Date  ;
+    cli_coda :string;
+    arb_cods :string;
+    inf_desc :string;
+    inf_icrm :string;
+    inf_icde :string;
+    inf_pcor :string;
+    inf_envc :string;
+}
+
+export class DtDinfa{
+
+    emp_codi :number ;
+    inf_cont: number;
+    apc_cont: number;
+    cli_coda: number;
+    din_cant: number;
+    din_valo: number;
+    din_tide: number;
+    din_pvde: number;
 }

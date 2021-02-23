@@ -26,3 +26,13 @@ export interface ToTransactionCentralizacion {
     ObjResult:any;
 
 }
+
+
+export interface ToTransactionT<T> {
+    Retorno:number;
+    TxtError:string;
+    ObjTransaction:T;
+
+}
+
+

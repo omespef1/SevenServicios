@@ -49,6 +49,6 @@ export class DteendepPage implements OnInit {
         dtendep: item
       }
     };
-    this.router.navigateByUrl("tabs/dt/dtinfar", params);
+    this.router.navigateByUrl("tabs/dtinfar", params);
   }
 }

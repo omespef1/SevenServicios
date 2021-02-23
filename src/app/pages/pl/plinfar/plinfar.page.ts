@@ -74,7 +74,9 @@ export class PlinfarPage implements OnInit {
           din_valo: 0,
           din_taes: "N",
           din_tide: "P",
-          din_pvde: 0
+          din_pvde: 0,
+          emp_codi:this._sesion.GetGnEmpre().emp_codi,
+          inf_cont:0
         }
       ]
     };

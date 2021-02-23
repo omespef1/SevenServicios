@@ -1,6 +1,7 @@
+import { TOAccess } from './../../models/general/totransaction';
+
 import { Injectable } from '@angular/core';
-import { teinfar } from '../../models/te/teinfar';
-import { TOAccess, ToTransaction } from '../../models/general/totransaction';
+import {  ToTransaction } from '../../models/general/totransaction';
 import { HttpManagerService } from '../httpManager/http-manager.service';
 
 @Injectable({
@@ -8,9 +9,14 @@ import { HttpManagerService } from '../httpManager/http-manager.service';
 })
 export class TeInfarService {
 
-  constructor(private _http:HttpManagerService) { }
+  constructor(private http:HttpManagerService) { }
 
-  SetTeInfar(teinfar:teinfar,user:TOAccess){
-    return this._http.Post<ToTransaction>('/teinfar',teinfar,user.strToken);
+  SetTeInfar(teinfar:any,user:TOAccess){
+    return this.http.Post<ToTransaction>('/teinfar',teinfar,user.strToken);
   }
+
+
+  getTePfare(emp_codi:number){
+    return this.http.Get<ToTransaction>(`TePFare?emp_codi=${emp_codi}`)
+}
 }

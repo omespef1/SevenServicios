@@ -81,6 +81,13 @@ export interface transaction {
     ObjTransaction: any;
   }
   
+
+  export class ToTransaction<T> {
+    Retorno: number;
+    TxtError: string;
+    ObjTransaction: T;
+
+  }
 export interface disponibility {
     title: string;
     startTime: Date;

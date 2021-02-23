@@ -4,6 +4,8 @@ import { AlertComponent } from 'src/app/components/alert/alert.component';
 import { EtcursoService } from 'src/app/services/et/etcurso.service';
 import { gnconex } from '../../../models/gn/gnconex';
 import { ConfigService } from "src/app/services/config/config.service";
+import { EtInfar } from '../../../models/et/etinfar';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: "app-etcurso",
@@ -17,7 +19,8 @@ export class EtcursoPage implements OnInit {
   logo: any = 'assets/imgs/logo.png';
 
   constructor(private _service:EtcursoService,
-    private configService:ConfigService) {
+    private configService:ConfigService,
+    private router:Router) {
    
   }
 
@@ -44,4 +47,19 @@ export class EtcursoPage implements OnInit {
   doRefresh($event){
 this.GetEtCurso($event);
   }
+
+  openEtInfar(curso: EtInfar) {
+    let params: NavigationExtras = {
+      state: {
+        data: curso
+      }
+    };
+    this.router.navigateByUrl("tabs/etinfar", params);
+    // const modal = await this._modal.create({
+    //   component: GntoperPage,
+    //   componentProps: { plan: plan }
+    // });
+    // return await modal.present();
+  }
+
 }

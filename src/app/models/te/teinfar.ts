@@ -2,6 +2,7 @@ export class teinfar {
   emp_codi: number;
   top_codi: number;
   inf_nume: number;
+  inf_fech: Date;
   cli_coda: string;
   arb_cods: string;
   inf_desc: string;
@@ -9,7 +10,6 @@ export class teinfar {
   inf_icde: string;
   inf_pcor: string;
   inf_envc: string;
-  inf_fech: Date;
   detalle:tedinfa[]
 }
 

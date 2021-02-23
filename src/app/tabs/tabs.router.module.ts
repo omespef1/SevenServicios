@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 import { AuthGuard } from '../guards/auth.guard';
+import { DtinfarPageModule } from '../pages/dt/dtinfar/dtinfar.module';
 
 const routes: Routes = [
   {
@@ -28,6 +29,26 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../pages/dt/dteendep/dteendep.module').then(m => m.DteendepPageModule)
+          }
+        ]
+      },
+      {
+        path: 'dtinfar',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/dt/dtinfar/dtinfar.module').then(m => m.DtinfarPageModule)
+          }
+        ]
+      },
+      {
+        path: 'etinfar',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../pages/et/etinfar/etinfar.module').then(m => m.EtinfarPageModule)
           }
         ]
       },

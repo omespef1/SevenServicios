@@ -16,4 +16,6 @@ export class PlPfareService {
   GetPlPfare(){
   return  this._http.Get<transaction>(`/PlPfare?emp_codi=${this._sesion.GetGnEmpre().emp_codi}`);
   }
+
+  
 }

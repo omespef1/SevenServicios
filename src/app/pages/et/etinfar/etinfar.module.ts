@@ -5,24 +5,24 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DtinfarPage } from './dtinfar.page';
-import { ComponentsModule } from 'src/app/components/components.module';
+import { EtinfarPage } from './etinfar.page';
+import { ComponentsModule } from '../../../components/components.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: DtinfarPage
+    component: EtinfarPage
   }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
+    ComponentsModule,
     FormsModule,
     IonicModule,
-    ComponentsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [DtinfarPage]
+  declarations: [EtinfarPage]
 })
-export class DtinfarPageModule {}
+export class EtinfarPageModule {}

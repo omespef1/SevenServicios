@@ -1,0 +1,23 @@
+export class DtPfare{
+    EMP_CODI:number;
+	PFA_CONT:number;
+	TOP_INSC:number;
+	TOP_FACT:number;
+	LIS_CODI:number;
+	DSP_CODI:string;
+	BOD_CODI:number;
+	TOP_RECA:number;
+	CAJ_CODI:number;
+	CFL_CODI:number;
+	ARB_AREA:number;
+	ARB_SUCU:number;
+	ARB_CECO:number;
+	ARB_PROY:number;
+	CAS_CONT:number;
+	AUD_USUA:string;
+	AUD_ESTA:number;
+	AUD_UFAC:Date;
+	TOP_NCCL:number;
+	TOP_NODE:number;
+	TOP_NCPO:number;
+}

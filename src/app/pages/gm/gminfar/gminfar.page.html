@@ -2,62 +2,36 @@
 
 </app-header>
 
-<ion-content fullscreen class="ion-padding">
+<ion-content fullscreen>
 
-  <ion-list lines="none">
-      <ion-radio-group [(ngModel)]="sede">
-        <ion-list-header color="success">
-          <ion-label>Escoge la sede</ion-label>
-        </ion-list-header>
-    
-        
-    
-        <ion-item *ngFor="let item of gntoper">
-          <ion-icon slot="start" src="assets/icon/building-solid.svg"></ion-icon>
-          <ion-label>{{item.top_nomb}}</ion-label>
-          <ion-radio slot="end" [value]="item"></ion-radio>
-        </ion-item>
-      </ion-radio-group>
-    </ion-list>
- 
-
-  <ion-list lines="none" >
-      <ion-list-header color="success">
-          <ion-label>¿Cuando quieres iniciar?</ion-label>
-        </ion-list-header>
-  <ion-item>
-      <ion-icon slot="start" name="alarm"></ion-icon>
+  <form #formGmInfar="ngForm">
+    <ion-list lines="none" inset="true">
+      <ion-item>
+        <ion-icon slot="start" name="alarm"></ion-icon>
         <ion-label>Fecha de inicio</ion-label>
-        <ion-datetime [(ngModel)]="din_feci" display-format="DD.MM.YYYY"></ion-datetime>
-      
+        <ion-datetime name="din_feci"  [(ngModel)]="din_feci" display-format="DD.MM.YYYY"></ion-datetime>
       </ion-item>
+      <ion-item button (click)="openModal()">
+        <ion-icon slot="start" name="business"></ion-icon>
+        <ion-label>Sede</ion-label>
+        <ion-note *ngIf="campus" slot="end"> {{campus.TOP_NOMB}} </ion-note>
+      </ion-item>
+      
     </ion-list>
 
+    <ion-button  [disabled]="this.campus==undefined || din_feci == undefined || loading" (click)="ShowConfirm()"  fill="solid" color="secondary" expand="block">
+      <ng-container *ngIf="gminfarService.loading | async;else notLoading">
+        <ion-spinner  slot="start"></ion-spinner>
+        Cargando...               
+       </ng-container>
+      <ng-template #notLoading>
+        <ion-icon  slot="start" name="clipboard"></ion-icon>     
+        Incribirme
+      </ng-template>
 
-  
- 
-  <ion-button [disabled]="this.sede==undefined || din_feci == undefined" (click)="pushInscription()" expand="block" class="btn-insc">
-   
-    <ng-container *ngIf="_gminfar.loading | async;else notLoading">
-      <ion-spinner  slot="start"></ion-spinner>
-      Cargando...               
-     </ng-container>
-    <ng-template #notLoading>
-      <ion-icon  slot="start" name="clipboard"></ion-icon>     
-      Incribirme
-    </ng-template>
-    
-    
-
-    
-
-
-  </ion-button>
-  <ion-button  color="danger" (click)="dismiss()" expand="block">
-      <ion-icon slot="start" name="remove-circle"></ion-icon>
-      Cancelar
     </ion-button>
 
+  </form>
 
-    <app-alert></app-alert>
-</ion-content> 
+  <app-alert></app-alert>
+</ion-content>

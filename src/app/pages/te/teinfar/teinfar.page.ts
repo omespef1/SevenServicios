@@ -1,15 +1,21 @@
+import { AlertService } from './../../../services/alert/alert.service';
+import { TeInfarService } from './../../../services/te/teinfar.service';
+import { ModalModel } from './../../../models/general/modal.model';
+import { Item } from './../../../models/general/items';
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { AlertComponent } from "src/app/components/alert/alert.component";
 import { TePfareService } from "../../../services/te/tepfare.service";
-import { TeInfarService } from "../../../services/te/teinfar.service";
 import { AuthService } from "src/app/services/auth/auth.service";
 import { Router } from "@angular/router";
 import { tepfare } from "src/app/models/te/tepfare";
 import { TOAccess } from "src/app/models/general/totransaction";
 import { tecuter } from "src/app/models/te/tecuter";
 import { teinfar } from "src/app/models/te/teinfar";
-import { AlertService } from '../../../services/alert/alert.service';
 import { SessionsService } from '../../../services/sessions/sessions.service';
+import { TypeOperation } from '../../../models/general/type-operation.model';
+import { ModalController } from '@ionic/angular';
+import { ModalComponent } from '../../../components/modal/modal/modal.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: "app-teinfar",
@@ -17,11 +23,13 @@ import { SessionsService } from '../../../services/sessions/sessions.service';
   styleUrls: ["./teinfar.page.scss"]
 })
 export class TeinfarPage implements OnInit {
-  @ViewChild(AlertComponent, { static: false }) _alert: AlertComponent;
   tepfare: tepfare[] = [];
   sede: tepfare;
   user: TOAccess;
+  din_feci:Date= new Date()
   option: tecuter;
+  campus : TypeOperation;
+  operations:TypeOperation[]=[];
   loading = false;
   constructor(
     private _TePfare: TePfareService,
@@ -29,7 +37,8 @@ export class TeinfarPage implements OnInit {
     private _auth: AuthService,
     private router: Router,
     private _alertS:AlertService,
-    private _sesion:SessionsService
+    private modalController:ModalController,
+    private teInfarService:TeInfarService
   ) {
     this.user = this._auth.loadUser();
 
@@ -39,25 +48,32 @@ export class TeinfarPage implements OnInit {
   }
 
   ngOnInit() {
-    this.GetTePfare();
+    
+    this.getTypeOperations();
   }
 
-  GetTePfare() {
-    this._TePfare.GetTePfare().subscribe(resp => {
-      if (resp.Retorno == 1) {
-        this._alert.show(resp.TxtError, "danger");
-      }
-      this.tepfare = resp.ObjTransaction;
-    });
+  ShowConfirm() {
+    this._alertS.showAlertConfirm(
+        "¿Estás seguro de realizar esta inscripción?",
+        "Confirmar inscripción"
+      )
+      .then((resp: boolean) => {
+
+        if(resp){
+          this.SetTeInfar();
+        }
+     
+      });
   }
+
 
   SetTeInfar() {
     this.loading = true;
     let inscription: teinfar = {
-      emp_codi: this._sesion.GetGnEmpre().emp_codi,
-      arb_cods: this.sede.arb_codi,
+      emp_codi: this.user.objResult.emp_codi,
+      arb_cods: "",
       cli_coda: this.user.objResult.cli_coda,
-      top_codi: this.sede.top_insc,
+      top_codi: this.campus.TOP_CODI,
       inf_crm: "N",
       inf_desc: `Inscripción ${this.user.objResult.cli_noco}`,
       inf_fech: new Date(),
@@ -79,11 +95,59 @@ export class TeinfarPage implements OnInit {
     this._service.SetTeInfar(inscription, this.user).subscribe(resp => {
       this.loading = false;
       if (resp.Retorno == 1) {
-        this._alert.show(resp.TxtError, "danger");
+        Swal.fire({
+          title: 'Error!',
+          text: resp.TxtError,
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+        })
       } else{
-        this._alertS.showAlert('Perfecto!','La inscripción ha sido realizada!');
-        this.router.navigateByUrl('tabs/te/tecuter');
-      } 
+        Swal.fire({
+          title: 'Genial!',
+          text: 'Inscripción realizada!',
+          icon: 'success',
+          confirmButtonText: 'Aceptar'
+        })
+      this._alertS.showAlert('Perfecto!','La inscripción ha sido realizada!');
+      this.router.navigateByUrl('tabs/te/tecuter');
+   
+       }
+
     });
+  }
+
+
+  getTypeOperations(){
+    this.teInfarService.getTePfare(this.user.objResult.emp_codi).subscribe(resp=>{
+      if(resp.Retorno==0){
+      this.operations=resp.ObjTransaction;
+      }
+    })
+  }
+  async openModal() {
+    let items: Item[]=[];
+    this.operations.forEach(item=>{
+      items.push({id:item.TOP_CODI,name:item.TOP_NOMB})
+    })
+
+    const modalParam :ModalModel = {
+
+      icon:'add-circle-outline',
+      source:items
+    }
+    const modal = await this.modalController.create({
+      component: ModalComponent,
+      componentProps: {  'source': modalParam} 
+    });
+   
+    await modal.present();
+
+     modal.onDidDismiss().then((data)=>{
+       console.log(data);
+      if(data){        
+        this.campus = { TOP_CODI:data.data.id,TOP_NOMB:data.data.name}
+      }
+     })
+ 
   }
 }
