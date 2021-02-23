@@ -24,10 +24,15 @@ import { PipesModule } from './pipes/pipes.module';
 import { TecasisCaprPage } from './pages/te/tecasis-capr/tecasis-capr.page';
 import { PlcasisAprtPage } from './pages/pl/plcasis-aprt/plcasis-aprt.page';
 import { PlcasisCaprPage } from './pages/pl/plcasis-capr/plcasis-capr.page';
+import { PlasistEstuPage } from './pages/pl/plasist-estu/plasist-estu.page';
+import { FormsModule } from '@angular/forms';
+import { TeasistEstuPage } from './pages/te/teasist-estu/teasist-estu.page';
+import { DtasistEstuPage } from './pages/dt/dtasist-estu/dtasist-estu.page';
+
 @NgModule({
-  declarations: [AppComponent,    GnemprePage,GnconexPage, TecasisAprtPage, TecasisCaprPage, PlcasisAprtPage, PlcasisCaprPage],
+  declarations: [AppComponent,    GnemprePage,GnconexPage, TecasisAprtPage, TecasisCaprPage, PlcasisAprtPage, PlcasisCaprPage, PlasistEstuPage, TeasistEstuPage, DtasistEstuPage],
   entryComponents: [
-    GnemprePage, GnconexPage, TecasisAprtPage, TecasisCaprPage, PlcasisAprtPage, PlcasisCaprPage
+    GnemprePage, GnconexPage, TecasisAprtPage, TecasisCaprPage, PlcasisAprtPage, PlcasisCaprPage, PlasistEstuPage, TeasistEstuPage, DtasistEstuPage
   ],
   imports: [
     BrowserModule, 
@@ -43,7 +48,8 @@ import { PlcasisCaprPage } from './pages/pl/plcasis-capr/plcasis-capr.page';
     ComponentsModule,
     IonicStorageModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    PipesModule
+    PipesModule,
+    FormsModule
   ],
   providers: [
     // Facebook,

@@ -1,18 +1,19 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { Routes, RouterModule } from "@angular/router";
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule } from "@ionic/angular";
 
-import { PlasistPage } from './plasist.page';
-import { ComponentsModule } from '../../../components/components.module';
+import { PlasistPage } from "./plasist.page";
+import { ComponentsModule } from "../../../components/components.module";
+import { ModalComponent } from '../../../components/modal/modal/modal.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: PlasistPage
-  }
+    path: "",
+    component: PlasistPage,
+  },
 ];
 
 @NgModule({
@@ -23,6 +24,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ComponentsModule
   ],
-  declarations: [PlasistPage]
+  declarations: [PlasistPage],
+  entryComponents: [ModalComponent]
 })
 export class PlasistPageModule {}

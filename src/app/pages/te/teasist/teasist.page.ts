@@ -1,33 +1,34 @@
 import { Component, OnInit } from "@angular/core";
 import { AlertController, ModalController } from "@ionic/angular";
-import { plasist } from "src/app/models/pl/plasist";
+import { teasist } from "../../../models/te/teasist";
 import { TOAccess, ToTransaction } from "../../../models/general/totransaction";
-import { PlasistService } from "../../../services/pl/plasist.service";
+import { TeasistService } from "../../../services/te/teasist.service";
 import { SessionsService } from "../../../services/sessions/sessions.service";
 import { AuthService } from "../../../services/auth/auth.service";
 import { AlertService } from "../../../services/alert/alert.service";
-import { PlasistEstuPage } from "../plasist-estu/plasist-estu.page";
-import { plapert } from "../../../models/pl/plasist";
+import { TeasistEstuPage } from "../teasist-estu/teasist-estu.page";
+import { teapert } from "../../../models/te/teasist";
 import { Item } from "../../../models/general/items";
 import { Location } from "@angular/common";
 
 @Component({
-  selector: "app-plasist",
-  templateUrl: "./plasist.page.html",
-  styleUrls: ["./plasist.page.scss"],
+  selector: "app-teasist",
+  templateUrl: "./teasist.page.html",
+  styleUrls: ["./teasist.page.scss"],
 })
-export class PlasistPage implements OnInit {
+export class TeasistPage implements OnInit {
   asi_desc = "";
   apc_cont = 0;
   asi_cont = 0;
+  enableButton = false;
   loading = false;
   user: TOAccess;
-  Plapert: plapert[];
+  Teapert: teapert[];
   textoBuscar = "";
 
   constructor(
     public alertCtrl: AlertController,
-    private _service: PlasistService,
+    private _service: TeasistService,
     private _sesion: SessionsService,
     private _auth: AuthService,
     private _alert: AlertService,
@@ -62,7 +63,7 @@ export class PlasistPage implements OnInit {
     this.loading = true;
     let user: TOAccess = JSON.parse(localStorage.getItem("user"));
     this._service.getAperturas(user).subscribe((resp: ToTransaction) => {
-      this.Plapert = resp.ObjTransaction;
+      this.Teapert = resp.ObjTransaction;
       if (resp.Retorno == 1) {
         this._alert.showAlert("Retorno", resp.TxtError);
       }
@@ -80,14 +81,14 @@ export class PlasistPage implements OnInit {
     this._location.back();
   }
 
-  async marcarAsistencias(PlApert) {
-    this.asi_desc = "Asistencia del curso : " + PlApert.cac_nomb;
-    this.apc_cont = PlApert.apc_cont;
+  async marcarAsistencias(TeApert) {
+    this.asi_desc = "Apertura del curso: " + TeApert.cut_nomb;
+    this.apc_cont = TeApert.apc_cont;
     if (this.apc_cont == 0) {
       this.presentAlert("Por favor seleccione una apertura");
     } else {
       this.loading = true;
-      let Asistencias: plasist = {
+      let Asistencias: teasist = {
         emp_codi: this._sesion.GetGnEmpre().emp_codi,
         ter_coda: this.user.objResult.cli_coda,
         apc_cont: this.apc_cont,
@@ -95,14 +96,14 @@ export class PlasistPage implements OnInit {
       };
 
       this._service
-        .setPlAsist(Asistencias, this.user)
+        .setTeAsist(Asistencias, this.user)
         .subscribe(async (resp) => {
           if (resp.Retorno == 1) {
             this._alert.showAlert("Retono", resp.TxtError);
           } else {
             this.asi_cont = resp.ObjTransaction.asi_cont;
             const modal = await this._modal.create({
-              component: PlasistEstuPage,
+              component: TeasistEstuPage,
               componentProps: {
                 asi_cont: this.asi_cont,
               },

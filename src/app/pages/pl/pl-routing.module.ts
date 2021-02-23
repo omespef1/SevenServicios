@@ -27,10 +27,12 @@ const routes: Routes = [
         loadChildren: () => import('../pl/plcasis/plcasis.module').then(pl => pl.PlcasisPageModule),
         canActivate: [AuthGuard]
       },
-      { path: 'plasist', 
+      { 
+        path: 'plasist', 
         loadChildren: () => import('../pl/plasist/plasist.module').then(pl => pl.PlasistPageModule),
         canActivate: [AuthGuard]
       }
+
 ];
 
 @NgModule({

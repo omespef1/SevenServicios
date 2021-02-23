@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpManagerService } from '../httpManager/http-manager.service';
 import { SessionsService } from '../sessions/sessions.service';
-import { HttpClient } from '@angular/common/http';
 import { TOAccess } from '../../models/general/totransaction';
 import { transaction } from '../../pages/ae/aereser/models/models';
 
@@ -11,8 +10,6 @@ import { transaction } from '../../pages/ae/aereser/models/models';
 export class PlcasisService {
 
   constructor(private _http: HttpManagerService, 
-              private sesion: SessionsService, 
-              private http: HttpClient, 
               private _sesion: SessionsService) { }
 
   GetAsistenciasPL(user: TOAccess, asi_fein: Date, asi_fefi: Date) {

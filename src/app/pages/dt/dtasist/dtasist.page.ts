@@ -1,38 +1,36 @@
 import { Component, OnInit } from "@angular/core";
-import { AlertController, ModalController } from "@ionic/angular";
-import { plasist } from "src/app/models/pl/plasist";
 import { TOAccess, ToTransaction } from "../../../models/general/totransaction";
-import { PlasistService } from "../../../services/pl/plasist.service";
+import { AlertController, ModalController } from "@ionic/angular";
+import { DtasistService } from "../../../services/dt/dtasist.service";
 import { SessionsService } from "../../../services/sessions/sessions.service";
 import { AuthService } from "../../../services/auth/auth.service";
 import { AlertService } from "../../../services/alert/alert.service";
-import { PlasistEstuPage } from "../plasist-estu/plasist-estu.page";
-import { plapert } from "../../../models/pl/plasist";
-import { Item } from "../../../models/general/items";
+import { dtapert, dtasist, dtasise } from '../../../models/dt/dtasist';
 import { Location } from "@angular/common";
+import { DtasistEstuPage } from "../dtasist-estu/dtasist-estu.page";
 
 @Component({
-  selector: "app-plasist",
-  templateUrl: "./plasist.page.html",
-  styleUrls: ["./plasist.page.scss"],
+  selector: "app-dtasist",
+  templateUrl: "./dtasist.page.html",
+  styleUrls: ["./dtasist.page.scss"],
 })
-export class PlasistPage implements OnInit {
+export class DtasistPage implements OnInit {
   asi_desc = "";
-  apc_cont = 0;
+  equ_cont = 0;
   asi_cont = 0;
   loading = false;
   user: TOAccess;
-  Plapert: plapert[];
+  DtApert: dtapert[];
   textoBuscar = "";
 
   constructor(
     public alertCtrl: AlertController,
-    private _service: PlasistService,
+    private _service: DtasistService,
     private _sesion: SessionsService,
     private _auth: AuthService,
     private _alert: AlertService,
-    private _modal: ModalController,
-    private _location: Location
+    private _location: Location,
+    private _modal: ModalController
   ) {
     this.user = this._auth.loadUser();
   }
@@ -58,15 +56,13 @@ export class PlasistPage implements OnInit {
   }
 
   getAperturas() {
-    let itemsSource: Item[] = [];
     this.loading = true;
     let user: TOAccess = JSON.parse(localStorage.getItem("user"));
     this._service.getAperturas(user).subscribe((resp: ToTransaction) => {
-      this.Plapert = resp.ObjTransaction;
+      this.DtApert = resp.ObjTransaction;
       if (resp.Retorno == 1) {
-        this._alert.showAlert("Retorno", resp.TxtError);
+        this._alert.showAlert("Retono", resp.TxtError);
       }
-
       this.loading = false;
       console.log(resp);
     });
@@ -80,29 +76,29 @@ export class PlasistPage implements OnInit {
     this._location.back();
   }
 
-  async marcarAsistencias(PlApert) {
-    this.asi_desc = "Asistencia del curso : " + PlApert.cac_nomb;
-    this.apc_cont = PlApert.apc_cont;
-    if (this.apc_cont == 0) {
+  async marcarAsistencias(DtApert) {
+    this.asi_desc = "Asistencia del curso equipo : " + DtApert.equ_nomb;
+    this.equ_cont = DtApert.equ_cont;
+    if (this.equ_cont == 0) {
       this.presentAlert("Por favor seleccione una apertura");
-    } else {
+    } else {  
       this.loading = true;
-      let Asistencias: plasist = {
+      let Asistencias: dtasist = {
         emp_codi: this._sesion.GetGnEmpre().emp_codi,
         ter_coda: this.user.objResult.cli_coda,
-        apc_cont: this.apc_cont,
+        equ_cont: this.equ_cont,
         asi_desc: this.asi_desc,
-      };
-
+      };      
+      
       this._service
-        .setPlAsist(Asistencias, this.user)
+        .setDtAsist(Asistencias, this.user)
         .subscribe(async (resp) => {
           if (resp.Retorno == 1) {
             this._alert.showAlert("Retono", resp.TxtError);
           } else {
             this.asi_cont = resp.ObjTransaction.asi_cont;
             const modal = await this._modal.create({
-              component: PlasistEstuPage,
+              component: DtasistEstuPage,
               componentProps: {
                 asi_cont: this.asi_cont,
               },

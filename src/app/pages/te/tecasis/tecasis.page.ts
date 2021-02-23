@@ -1,7 +1,7 @@
 import { Component, OnInit, PipeTransform } from '@angular/core';
 import { PickerController, AlertController, ModalController } from '@ionic/angular';
 import { TecasisAprtPage } from '../tecasis-aprt/tecasis-aprt.page';
-import { teapert } from '../../../models/te/teapert';
+import { teapert } from '../../../models/te/tecapr';
 import { TecasisCaprPage } from '../tecasis-capr/tecasis-capr.page';
 import { DatePipe } from "@angular/common";
 

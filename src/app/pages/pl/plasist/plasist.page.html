@@ -1,16 +1,30 @@
-<app-header headerName="Consulta Asistencias"></app-header>
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-buttons slot="start">
+          <ion-button color="dark" (click)="Salir()">
+            <ion-icon name="arrow-back"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-buttons>
+      <ion-title>Asistencias</ion-title>
+    </ion-toolbar>
+    <ion-searchbar animated (ionChange)="buscar($event)">
+    </ion-searchbar>
+  </ion-header>
 
-<ion-content>
-    <ion-item>
-        <ion-icon slot="start" src="assets/icon/pencil.svg" class="icons"></ion-icon>
-        <ion-label position="floating">Descripción</ion-label>
-        <ion-textarea></ion-textarea>
-    </ion-item>
-
-    <ion-item>    
-        <!-- (click)="GetAsistenciasPL()" -->
-        <ion-icon slot="start" src="assets/icon/chalkboard-teacher-solid.svg"></ion-icon>
-        <ion-label>Apertura</ion-label>
-        <ion-note slot="end"> {{""}} </ion-note>
+  <ion-content>
+    <ion-list lines="none" inset="true">
+      <ion-item *ngFor="let item of Plapert">
+        <ion-icon name="add-circle-outline" slot="start">
+        </ion-icon>
+        <ion-label>
+          {{item.cac_nomb}}
+        </ion-label>
+        <ion-button color="secondary" fill="outline" slot="end" (click)="marcarAsistencias(item)">
+          <ion-icon name="checkmark-circle" slot="end"></ion-icon>
+          Seleccionar
+        </ion-button>
       </ion-item>
-</ion-content>
+    </ion-list>
+  </ion-content>

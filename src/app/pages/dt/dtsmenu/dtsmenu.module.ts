@@ -5,27 +5,24 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MenuPage } from './menu.page';
-import { ComponentsModule } from '../../components/components.module';
-import { ModalComponent } from '../../components/modal/modal/modal.component';
+import { DtsmenuPage } from './dtsmenu.page';
+import { ComponentsModule } from '../../../components/components.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: MenuPage
+    component: DtsmenuPage
   }
 ];
 
 @NgModule({
   imports: [
-
-ComponentsModule,
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ComponentsModule
   ],
-  declarations: [MenuPage]
-
+  declarations: [DtsmenuPage]
 })
-export class MenuPageModule {}
+export class DtsmenuPageModule {}
