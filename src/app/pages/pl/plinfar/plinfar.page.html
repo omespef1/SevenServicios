@@ -3,7 +3,37 @@
 </app-header>
 
 <ion-content fullscreen class="ion-padding">
-  <form #plinfarForm="ngForm" (ngSubmit)="SetPlInfar()">
+  <form #plinfarForm="ngForm">
+    <ion-list lines="none" inset="true">
+      <ion-item>
+        <ion-icon slot="start" name="alarm"></ion-icon>
+        <ion-label>Fecha de inicio</ion-label>
+        <ion-datetime name="initDate"  [(ngModel)]="initDate" display-format="DD.MM.YYYY"></ion-datetime>
+      </ion-item>
+      <ion-item button (click)="openModal()">
+        <ion-icon slot="start" name="business"></ion-icon>
+        <ion-label>Sede</ion-label>
+        <ion-note *ngIf="campus" slot="end"> {{campus.TOP_NOMB}} </ion-note>
+      </ion-item>
+      
+    </ion-list>
+<div padding>
+  <ion-button  [disabled]="this.campus==undefined || initDate == undefined || loading" (click)="ShowConfirm()"  fill="solid" color="secondary" expand="block">
+    <ng-container *ngIf="_service.loading | async;else notLoading">
+      <ion-spinner  slot="start"></ion-spinner>
+      Guardando...               
+     </ng-container>
+    <ng-template #notLoading>
+      <ion-icon  slot="start" name="clipboard"></ion-icon>     
+      Incribirme
+    </ng-template>
+
+  </ion-button>
+</div>
+ 
+
+  </form>
+  <!-- <form #plinfarForm="ngForm" (ngSubmit)="SetPlInfar()">
       <ion-list lines="none">
           <ion-radio-group name="sede" [(ngModel)]="sede" required>
             <ion-list-header color="success">
@@ -21,7 +51,7 @@
             <ion-spinner *ngIf="loading" slot="start"></ion-spinner>
             Inscribirme
           </ion-button>
-  </form>
+  </form> -->
   <app-alert>
 
   </app-alert>

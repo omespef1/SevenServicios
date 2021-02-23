@@ -54,7 +54,7 @@ this.GetEtCurso($event);
         data: curso
       }
     };
-    this.router.navigateByUrl("tabs/etinfar", params);
+    this.router.navigateByUrl("tabs/et/etinfar", params);
     // const modal = await this._modal.create({
     //   component: GntoperPage,
     //   componentProps: { plan: plan }

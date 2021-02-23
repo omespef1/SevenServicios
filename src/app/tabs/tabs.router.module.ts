@@ -19,6 +19,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'et',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../pages/et/et-routing.module').then(m=>m.EtRoutingModule),
+          }
+        ]
+      },
+      {
         path: 'pl',
         loadChildren: () => import('../pages/pl/pl-routing.module').then(pl => pl.PlRoutingModule)
       },
@@ -43,16 +52,6 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../pages/dt/dtinfar/dtinfar.module').then(m => m.DtinfarPageModule)
-          }
-        ]
-      },
-      {
-        path: 'etinfar',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../pages/et/etinfar/etinfar.module').then(m => m.EtinfarPageModule)
           }
         ]
       },

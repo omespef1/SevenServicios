@@ -47,7 +47,7 @@ export class PlcaculPage implements OnInit {
   openPlInfar(option:plcacul) {
     let navigationExtras: NavigationExtras = {
       state: {
-        option: option
+        data: option
       }
     };
     this.router.navigateByUrl("tabs/pl/plinfar",navigationExtras);

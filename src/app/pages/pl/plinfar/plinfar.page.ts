@@ -12,6 +12,11 @@ import { of } from "rxjs";
 import { plpfare } from '../../../models/pl/plpfare';
 import { AlertService } from '../../../services/alert/alert.service';
 import { SessionsService } from '../../../services/sessions/sessions.service';
+import { TypeOperation } from '../../../models/general/type-operation.model';
+import { Item } from '../../../models/general/items';
+import { ModalModel } from '../../../models/general/modal.model';
+import { ModalComponent } from '../../../components/modal/modal/modal.component';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: "app-plinfar",
@@ -20,45 +25,64 @@ import { SessionsService } from '../../../services/sessions/sessions.service';
 })
 export class PlinfarPage implements OnInit {
   plpfare: plpfare[] = [];
-  sede: plpfare;
   user: TOAccess;
-  option: plcacul;
-  loading = false;
+  data: plcacul;
+  operations:TypeOperation[]=[];
+  campus:TypeOperation;
+  initDate:Date;
+  loading=false;
   constructor(
     private _plPfare: PlPfareService,
-    private _service: PlinfarService,
+    public _service: PlinfarService,
     private _auth: AuthService,
     private router: Router,
     private _alertS:AlertService,
-    private _sesion:SessionsService
+    private _sesion:SessionsService,
+    private modalController:ModalController
   ) {
     this.user = this._auth.loadUser();
 
     if (this.router.getCurrentNavigation().extras.state) {
-      this.option = this.router.getCurrentNavigation().extras.state.option;
+      this.data = this.router.getCurrentNavigation().extras.state.data;
+      console.log(this.data);
     }
   }
   @ViewChild(AlertComponent, { static: false }) _alert: AlertComponent;
   ngOnInit() {
-    this.GetPlPfare();
+    this.getTypeOperations();
   }
 
-  GetPlPfare() {
-    this._plPfare.GetPlPfare().subscribe(resp => {
-      if (resp.Retorno == 1) {
-        this._alert.show(resp.TxtError, "danger");
+  getTypeOperations() {
+    this._plPfare.GetPlPfare(this.user.objResult.emp_codi).subscribe(resp => {
+      if (resp.Retorno == 0) {
+        this.operations = resp.ObjTransaction;
       }
-      this.plpfare = resp.ObjTransaction;
-    });
+    })
   }
 
-  SetPlInfar() {
-    this.loading = true;
+  ShowConfirm() {
+    this._alertS
+      .showAlertConfirm(
+        "¿Estás seguro de realizar esta inscripción?",
+        "Confirmar inscripción"
+      )
+      .then((resp: boolean) => {
+
+        if (resp) {
+          this.SetPlInfar();
+        }
+
+      });
+  }
+
+
+  SetPlInfar() { 
+    this.loading=true;
     let inscription: plinfar = {
       emp_codi: this._sesion.GetGnEmpre().emp_codi,
-      arb_cods: this.sede.arb_codi,
+      arb_cods: "",
       cli_coda: this.user.objResult.cli_coda,
-      top_codi: this.sede.top_insc,
+      top_codi: this.campus.TOP_CODI,
       inf_crm: "N",
       inf_desc: `Inscripción ${this.user.objResult.cli_noco}`,
       inf_fech: new Date(),
@@ -66,9 +90,10 @@ export class PlinfarPage implements OnInit {
       inf_encv: "S",
       inf_nume: 0,
       inf_pcor: "S",
+    
       detalle: [
         {
-          apc_cont: this.option.cac_cont,
+          apc_cont: this.data.cac_cont,
           cli_coda: this.user.objResult.cli_coda,
           din_cant: 1,
           din_valo: 0,
@@ -80,14 +105,44 @@ export class PlinfarPage implements OnInit {
         }
       ]
     };
-    this._service.SetPlInfar(inscription, this.user).subscribe(resp => {
-      this.loading = false;
+    this._service.SetPlInfar(inscription, this.user).subscribe(resp => {     
+      this.loading=false;
       if (resp.Retorno == 1) {
-        this._alert.show(resp.TxtError, "danger");
+        this._alertS.error(resp.TxtError);
       } else{
-        this._alertS.showAlert('Perfecto!','La inscripción ha sido realizada!')
+        this._alertS.success('La inscripción ha sido realizada!');
         this.router.navigateByUrl('tabs/pl/plcacul')
       } 
     });
+  }
+
+
+  
+  async openModal() {
+    let items: Item[] = [];
+    this.operations.forEach(item => {
+      items.push({ id: item.TOP_CODI, name: item.TOP_NOMB })
+    })
+
+    const modalParam: ModalModel = {
+
+      icon: 'add-circle-outline',
+      source: items
+    }
+    console.log(this.operations);
+    const modal = await this.modalController.create({
+      component: ModalComponent,
+      componentProps: { 'source': modalParam }
+    });
+
+    await modal.present();
+
+    modal.onDidDismiss().then((data) => {
+      console.log(data);
+      if (data) {       
+        this.campus = { TOP_CODI: data.data.id, TOP_NOMB: data.data.name }
+      }
+    })
+
   }
 }

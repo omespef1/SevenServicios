@@ -27,7 +27,6 @@ export class EtinfarPage implements OnInit {
   header: EtInfar = new EtInfar();
   data: etcurso;
   initDate: Date;
-  endDate: Date;
   operations: TypeOperation[] = [];
   campus: TypeOperation;
   constructor(
@@ -40,6 +39,7 @@ export class EtinfarPage implements OnInit {
   ) {
     this.user = this.auth.loadUser();
     this.data = this.router.getCurrentNavigation().extras.state.data;
+    console.log(this.data);
   }
 
   ngOnInit() {
@@ -98,7 +98,7 @@ export class EtinfarPage implements OnInit {
         cli_coda: this.user.objResult.cli_coda,
         din_cant: 1,
         din_feci: this.initDate,
-        din_fecf: this.endDate,
+        din_fecf: this.initDate,
         din_pvde: 0,
         din_tide: "P",
         din_valo: 0,
@@ -149,6 +149,7 @@ export class EtinfarPage implements OnInit {
       icon: 'add-circle-outline',
       source: items
     }
+    console.log(this.operations);
     const modal = await this.modalController.create({
       component: ModalComponent,
       componentProps: { 'source': modalParam }

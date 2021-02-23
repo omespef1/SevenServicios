@@ -36,7 +36,7 @@ export class TabsService {
       {
         mainIcon: "school",
         mainTitle: "Escuelas",
-        mainPath: "etcurso",
+        mainPath: "et",
         mainSrc: ""
       },
       {

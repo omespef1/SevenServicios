@@ -13,8 +13,8 @@ export class PlPfareService {
 
   }
 
-  GetPlPfare(){
-  return  this._http.Get<transaction>(`/PlPfare?emp_codi=${this._sesion.GetGnEmpre().emp_codi}`);
+  GetPlPfare(emp_codi:number){
+  return  this._http.Get<transaction>(`/PL_PFARE1?emp_codi=${emp_codi}`);
   }
 
   

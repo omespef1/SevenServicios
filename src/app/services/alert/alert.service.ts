@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AlertController } from "@ionic/angular";
-import { resolve } from 'dns';
-import { promise } from 'protractor';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: "root"
@@ -44,5 +43,21 @@ export class AlertService {
      await alert.present();
     })
    
+  }
+  success(message:string){
+    Swal.fire({
+      title: 'Genial!',
+      text: message,
+      icon: 'success',
+      confirmButtonText: 'Aceptar'
+    })
+  }
+  error(message:string){
+    Swal.fire({
+      title: 'Oops!',
+      text: message,
+      icon: 'error',
+      confirmButtonText: 'Aceptar'
+    })
   }
 }
