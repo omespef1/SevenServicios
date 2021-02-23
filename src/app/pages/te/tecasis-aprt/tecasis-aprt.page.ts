@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { TecasisService } from '../../../services/te/tecasis.service';
 import { TOAccess, ToTransaction } from '../../../models/general/totransaction';
-import { teapert } from '../../../models/te/teapert';
+import { teapert } from '../../../models/te/tecapr';
 import { ModalController } from '@ionic/angular';
 import { user } from '../../ae/aereser/models/models';
 import { AlertService } from '../../../services/alert/alert.service';

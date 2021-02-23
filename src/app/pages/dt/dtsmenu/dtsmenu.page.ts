@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { mainSmenu } from '../../../models/general/menu';
+import { dtapert } from '../../../models/dt/dtasist';
+import { AlertService } from '../../../services/alert/alert.service';
 import { Router } from '@angular/router';
 import { TOAccess, ToTransaction } from '../../../models/general/totransaction';
-import { PlasistService } from '../../../services/pl/plasist.service';
-import { plapert } from "src/app/models/pl/plasist";
-import { AlertService } from '../../../services/alert/alert.service';
+import { DtasistService } from '../../../services/dt/dtasist.service';
 
 @Component({
-  selector: 'app-plsmenu',
-  templateUrl: './plsmenu.page.html',
-  styleUrls: ['./plsmenu.page.scss'],
+  selector: 'app-dtsmenu',
+  templateUrl: './dtsmenu.page.html',
+  styleUrls: ['./dtsmenu.page.scss'],
 })
-export class PlsmenuPage implements OnInit {
+export class DtsmenuPage implements OnInit {
   enableMenu = false;
   loading = false;
-  PlApert: plapert[];
+  DtApert: dtapert[];
   smenu: mainSmenu[] = [];
 
   constructor(
-    private _service: PlasistService,
+    private _service: DtasistService,
     private _alert: AlertService,
     private _route: Router
   ) {
@@ -26,23 +26,17 @@ export class PlsmenuPage implements OnInit {
       {
         mainIcon: "eye",
         mainTitle: "Planes",
-        mainPath: "pl/plcacul",
+        mainPath: "dt/dteendep",
         mainSrc: ""
       },
       {
         mainIcon: "clipboard",
         mainTitle: "Asistencias",
-        mainPath: "pl/plasist",
-        mainSrc: ""
-      },
-      {
-        mainIcon: "calendar",
-        mainTitle: "Consultas de Asistencias",
-        mainPath: "pl/plcasis",
+        mainPath: "dt/dtasist",
         mainSrc: ""
       }
     ];
-  }
+   }
 
   ngOnInit() {
     this.getAperturas();
@@ -56,7 +50,7 @@ export class PlsmenuPage implements OnInit {
     this.loading = true;
     let user: TOAccess = JSON.parse(localStorage.getItem("user"));
     this._service.getAperturas(user).subscribe((resp: ToTransaction) => {
-      this.PlApert = resp.ObjTransaction;
+      this.DtApert = resp.ObjTransaction;
       if (resp.Retorno == 1) {
         // this._alert.showAlert('Retono', resp.TxtError);
         this.enableMenu = false;
@@ -67,6 +61,5 @@ export class PlsmenuPage implements OnInit {
         this.enableMenu = true;
       }
     });
-  } 
-
+  }
 }

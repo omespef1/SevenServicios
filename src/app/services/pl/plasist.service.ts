@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpManagerService } from '../httpManager/http-manager.service';
 import { SessionsService } from '../sessions/sessions.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TOAccess } from '../../models/general/totransaction';
 import { transaction, user } from '../../pages/ae/aereser/models/models';
 import { plasist } from '../../models/pl/plcapr';
@@ -13,8 +12,6 @@ import { plasise } from '../../models/pl/plasist';
 export class PlasistService {
 
   constructor(private _http: HttpManagerService, 
-              private sesion: SessionsService, 
-              private http: HttpClient, 
               private _sesion: SessionsService) { }
 
   getAperturas(user: TOAccess){

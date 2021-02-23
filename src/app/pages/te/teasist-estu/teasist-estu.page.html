@@ -3,8 +3,8 @@
     <ion-buttons slot="end">
       <ion-buttons slot="start">
         <ion-button color="dark" (click)="setAplicar()">
-          <ion-icon name="checkmark" color="secondary"></ion-icon>
-        </ion-button>
+            <ion-icon name="checkmark" color="secondary"></ion-icon>
+          </ion-button>
       </ion-buttons>
     </ion-buttons>
     <ion-title>Seleccion de estudiantes</ion-title>
@@ -16,7 +16,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of  Plasise | filtro:textoBuscar: 'cli_noco'">
+    <ion-item *ngFor="let item of  Teasise | filtro:textoBuscar: 'cli_noco'">
       <ion-label>{{ item.cli_noco }}</ion-label>
       <ion-checkbox [(ngModel)]="item.das_asis" color="tertiary"></ion-checkbox>
     </ion-item>

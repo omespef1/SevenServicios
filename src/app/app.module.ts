@@ -26,11 +26,13 @@ import { PlcasisAprtPage } from './pages/pl/plcasis-aprt/plcasis-aprt.page';
 import { PlcasisCaprPage } from './pages/pl/plcasis-capr/plcasis-capr.page';
 import { PlasistEstuPage } from './pages/pl/plasist-estu/plasist-estu.page';
 import { FormsModule } from '@angular/forms';
+import { TeasistEstuPage } from './pages/te/teasist-estu/teasist-estu.page';
+import { DtasistEstuPage } from './pages/dt/dtasist-estu/dtasist-estu.page';
 
 @NgModule({
-  declarations: [AppComponent,    GnemprePage,GnconexPage, TecasisAprtPage, TecasisCaprPage, PlcasisAprtPage, PlcasisCaprPage, PlasistEstuPage],
+  declarations: [AppComponent,    GnemprePage,GnconexPage, TecasisAprtPage, TecasisCaprPage, PlcasisAprtPage, PlcasisCaprPage, PlasistEstuPage, TeasistEstuPage, DtasistEstuPage],
   entryComponents: [
-    GnemprePage, GnconexPage, TecasisAprtPage, TecasisCaprPage, PlcasisAprtPage, PlcasisCaprPage, PlasistEstuPage
+    GnemprePage, GnconexPage, TecasisAprtPage, TecasisCaprPage, PlcasisAprtPage, PlcasisCaprPage, PlasistEstuPage, TeasistEstuPage, DtasistEstuPage
   ],
   imports: [
     BrowserModule, 

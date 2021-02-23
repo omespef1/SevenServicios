@@ -11,7 +11,7 @@ import { AlertComponent } from 'src/app/components/alert/alert.component';
 import { Gmplane } from 'src/app/models/gm/gmplane';
 import { Router } from '@angular/router';
 import { SessionsService } from '../../../services/sessions/sessions.service';
-import Swal from 'sweetalert2'
+// import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-gminfar',
@@ -110,24 +110,24 @@ export class GminfarPage implements OnInit {
     this._gminfar.SetGmInfar(this.gminfar,this.user).subscribe(resp=>{
       console.log(resp);
       this.loading=false;
-      if(resp.Retorno==1)
-     {
-      Swal.fire({
-        title: 'Error!',
-        text: resp.TxtError,
-        icon: 'error',
-        confirmButtonText: 'Aceptar'
-      })
-     }
-      else{
-        Swal.fire({
-          title: 'Genial!',
-          text: 'Inscripción realizada!',
-          icon: 'success',
-          confirmButtonText: 'Cool'
-        })
-        this.router.navigateByUrl('tabs/gm/gmplane')
-      }
+    //   if(resp.Retorno==1)
+    //  {
+    //   Swal.fire({
+    //     title: 'Error!',
+    //     text: resp.TxtError,
+    //     icon: 'error',
+    //     confirmButtonText: 'Aceptar'
+    //   })
+    //  }
+    //   else{
+    //     Swal.fire({
+    //       title: 'Genial!',
+    //       text: 'Inscripción realizada!',
+    //       icon: 'success',
+    //       confirmButtonText: 'Cool'
+    //     })
+    //     this.router.navigateByUrl('tabs/gm/gmplane')
+    //   }
      
       
     },err=>{

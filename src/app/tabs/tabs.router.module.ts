@@ -21,15 +21,19 @@ const routes: Routes = [
         path: 'pl',
         loadChildren: () => import('../pages/pl/pl-routing.module').then(pl => pl.PlRoutingModule)
       },
+      // {
+      //   path: 'dtendep',
+      //   children: [
+      //     {
+      //       path: '',
+      //       loadChildren: () =>
+      //         import('../pages/dt/dteendep/dteendep.module').then(m => m.DteendepPageModule)
+      //     }
+      //   ]
+      // },
       {
-        path: 'dtendep',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../pages/dt/dteendep/dteendep.module').then(m => m.DteendepPageModule)
-          }
-        ]
+        path: 'dt',
+        loadChildren: () => import('../pages/dt/dt-routing.module').then(dt => dt.DtRoutingModule)
       },
       {
         path: 'suafili',

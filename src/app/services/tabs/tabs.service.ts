@@ -18,7 +18,7 @@ export class TabsService {
       {
         mainIcon: "bicycle",
         mainTitle: "Deportes",
-        mainPath: "dtendep",
+        mainPath: "dt",
         mainSrc: ""
       },
       {

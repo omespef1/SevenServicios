@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-buttons slot="start">
+        <ion-button color="dark" (click)="Salir()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-buttons>
+    <ion-title>Asistencias</ion-title>
+  </ion-toolbar>
+  <ion-searchbar animated (ionChange)="buscar($event)">
+  </ion-searchbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none" inset="true">
+    <ion-item *ngFor="let item of DtApert">
+      <ion-icon name="add-circle-outline" slot="start">
+      </ion-icon>
+      <ion-label>
+        {{item.equ_nomb}}
+      </ion-label>
+      <ion-button color="secondary" fill="outline" slot="end" (click)="marcarAsistencias(item)">
+        <ion-icon name="checkmark-circle" slot="end"></ion-icon>
+        Seleccionar
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
