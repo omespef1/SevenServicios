@@ -9,4 +9,4 @@ export const developerFacebook = 'https://www.facebook.com/digitalware/';
 export const developerTwitter = 'https://twitter.com/Digital_Ware';
 export const developerWeb = 'http://www.digitalware.com.co/';
 export const developerMode = true;
-export const developerUrl="http://argusprueba.comfenalco.com.co/Apps/SevenERPServi/api/"
+export const developerUrl="http://cerezo/REST/SQL/RSEVSERV/api/"
