@@ -28,7 +28,7 @@ const routes: Routes = [
     path: "etasist",
     loadChildren: () =>
       import("../et/etasist/etasist.module").then((et) => et.EtasistPageModule),
-  },
+  }
 ];
 
 @NgModule({
