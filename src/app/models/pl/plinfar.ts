@@ -7,10 +7,10 @@ export class plinfar {
   cli_coda: string;
   arb_cods: string;
   inf_desc: string;
-  inf_crm: string;
+  inf_icrm: string;
   inf_icde: string;
   inf_pcor: string;
-  inf_encv: string;
+  inf_envc: string;
   detalle: pldinfa[];
 
 }

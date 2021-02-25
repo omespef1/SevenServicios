@@ -83,11 +83,11 @@ export class PlinfarPage implements OnInit {
       arb_cods: "",
       cli_coda: this.user.objResult.cli_coda,
       top_codi: this.campus.TOP_CODI,
-      inf_crm: "N",
+      inf_icrm: "N",
       inf_desc: `Inscripción ${this.user.objResult.cli_noco}`,
       inf_fech: new Date(),
       inf_icde: "S",
-      inf_encv: "S",
+      inf_envc: "S",
       inf_nume: 0,
       inf_pcor: "S",
     

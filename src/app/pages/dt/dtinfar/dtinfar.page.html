@@ -2,9 +2,8 @@
 
 </app-header>
 
-<ion-content fullscreen>
-
-  <form #formDtInfar="ngForm">
+<ion-content fullscreen class="ion-padding">
+  <form #dtInfarForm="ngForm">
     <ion-list lines="none" inset="true">
       <ion-item>
         <ion-icon slot="start" name="alarm"></ion-icon>
@@ -18,20 +17,23 @@
       </ion-item>
       
     </ion-list>
+<div padding>
+  <ion-button  [disabled]="this.campus==undefined || initDate == undefined || loading" (click)="ShowConfirm()"  fill="solid" color="secondary" expand="block">
+    <ng-container *ngIf="_service.loading | async;else notLoading">
+      <ion-spinner  slot="start"></ion-spinner>
+      Guardando...               
+     </ng-container>
+    <ng-template #notLoading>
+      <ion-icon  slot="start" name="clipboard"></ion-icon>     
+      Incribirme
+    </ng-template>
 
-    <ion-button  [disabled]="this.campus==undefined || initDate == undefined || loading" (click)="ShowConfirm()"  fill="solid" color="secondary" expand="block">
-      <ng-container *ngIf="dtInfarService.loading | async;else notLoading">
-        <ion-spinner  slot="start"></ion-spinner>
-        Cargando...               
-       </ng-container>
-      <ng-template #notLoading>
-        <ion-icon  slot="start" name="clipboard"></ion-icon>     
-        Incribirme
-      </ng-template>
-
-    </ion-button>
+  </ion-button>
+</div>
+ 
 
   </form>
+  <app-alert>
 
-  <app-alert></app-alert>
+  </app-alert>
 </ion-content>

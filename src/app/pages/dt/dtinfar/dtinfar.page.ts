@@ -7,7 +7,7 @@ import { Item } from './../../../models/general/items';
 import { TypeOperation } from './../../../models/general/type-operation.model';
 import { DetailInscription, Inscription } from './../../../models/general/inscription.model';
 import { TOAccess } from './../../../models/general/totransaction';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { DtinfarService } from '../../../services/dt/dtinfar.service';
 import { AlertService } from '../../../services/alert/alert.service';
@@ -16,6 +16,9 @@ import { Router } from '@angular/router';
 import { EtInfar } from 'src/app/models/et/etinfar';
 import { etcurso } from 'src/app/models/et/etcurso';
 import { DtInfar } from '../../../models/dt/dtinfar.model';
+import { SessionsService } from '../../../services/sessions/sessions.service';
+import { AlertComponent } from '../../../components/alert/alert.component';
+import { dtendep } from 'src/app/models/dt/dtendep';
 
 
 @Component({
@@ -24,148 +27,124 @@ import { DtInfar } from '../../../models/dt/dtinfar.model';
   styleUrls: ['./dtinfar.page.scss'],
 })
 export class DtinfarPage implements OnInit {
-  loading=false;
+
   user: TOAccess;
-  header: EtInfar = new EtInfar();
-  data: DtInfar;
-  initDate:Date;
-  endDate:Date;
+  data: dtendep;
   operations:TypeOperation[]=[];
   campus:TypeOperation;
+  initDate:Date;
+  loading=false;
   constructor(
-    private modalController: ModalController,
-    private _alert:AlertService,
-    public dtInfarService: DtinfarService,
-    private auth: AuthService,
-    private router:Router,
-    private dtpfareService:DtpfareService,
+    private dtInfarService: DtinfarService,
+    public dtPfareService: DtpfareService,
+    private _auth: AuthService,
+    private router: Router,
+    private _alertS:AlertService,
+    private _sesion:SessionsService,
+    private modalController:ModalController
   ) {
-    this.user = this.auth.loadUser();
-    this.data = this.router.getCurrentNavigation().extras.state.dtendep;
-  }
+    this.user = this._auth.loadUser();
 
+    if (this.router.getCurrentNavigation().extras.state) {
+      this.data = this.router.getCurrentNavigation().extras.state.data;
+      console.log(this.data);
+    }
+  }
+  @ViewChild(AlertComponent, { static: false }) _alert: AlertComponent;
   ngOnInit() {
-
     this.getTypeOperations();
-    
   }
 
-
+  getTypeOperations() {
+    this.dtPfareService.getDtPfare(this.user.objResult.emp_codi).subscribe(resp => {
+      if (resp.Retorno == 0) {
+        this.operations = resp.ObjTransaction;
+      }
+    })
+  }
 
   ShowConfirm() {
-    this._alert
+    this._alertS
       .showAlertConfirm(
         "¿Estás seguro de realizar esta inscripción?",
         "Confirmar inscripción"
       )
       .then((resp: boolean) => {
 
-        if(resp){
-          this.pushInscription();
+        if (resp) {
+          this.setDtInfar();
         }
-     
+
       });
   }
 
-  dismiss() {
-    this.modalController.dismiss();
+
+  setDtInfar() { 
+    this.loading=true;
+    let inscription: DtInfar = {
+      emp_codi: this._sesion.GetGnEmpre().emp_codi,
+      arb_cods: "",
+      cli_coda: this.user.objResult.cli_coda,
+      top_codi: this.campus.TOP_CODI,
+      inf_icrm: "N",
+      inf_desc: `Inscripción ${this.user.objResult.cli_noco}`,
+      inf_fech: new Date(),
+      inf_icde: "N",
+      inf_envc: "N",
+      inf_nume: 0,
+      inf_pcor: "S",
+    
+      detalle: [
+        {
+          apc_cont: this.data.end_cont,
+          cli_coda: this.user.objResult.cli_coda,
+          din_cant: 1,
+          din_valo: 0,       
+          din_tide: "P",
+          din_pvde: 0,
+          emp_codi:this._sesion.GetGnEmpre().emp_codi,
+          inf_cont:0
+        }
+      ]
+    };
+    this.dtInfarService.SetDtInfar(inscription, this.user).subscribe(resp => {     
+      this.loading=false;
+      if (resp.Retorno == 1) {
+        this._alertS.error(resp.TxtError);
+      } else{
+        this._alertS.success('La inscripción ha sido realizada!');
+        this.router.navigateByUrl('tabs/dt/dtendeep')
+      } 
+    });
   }
 
 
-  getTypeOperations(){
-    this.dtpfareService.getDtPfare(this.user.objResult.emp_codi).subscribe(resp=>{
-      if(resp.Retorno==0){
-      this.operations=resp.ObjTransaction;
-      }
-    })
-  }
-
-  pushInscription(){
-    // this.loading=true;
-    // let details: DetailInscription[] = [];
-
-    // let gmdinfa: DetailInscription = {
-    //   cli_coda: this.user.objResult.cli_coda,
-    //   din_cant: 1,
-    //   din_cfef: "S",
-    //   din_feci: this.din_feci,
-    //   din_fecf:this.din_feci,
-    //   din_pvde: 0,
-    //   din_tide: "P",
-    //   din_valo: 0,
-    //   pla_codi: this.plan.pla_codi
-    // };
-
-    // details.push(gmdinfa);
-    // this.gminfar = {
-    //   emp_codi: this.user.objResult.emp_codi,
-    //   top_codi: this.campus.TOP_CODI,
-    //   inf_fech: new Date(),
-    //   cli_coda: this.user.objResult.cli_coda,
-    //   inf_nume: 0,
-    //   arb_cods: "",
-    //   inf_desc: `Inscripción ${this.user.objResult.cli_noco}`,
-    //   inf_envc: "N",
-    //   inf_icrm: "N",
-    //   inf_pcor: "N",
-    //   inf_icde: "S",
-    //   detalle: details
-    // };
-
-    // console.log('enviando inscripción');
-
-    // this.dtInfarService.SetDtInfar(this.gminfar,this.user).subscribe(resp=>{
-    //   console.log(resp);
-    //   this.loading=false;
-    //   if(resp.Retorno==1)
-    //  {
-    //   Swal.fire({
-    //     title: 'Error!',
-    //     text: resp.TxtError,
-    //     icon: 'error',
-    //     confirmButtonText: 'Aceptar'
-    //   })
-    //  }
-    //   else{
-    //     Swal.fire({
-    //       title: 'Genial!',
-    //       text: 'Inscripción realizada!',
-    //       icon: 'success',
-    //       confirmButtonText: 'Aceptar'
-    //     })
-    //     this.router.navigateByUrl('tabs/dtendep')
-    //   }
-     
-      
-    // },err=>{
-    //   this.dtInfarService.loading.next(false);
-    // })
-  }
-
+  
   async openModal() {
-    let items: Item[]=[];
-    this.operations.forEach(item=>{
-      items.push({id:item.TOP_CODI,name:item.TOP_NOMB})
+    let items: Item[] = [];
+    this.operations.forEach(item => {
+      items.push({ id: item.TOP_CODI, name: item.TOP_NOMB })
     })
 
-    const modalParam :ModalModel = {
+    const modalParam: ModalModel = {
 
-      icon:'add-circle-outline',
-      source:items
+      icon: 'add-circle-outline',
+      source: items
     }
+    console.log(this.operations);
     const modal = await this.modalController.create({
       component: ModalComponent,
-      componentProps: {  'source': modalParam} 
+      componentProps: { 'source': modalParam }
     });
-   
+
     await modal.present();
 
-     modal.onDidDismiss().then((data)=>{
-       console.log(data);
-      if(data){     
-        this.campus = { TOP_CODI:data.data.id,TOP_NOMB:data.data.name}
+    modal.onDidDismiss().then((data) => {
+      console.log(data);
+      if (data) {       
+        this.campus = { TOP_CODI: data.data.id, TOP_NOMB: data.data.name }
       }
-     })
- 
+    })
+
   }
 }
