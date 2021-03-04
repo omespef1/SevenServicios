@@ -15,8 +15,106 @@
   
            
       <app-toggable-card [title]="plane.pla_nomb" imgParam="gym.png" [subTitle]="plane.pla_clas" *ngFor="let plane of gmplane">
-          <div #bodyArea>
-              <ion-grid fixed>
+        <ion-list-header color="secondary">             
+          <ion-label>
+          
+            <small>  DATOS BÁSICOS  </small> 
+          </ion-label>
+
+        </ion-list-header>
+        <ion-item>
+          <ion-icon slot="start" name="man"></ion-icon>
+          <ion-label>
+            <h3>
+            Edad mínima
+            </h3>               
+          </ion-label>               
+         <ion-note slot="end">{{plane.pla_emin}}</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="filing"></ion-icon>
+          <ion-label>
+            <h3>
+            Clasificación
+            </h3>               
+          </ion-label>               
+         <ion-note slot="end">{{plane.cla_nomb}}</ion-note>
+        </ion-item>
+            <ion-list lines="none" *ngFor="let data of plane.detail;let i=index">                  
+              <ion-list-header color="secondary">             
+                <ion-label>
+                  <small>     {{ data.dpl_hori | date:'hh:mm aa'}}  </small>  -
+                  <small>  {{ data.dpl_horf | date:'hh:mm aa'}}  </small> 
+                </ion-label>
+   
+              </ion-list-header>
+              <ion-item *ngIf="data.dpl_lune=='S'">
+                <ion-icon slot="start" name="alarm"></ion-icon>
+                <ion-label>
+                  <h3>
+                  Lunes
+                  </h3>               
+                </ion-label>               
+                <ion-checkbox slot="end" color="secondary" checked="true" disabled=true></ion-checkbox>
+              </ion-item>
+              <ion-item *ngIf="data.dpl_mart=='S'">
+                <ion-icon slot="start" name="alarm"></ion-icon>
+                <ion-label>
+                  <h3>
+                  Martes
+                  </h3>               
+                </ion-label>               
+                <ion-checkbox slot="end" color="secondary" checked="true" disabled=true></ion-checkbox>
+              </ion-item>
+              <ion-item *ngIf="data.dpl_mier=='S'">
+                <ion-icon slot="start" name="alarm"></ion-icon>
+                <ion-label>
+                  <h3>
+                  Miércoles
+                  </h3>               
+                </ion-label>               
+                <ion-checkbox slot="end" color="secondary" checked="true" disabled=true></ion-checkbox>
+              </ion-item>
+
+              <ion-item *ngIf="data.dpl_juev=='S'">
+                <ion-icon slot="start" name="alarm"></ion-icon>
+                <ion-label>
+                  <h3>
+                  Jueves
+                  </h3>               
+                </ion-label>               
+                <ion-checkbox slot="end" color="secondary" checked="true" disabled=true></ion-checkbox>
+              </ion-item>
+              <ion-item *ngIf="data.dpl_vier=='S'">
+                <ion-icon slot="start" name="alarm"></ion-icon>
+                <ion-label>
+                  <h3>
+                  Viernes
+                  </h3>               
+                </ion-label>               
+                <ion-checkbox slot="end" color="secondary" checked="true" disabled=true></ion-checkbox>
+              </ion-item>
+              <ion-item *ngIf="data.dpl_saba=='S'">
+                <ion-icon slot="start" name="alarm"></ion-icon>
+                <ion-label>
+                  <h3>
+                  Sábado
+                  </h3>               
+                </ion-label>               
+                <ion-checkbox slot="end" color="secondary" checked="true" disabled=true></ion-checkbox>
+              </ion-item>
+              <ion-item *ngIf="data.dpl_domi=='S'">
+                <ion-icon slot="start" name="alarm"></ion-icon>
+                <ion-label>
+                  <h3>
+                  Domingo
+                  </h3>               
+                </ion-label>               
+                <ion-checkbox slot="end" color="secondary" checked="true" disabled=true></ion-checkbox>
+              </ion-item>             
+            </ion-list>
+            
+              <!-- <ion-grid fixed>
                   <ion-row>
                     <ion-col size="3">
                       <div class="card-content">
@@ -81,12 +179,12 @@
                     </ion-col>
                    
                   </ion-row>          
-                </ion-grid> 
-          </div>
+                </ion-grid>  -->
+          
        
         <div #divArea>
             <ion-button  color="success" Expand="full" (click)="openGmInfar(plane)">
-                <ion-icon slot="start" name="eye"></ion-icon>
+                <ion-icon slot="start" name="create"></ion-icon>
                Inscribirme
               </ion-button>
           

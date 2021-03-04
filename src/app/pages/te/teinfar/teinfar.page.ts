@@ -26,14 +26,14 @@ export class TeinfarPage implements OnInit {
   tepfare: tepfare[] = [];
   sede: tepfare;
   user: TOAccess;
-  din_feci:Date= new Date()
+  din_feci:Date;
   option: tecuter;
   campus : TypeOperation;
   operations:TypeOperation[]=[];
   loading = false;
   constructor(
     private _TePfare: TePfareService,
-    private _service: TeInfarService,
+    public _service: TeInfarService,
     private _auth: AuthService,
     private router: Router,
     private _alertS:AlertService,
@@ -73,7 +73,7 @@ export class TeinfarPage implements OnInit {
       emp_codi: this.user.objResult.emp_codi,
       arb_cods: "",
       cli_coda: this.user.objResult.cli_coda,
-      top_codi: this.campus.TOP_CODI,
+      top_codi: 0,
       inf_crm: "N",
       inf_desc: `Inscripción ${this.user.objResult.cli_noco}`,
       inf_fech: new Date(),

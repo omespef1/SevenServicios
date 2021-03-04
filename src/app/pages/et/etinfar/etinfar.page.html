@@ -5,34 +5,47 @@
 <ion-content fullscreen>
 
   <form #formDtInfar="ngForm">
-    <ion-list lines="none" inset="true">
-      <ion-item>
+    <ion-list lines="none" inset="true">        
+      <ion-list-header color="secondary">
+        <ion-label>
+          Horario
+        </ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let data of data.detail;let i=index">
         <ion-icon slot="start" name="alarm"></ion-icon>
-        <ion-label>Fecha de inicio</ion-label>
-        <ion-datetime name="initDate"  [(ngModel)]="initDate" display-format="DD.MM.YYYY"></ion-datetime>
+        <ion-label>
+          <h3>
+            {{data.dcu_hori | date :'hh:mm aa'}}
+          </h3>
+          <p>
+            <small>{{data.dcu_hori | date :'dd/MM/yyyy'}}</small>
+          </p>
+        </ion-label>
+        <ion-label>
+          <h3>
+            {{data.dcu_horf | date :'hh:mm aa'}}
+          </h3>
+          <p>
+            <small>{{data.dcu_horf | date :'dd/MM/yyyy'}}</small>
+          </p>
+        </ion-label>
+        <ion-toggle  name="data.checked" [(ngModel)]="data.checked" (ionChange)="setHour($event,data)" slot="end" color="secondary"></ion-toggle>
       </ion-item>
-      <ion-item button (click)="openModal()">
-        <ion-icon slot="start" name="business"></ion-icon>
-        <ion-label>Sede</ion-label>
-        <ion-note *ngIf="campus" slot="end"> {{campus.TOP_NOMB}} </ion-note>
-      </ion-item>
-      
     </ion-list>
-<div padding>
-  <ion-button  [disabled]="this.campus==undefined || initDate == undefined || loading" (click)="ShowConfirm()"  fill="solid" color="secondary" expand="block">
-    <ng-container *ngIf="etInfarService.loading | async;else notLoading">
-      <ion-spinner  slot="start"></ion-spinner>
-      Guardando...               
-     </ng-container>
-    <ng-template #notLoading>
-      <ion-icon  slot="start" name="clipboard"></ion-icon>     
-      Incribirme
-    </ng-template>
+    <div padding>
+      <ion-button [disabled]="!selectedTime() || loading" (click)="ShowConfirm()"
+        fill="solid" color="secondary" expand="block">
+        <ng-container *ngIf="etInfarService.loading | async;else notLoading">
+          <ion-spinner slot="start"></ion-spinner>
+          Guardando...
+        </ng-container>
+        <ng-template #notLoading>
+          <ion-icon slot="start" name="clipboard"></ion-icon>
+          Incribirme
+        </ng-template>
 
-  </ion-button>
-</div>
- 
-
+      </ion-button>
+    </div>
   </form>
 
   <app-alert></app-alert>

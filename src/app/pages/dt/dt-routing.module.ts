@@ -5,6 +5,11 @@ import { DatePipe } from "@angular/common";
 
 
 const routes: Routes = [
+  {
+    path: 'dtinfar',
+    loadChildren: () => import('../dt/dtinfar/dtinfar.module').then(pl => pl.DtinfarPageModule),
+    canActivate: [AuthGuard]
+  },
       {
         path: '',
         redirectTo: 'dtsmenu'
@@ -15,8 +20,7 @@ const routes: Routes = [
       },
       {
         path: 'dteendep',
-        loadChildren: () => import('../dt/dteendep/dteendep.module').then(pl => pl.DteendepPageModule),
-        canActivate: [AuthGuard]
+        loadChildren: () => import('../dt/dteendep/dteendep.module').then(pl => pl.DteendepPageModule),       
       },
       { 
         path: 'dtasist', 

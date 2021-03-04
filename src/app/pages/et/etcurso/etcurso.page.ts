@@ -48,7 +48,7 @@ export class EtcursoPage implements OnInit {
 this.GetEtCurso($event);
   }
 
-  openEtInfar(curso: EtInfar) {
+  openEtInfar(curso: etcurso) {
     let params: NavigationExtras = {
       state: {
         data: curso

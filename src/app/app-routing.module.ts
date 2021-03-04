@@ -15,8 +15,9 @@ const routes: Routes = [
   { path: 'menu', loadChildren: './pages/menu/menu.module#MenuPageModule' },
   { path: 'suafili', loadChildren: './pages/su/suafili/suafili.module#SuafiliPageModule' },
   { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
-  { path: 'plinfar', loadChildren: './pages/pl/plinfar/plinfar.module#PlinfarPageModule' },
-  { path: 'teinfar', loadChildren: './pages/te/teinfar/teinfar.module#TeinfarPageModule' },  { path: 'dtinfar', loadChildren: './pages/dt/dtinfar/dtinfar.module#DtinfarPageModule' },
+  // { path: 'plinfar', loadChildren: './pages/pl/plinfar/plinfar.module#PlinfarPageModule' },
+  // { path: 'teinfar', loadChildren: './pages/te/teinfar/teinfar.module#TeinfarPageModule' },
+  // { path: 'dtinfar', loadChildren: './pages/dt/dtinfar/dtinfar.module#DtinfarPageModule' },
   { path: 'dtsmenu', loadChildren: './pages/dt/dtsmenu/dtsmenu.module#DtsmenuPageModule' },
   { path: 'dtasist', loadChildren: './pages/dt/dtasist/dtasist.module#DtasistPageModule' },
 

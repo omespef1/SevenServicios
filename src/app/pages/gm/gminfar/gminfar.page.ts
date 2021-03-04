@@ -100,7 +100,7 @@ export class GminfarPage implements OnInit {
     details.push(gmdinfa);
     this.gminfar = {
       emp_codi: this.user.objResult.emp_codi,
-      top_codi: this.campus.TOP_CODI,
+      top_codi: 0,
       inf_fech: new Date(),
       cli_coda: this.user.objResult.cli_coda,
       inf_nume: 0,

@@ -15,7 +15,8 @@ ion-card {
     }
     ion-card-header {   
         max-height: 200px;
-    
+        padding: 1;
+        background:#fff;
     }
     ion-card-content{
         background:#fff;
@@ -57,4 +58,8 @@ ion-card {
         margin:0px;
     }
 
-
+    .item.sc-ion-label-ios-h, .item .sc-ion-label-ios-h {
+        
+        font-size: 0.8rem;
+        
+    }

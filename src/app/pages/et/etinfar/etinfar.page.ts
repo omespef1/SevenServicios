@@ -14,6 +14,8 @@ import Swal from 'sweetalert2';
 import { ModalModel } from '../../../models/general/modal.model';
 import { ModalComponent } from '../../../components/modal/modal/modal.component';
 import { Item } from '../../../models/general/items';
+import { etdcurs } from '../../../models/et/etcurso';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-etinfar',
@@ -81,10 +83,10 @@ export class EtinfarPage implements OnInit {
   pushInscription() {
     this.loading = true;
 
-
+    let course = this.data.detail.filter(v=>v.checked)[0];
     this.header = {
       emp_codi: this.user.objResult.emp_codi,
-      top_codi: this.campus.TOP_CODI,
+      top_codi: 0,
       inf_fech: new Date(),
       cli_coda: this.user.objResult.cli_coda,
       inf_nume: 0,
@@ -97,14 +99,15 @@ export class EtinfarPage implements OnInit {
       detalle: [{
         cli_coda: this.user.objResult.cli_coda,
         din_cant: 1,
-        din_feci: this.initDate,
-        din_fecf: this.initDate,
+        din_feci: course.dcu_hori,
+        din_fecf: course.dcu_horf,
         din_pvde: 0,
         din_tide: "P",
         din_valo: 0,
         cur_cont: this.data.cur_cont,
         din_taes:'',
         emp_codi:this.header.emp_codi,
+        dcu_cont:course.dcu_cont,
         inf_cont:0
       }]
     };
@@ -164,5 +167,21 @@ export class EtinfarPage implements OnInit {
       }
     })
 
+  }
+
+  setHour(element,data:etdcurs){
+
+   
+    for(let item of this.data.detail){    
+        
+      if(item.checked && item.dcu_cont != data.dcu_cont)
+          item.checked =  false;
+     
+    }
+
+  }
+
+  selectedTime(){
+    return this.data.detail.filter(v=>v.checked).length>0;
   }
 }

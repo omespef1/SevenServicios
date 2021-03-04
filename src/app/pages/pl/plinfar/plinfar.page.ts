@@ -82,7 +82,7 @@ export class PlinfarPage implements OnInit {
       emp_codi: this._sesion.GetGnEmpre().emp_codi,
       arb_cods: "",
       cli_coda: this.user.objResult.cli_coda,
-      top_codi: this.campus.TOP_CODI,
+      top_codi: 0,
       inf_icrm: "N",
       inf_desc: `Inscripción ${this.user.objResult.cli_noco}`,
       inf_fech: new Date(),

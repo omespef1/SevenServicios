@@ -9,17 +9,12 @@
         <ion-icon slot="start" name="alarm"></ion-icon>
         <ion-label>Fecha de inicio</ion-label>
         <ion-datetime name="initDate"  [(ngModel)]="initDate" display-format="DD.MM.YYYY"></ion-datetime>
-      </ion-item>
-      <ion-item button (click)="openModal()">
-        <ion-icon slot="start" name="business"></ion-icon>
-        <ion-label>Sede</ion-label>
-        <ion-note *ngIf="campus" slot="end"> {{campus.TOP_NOMB}} </ion-note>
-      </ion-item>
+      </ion-item>   
       
     </ion-list>
 <div padding>
-  <ion-button  [disabled]="this.campus==undefined || initDate == undefined || loading" (click)="ShowConfirm()"  fill="solid" color="secondary" expand="block">
-    <ng-container *ngIf="_service.loading | async;else notLoading">
+  <ion-button  [disabled]="initDate == undefined || loading" (click)="ShowConfirm()"  fill="solid" color="secondary" expand="block">
+    <ng-container *ngIf="dtInfarService.loading | async;else notLoading">
       <ion-spinner  slot="start"></ion-spinner>
       Guardando...               
      </ng-container>

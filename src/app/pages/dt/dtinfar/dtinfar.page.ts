@@ -45,10 +45,10 @@ export class DtinfarPage implements OnInit {
   ) {
     this.user = this._auth.loadUser();
 
-    if (this.router.getCurrentNavigation().extras.state) {
+  
       this.data = this.router.getCurrentNavigation().extras.state.data;
       console.log(this.data);
-    }
+ 
   }
   @ViewChild(AlertComponent, { static: false }) _alert: AlertComponent;
   ngOnInit() {
@@ -85,7 +85,7 @@ export class DtinfarPage implements OnInit {
       emp_codi: this._sesion.GetGnEmpre().emp_codi,
       arb_cods: "",
       cli_coda: this.user.objResult.cli_coda,
-      top_codi: this.campus.TOP_CODI,
+      top_codi: 0,
       inf_icrm: "N",
       inf_desc: `Inscripción ${this.user.objResult.cli_noco}`,
       inf_fech: new Date(),

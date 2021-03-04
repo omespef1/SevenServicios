@@ -12,4 +12,6 @@ export class Gmplane {
   pla_rrut: string;
   pla_mpre: number;
   pla_mpos: number;
+  cla_nomb:string;
+  detail:any[];
 }

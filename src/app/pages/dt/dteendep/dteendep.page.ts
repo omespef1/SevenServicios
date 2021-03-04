@@ -46,9 +46,9 @@ export class DteendepPage implements OnInit {
   openDtInfar(item:dtendep){
     let params: NavigationExtras = {
       state: {
-        dtendep: item
+        data: item
       }
     };
-    this.router.navigateByUrl("tabs/dtinfar", params);
+    this.router.navigateByUrl("tabs/dt/dtinfar", params);
   }
 }
