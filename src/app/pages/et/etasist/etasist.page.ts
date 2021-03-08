@@ -76,7 +76,7 @@ export class EtasistPage implements OnInit {
     this._location.back();
   }
 
-  async marcarAsistencias(etRinho) {
+  async marcarAsistencias(etRinho) {    
     this.asi_desc = "Asistencia del curso : " + etRinho.cur_nomb;
     this.cur_cont = etRinho.cur_cont;
     this.rin_grup = etRinho.rin_grup;
@@ -95,11 +95,12 @@ export class EtasistPage implements OnInit {
       };
 
       this._service
-        .setDtAsist(Asistencias, this.user)
+        .setEtAsist(Asistencias, this.user)
         .subscribe(async (resp) => {
           if (resp.Retorno == 1) {
             this._alert.showAlert("Retono", resp.TxtError);
-          } else {
+          } else {   
+            console.log(resp.ObjTransaction);
             this.asi_cont = resp.ObjTransaction.asi_cont;
             const modal = await this._modal.create({
               component: EtasistEstuPage,

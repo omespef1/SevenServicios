@@ -17,7 +17,7 @@ export class EtasistService {
     return this._http.Get<transaction>(`EtAsist/getAperturas?emp_codi=${this._sesion.GetGnEmpre().emp_codi}&ter_coda=${user.objResult.cli_coda}`,user.strToken)
   }
             
-  setDtAsist(etasist: EtAsist, user: TOAccess) {
+  setEtAsist(etasist: EtAsist, user: TOAccess) {
     return this._http.Post<transaction>('/EtAsist/setEtAsist',etasist, user.strToken);
   }
             
