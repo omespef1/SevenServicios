@@ -35,7 +35,7 @@ export class DtinfarPage implements OnInit {
   initDate:Date;
   loading=false;
   constructor(
-    private dtInfarService: DtinfarService,
+    public dtInfarService: DtinfarService,
     public dtPfareService: DtpfareService,
     private _auth: AuthService,
     private router: Router,

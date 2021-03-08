@@ -20,7 +20,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 // import { Facebook } from '@ionic-native/facebook/ngx';
 import { TecasisAprtPage } from './pages/te/tecasis-aprt/tecasis-aprt.page';
-import { PipesModule } from './pipes/pipes.module';
+// import { PipesModule } from './pipes/pipes.module';
 import { TecasisCaprPage } from './pages/te/tecasis-capr/tecasis-capr.page';
 import { PlcasisAprtPage } from './pages/pl/plcasis-aprt/plcasis-aprt.page';
 import { PlcasisCaprPage } from './pages/pl/plcasis-capr/plcasis-capr.page';
@@ -29,9 +29,10 @@ import { FormsModule } from '@angular/forms';
 import { TeasistEstuPage } from './pages/te/teasist-estu/teasist-estu.page';
 import { DtasistEstuPage } from './pages/dt/dtasist-estu/dtasist-estu.page';
 import { EtasistEstuPage } from './pages/et/etasist-estu/etasist-estu.page';
+import { FiltroPipe } from './pipes/filtro.pipe';
 
 @NgModule({
-  declarations: [AppComponent,    GnemprePage,GnconexPage, TecasisAprtPage, TecasisCaprPage, PlcasisAprtPage, PlcasisCaprPage, PlasistEstuPage, TeasistEstuPage, DtasistEstuPage, EtasistEstuPage],
+  declarations: [AppComponent,    GnemprePage,GnconexPage, TecasisAprtPage, TecasisCaprPage, PlcasisAprtPage, PlcasisCaprPage, PlasistEstuPage, TeasistEstuPage, DtasistEstuPage, EtasistEstuPage,FiltroPipe],
   entryComponents: [
     GnemprePage, GnconexPage, TecasisAprtPage, TecasisCaprPage, PlcasisAprtPage, PlcasisCaprPage, PlasistEstuPage, TeasistEstuPage, DtasistEstuPage, EtasistEstuPage
   ],
@@ -49,7 +50,7 @@ import { EtasistEstuPage } from './pages/et/etasist-estu/etasist-estu.page';
     ComponentsModule,
     IonicStorageModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    PipesModule,
+    // PipesModule,
     FormsModule
   ],
   providers: [
