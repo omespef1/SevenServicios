@@ -4,6 +4,7 @@ import { TecasisAprtPage } from '../tecasis-aprt/tecasis-aprt.page';
 import { teapert } from '../../../models/te/tecapr';
 import { TecasisCaprPage } from '../tecasis-capr/tecasis-capr.page';
 import { DatePipe } from "@angular/common";
+import { AlertService } from '../../../services/alert/alert.service';
 
 @Component({
   selector: 'app-tecasis',
@@ -22,7 +23,8 @@ export class TecasisPage implements OnInit {
   constructor(private pickerController: PickerController,
               public alertCtrl: AlertController,
               private _modal: ModalController,
-              private datePipe: DatePipe) { }
+              private datePipe: DatePipe,
+              private _alert: AlertService) { }
 
   ngOnInit() {
   }
@@ -49,7 +51,7 @@ export class TecasisPage implements OnInit {
 
   async BuscarAsis() {
     if (this.fecInic > this.fecFini) {
-      this.presentAlert();
+      this._alert.warning("La fecha final no puede ser mayor a la fecha inicial");
     } else {
       const modal = await this._modal.create({
         component: TecasisCaprPage,
@@ -65,26 +67,9 @@ export class TecasisPage implements OnInit {
     }
   }
 
-  async presentAlert() {
-    const alert = await this.alertCtrl.create({
-      cssClass: 'my-custom-class',
-      header: 'Alerta',
-      message: 'La fecha final no puede ser mayor a la fecha inicial',
-      buttons: [
-        {
-          text: 'Ok',
-          handler: (blah) => {
-          }
-        }
-      ]
-    });
-
-    await alert.present();
-  }
-
   async GetAsistenciasTE() {
     if (this.fecInic > this.fecFini) {
-      this.presentAlert();
+      this._alert.warning("La fecha final no puede ser mayor a la fecha inicial");
     } else {
     const modal = await this._modal.create({
       component: TecasisAprtPage,

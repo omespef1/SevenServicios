@@ -32,7 +32,7 @@ export class PlcasisCaprPage implements OnInit {
     this._service.GetCasisPL(user, this.asi_fein, this.asi_fefi, this.apc_cont).subscribe((resp: ToTransaction) => {
       this.PlCaper = resp.ObjTransaction;
       if (resp.Retorno == 1) {
-        this._alert.showAlert('Retono', resp.TxtError);
+        this._alert.error(resp.TxtError);
       }
       this.loading = false;
       console.log(resp);

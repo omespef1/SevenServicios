@@ -12,9 +12,9 @@ export class FiltroPipe implements PipeTransform {
 
     texto = texto.toLowerCase();
 
-    return arreglo.filter( item => {
+    return arreglo.filter(item => {
       return item[columna].toLowerCase()
-             .includes( texto );
+        .includes(texto);
     });
   }
 

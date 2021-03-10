@@ -32,7 +32,7 @@ export class TecasisCaprPage implements OnInit {
     this._service.GetCasisTE(user, this.asi_fein, this.asi_fefi, this.apc_cont).subscribe((resp: ToTransaction) => {
       this.TeCaper = resp.ObjTransaction;
       if (resp.Retorno == 1) {
-        this._alert.showAlert('Retorno', resp.TxtError);
+        this._alert.error(resp.TxtError);
       }
       this.loading = false;
       console.log(resp);

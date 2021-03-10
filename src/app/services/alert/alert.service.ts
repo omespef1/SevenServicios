@@ -60,4 +60,12 @@ export class AlertService {
       confirmButtonText: 'Aceptar'
     })
   }
+  warning(message:string){
+    Swal.fire({
+      title: 'Alerta!',
+      text: message,
+      icon: 'warning',
+      confirmButtonText: 'Aceptar'
+    })
+  }
 }

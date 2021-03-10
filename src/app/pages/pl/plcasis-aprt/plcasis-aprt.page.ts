@@ -31,7 +31,7 @@ export class PlcasisAprtPage implements OnInit {
     let user: TOAccess = JSON.parse(localStorage.getItem("user"));
     this._service.GetAsistenciasPL(user, this.asi_fein, this.asi_fefi).subscribe((resp: ToTransaction) => {
       if (resp.Retorno == 1) {
-        this._alert.showAlert('Retorno', resp.TxtError);
+        this._alert.error(resp.TxtError);
       } else {
         this.Plapert = resp.ObjTransaction;
       }

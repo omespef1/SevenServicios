@@ -18,7 +18,7 @@ export class DtasistService {
   }
 
   setDtAsist(dtasist: dtasist, user: TOAccess) {
-    return this._http.Post<transaction>('/DtAsist/setPlAsist',dtasist, user.strToken);
+    return this._http.Post<transaction>('/DtAsist/setDtAsist',dtasist, user.strToken);
   }
 
   CambiarEstado(user: TOAccess, asi_cont: number, asi_esta: string) {

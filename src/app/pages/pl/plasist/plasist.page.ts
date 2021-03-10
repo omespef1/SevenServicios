@@ -10,6 +10,7 @@ import { PlasistEstuPage } from "../plasist-estu/plasist-estu.page";
 import { plapert } from "../../../models/pl/plasist";
 import { Item } from "../../../models/general/items";
 import { Location } from "@angular/common";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-plasist",
@@ -32,29 +33,14 @@ export class PlasistPage implements OnInit {
     private _auth: AuthService,
     private _alert: AlertService,
     private _modal: ModalController,
-    private _location: Location
+    private _location: Location,
+    private _router: Router
   ) {
     this.user = this._auth.loadUser();
   }
 
   ngOnInit() {
     this.getAperturas();
-  }
-
-  async presentAlert(mensaje: string) {
-    const alert = await this.alertCtrl.create({
-      cssClass: "my-custom-class",
-      header: "Alerta",
-      message: mensaje,
-      buttons: [
-        {
-          text: "Ok",
-          handler: (blah) => {},
-        },
-      ],
-    });
-
-    await alert.present();
   }
 
   getAperturas() {
@@ -64,7 +50,7 @@ export class PlasistPage implements OnInit {
     this._service.getAperturas(user).subscribe((resp: ToTransaction) => {
       this.Plapert = resp.ObjTransaction;
       if (resp.Retorno == 1) {
-        this._alert.showAlert("Retorno", resp.TxtError);
+        this._alert.error(resp.TxtError);
       }
 
       this.loading = false;
@@ -84,7 +70,7 @@ export class PlasistPage implements OnInit {
     this.asi_desc = "Asistencia del curso : " + PlApert.cac_nomb;
     this.apc_cont = PlApert.apc_cont;
     if (this.apc_cont == 0) {
-      this.presentAlert("Por favor seleccione una apertura");
+      this._alert.error("Por favor seleccione una apertura");
     } else {
       this.loading = true;
       let Asistencias: plasist = {
@@ -98,7 +84,7 @@ export class PlasistPage implements OnInit {
         .setPlAsist(Asistencias, this.user)
         .subscribe(async (resp) => {
           if (resp.Retorno == 1) {
-            this._alert.showAlert("Retono", resp.TxtError);
+            this._alert.error(resp.TxtError);
           } else {
             this.asi_cont = resp.ObjTransaction.asi_cont;
             const modal = await this._modal.create({
@@ -110,7 +96,8 @@ export class PlasistPage implements OnInit {
 
             await modal.present();
             await modal.onDidDismiss();
-            this._alert.showAlert("Confirmación", "Asistencia creada correctamente");
+            this._alert.success("Asistencia creada correctamente");
+            this._router.navigateByUrl('tabs/pl/plsmenu');
           }
         });
     }

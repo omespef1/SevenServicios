@@ -34,6 +34,12 @@ export class DtsmenuPage implements OnInit {
         mainTitle: "Asistencias",
         mainPath: "dt/dtasist",
         mainSrc: ""
+      },
+      {
+        mainIcon: "cash",
+        mainTitle: "Cotizaciones",
+        mainPath: "dt/dtcotiz",
+        mainSrc: ""
       }
     ];
    }

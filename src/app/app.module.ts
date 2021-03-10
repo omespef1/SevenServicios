@@ -32,16 +32,16 @@ import { EtasistEstuPage } from './pages/et/etasist-estu/etasist-estu.page';
 import { FiltroPipe } from './pipes/filtro.pipe';
 
 @NgModule({
-  declarations: [AppComponent,    GnemprePage,GnconexPage, TecasisAprtPage, TecasisCaprPage, PlcasisAprtPage, PlcasisCaprPage, PlasistEstuPage, TeasistEstuPage, DtasistEstuPage, EtasistEstuPage,FiltroPipe],
+  declarations: [AppComponent, GnemprePage, GnconexPage, TecasisAprtPage, TecasisCaprPage, PlcasisAprtPage, PlcasisCaprPage, PlasistEstuPage, TeasistEstuPage, DtasistEstuPage, EtasistEstuPage, FiltroPipe],
   entryComponents: [
     GnemprePage, GnconexPage, TecasisAprtPage, TecasisCaprPage, PlcasisAprtPage, PlcasisCaprPage, PlasistEstuPage, TeasistEstuPage, DtasistEstuPage, EtasistEstuPage
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
     BrowserAnimationsModule,
     IonicModule.forRoot(
       {
-        
+
         mode: 'ios'
       }
     ),
@@ -61,4 +61,4 @@ import { FiltroPipe } from './pipes/filtro.pipe';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

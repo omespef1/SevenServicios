@@ -30,7 +30,7 @@ export class PlasistEstuPage implements OnInit {
     let user: TOAccess = JSON.parse(localStorage.getItem("user"));
     this._service.getEstudiantes(user, this.asi_cont).subscribe((resp: ToTransaction) => {
       if (resp.Retorno == 1) {
-        this._alert.showAlert('Retorno', resp.TxtError);
+        this._alert.error(resp.TxtError);
         this.CerrarModal();
       }
       else {
@@ -46,12 +46,12 @@ export class PlasistEstuPage implements OnInit {
     let user: TOAccess = JSON.parse(localStorage.getItem("user"));
     this._service.MarcarAsist(user, this.Plasise.filter(b => b.das_asis == true)).subscribe((resp: ToTransaction) => {
       if (resp.Retorno == 1) {
-        this._alert.showAlert('Retorno', resp.TxtError);
+        this._alert.error(resp.TxtError);
       }
       else {
         this._service.CambiarEstado(user, this.asi_cont, 'A').subscribe((resp: ToTransaction) => {
           if (resp.Retorno == 1) {
-            this._alert.showAlert('Retorno', resp.TxtError);
+            this._alert.error(resp.TxtError);
           }
           else {
             this.CerrarModal();

@@ -10,23 +10,27 @@ const routes: Routes = [
     loadChildren: () => import('../dt/dtinfar/dtinfar.module').then(pl => pl.DtinfarPageModule),
     canActivate: [AuthGuard]
   },
-      {
-        path: '',
-        redirectTo: 'dtsmenu'
-      },
-      {
-        path: 'dtsmenu',
-        loadChildren: () => import('../dt/dtsmenu/dtsmenu.module').then(pl => pl.DtsmenuPageModule)
-      },
-      {
-        path: 'dteendep',
-        loadChildren: () => import('../dt/dteendep/dteendep.module').then(pl => pl.DteendepPageModule),       
-      },
-      { 
-        path: 'dtasist', 
-        loadChildren: () => import('../dt/dtasist/dtasist.module').then(pl => pl.DtasistPageModule),
-        canActivate: [AuthGuard]
-      }
+  {
+    path: '',
+    redirectTo: 'dtsmenu'
+  },
+  {
+    path: 'dtsmenu',
+    loadChildren: () => import('../dt/dtsmenu/dtsmenu.module').then(pl => pl.DtsmenuPageModule)
+  },
+  {
+    path: 'dteendep',
+    loadChildren: () => import('../dt/dteendep/dteendep.module').then(pl => pl.DteendepPageModule),
+  },
+  {
+    path: 'dtasist',
+    loadChildren: () => import('../dt/dtasist/dtasist.module').then(pl => pl.DtasistPageModule),
+    canActivate: [AuthGuard]
+  },
+  { path: 'dtcotiz', 
+    loadChildren: () => import('../dt/dtcotiz/dtcotiz.module').then(pl => pl.DtcotizPageModule),
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({

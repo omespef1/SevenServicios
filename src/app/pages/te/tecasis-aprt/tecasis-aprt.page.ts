@@ -32,7 +32,7 @@ export class TecasisAprtPage implements OnInit {
     let user: TOAccess = JSON.parse(localStorage.getItem("user"));
     this._service.GetAsistenciasTE(user, this.asi_fein, this.asi_fefi).subscribe((resp: ToTransaction) => {
       if (resp.Retorno == 1) {
-        this._alert.showAlert('Retorno', resp.TxtError);
+        this._alert.error(resp.TxtError);
       } else {
         this.Teapert = resp.ObjTransaction;
       }

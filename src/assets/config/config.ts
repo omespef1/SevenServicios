@@ -8,5 +8,5 @@ export const developerMail = 'soporte@digitalware.com.co';
 export const developerFacebook = 'https://www.facebook.com/digitalware/';
 export const developerTwitter = 'https://twitter.com/Digital_Ware';
 export const developerWeb = 'http://www.digitalware.com.co/';
-export const developerMode = false;
-export const developerUrl="http://localhost/RSEVSERV/api/"
+export const developerMode = true;
+export const developerUrl="http://cerezo/REST/SQL/RSEVSERV/api/"

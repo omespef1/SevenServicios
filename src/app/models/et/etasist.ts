@@ -5,6 +5,7 @@ export class EtAsist {
     asi_desc: string;
     rin_grup: number;
     ite_cont: number;
+    rin_cont: number;
 }
 
 export class EtDasis {
