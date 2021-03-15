@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { gminfar } from "../../models/gm/gminfar";
+import { Routes, RouterModule } from "@angular/router"; 1
 import { AuthGuard } from "../../guards/auth.guard";
 
 const routes: Routes = [
@@ -28,6 +27,13 @@ const routes: Routes = [
     path: "etasist",
     loadChildren: () =>
       import("../et/etasist/etasist.module").then((et) => et.EtasistPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'etcotiz',
+    loadChildren: () =>
+      import("../et/etcotiz/etcotiz.module").then((et) => et.EtcotizPageModule),
+    canActivate: [AuthGuard]
   }
 ];
 
@@ -35,4 +41,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class EtRoutingModule {}
+export class EtRoutingModule { }

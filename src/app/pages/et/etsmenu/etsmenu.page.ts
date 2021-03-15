@@ -34,7 +34,13 @@ export class EtsmenuPage implements OnInit {
         mainTitle: "Asistencias",
         mainPath: "et/etasist",
         mainSrc: ""
-      }
+      },
+      {
+        mainIcon: "cash",
+        mainTitle: "Cotizaciones",
+        mainPath: "et/etcotiz",
+        mainSrc: ""
+      }      
     ];
   }
 

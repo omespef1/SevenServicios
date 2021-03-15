@@ -21,7 +21,7 @@ export class DtcotizService {
     return this._http.Get<transaction>(`DtCotiz/getProductos?emp_codi=${this._sesion.GetGnEmpre().emp_codi}&lis_codi=${lis_codi}`, user.strToken)
   }
 
-  setDtCotiz(dtcotiz: dtcotiz, user: TOAccess) {
-    return this._http.Post<transaction>('/DtCotiz/setDtCotiz', dtcotiz, user.strToken);
+  setDtCotiz(Cotizaciones: dtcotiz, user: TOAccess) {
+    return this._http.Post<transaction>('/DtCotiz/setDtCotiz', Cotizaciones, user.strToken);
   }
 }

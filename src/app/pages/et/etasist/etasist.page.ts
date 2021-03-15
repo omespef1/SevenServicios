@@ -34,9 +34,9 @@ export class EtasistPage implements OnInit {
     private _alert: AlertService,
     private _location: Location,
     private _modal: ModalController,
-    private _router: Router) { 
-      this.user = this._auth.loadUser(); 
-    }
+    private _router: Router) {
+    this.user = this._auth.loadUser();
+  }
 
   ngOnInit() {
     this.getAperturas();
@@ -63,7 +63,7 @@ export class EtasistPage implements OnInit {
     this._location.back();
   }
 
-  async marcarAsistencias(etRinho) {    
+  async marcarAsistencias(etRinho) {
     this.asi_desc = "Asistencia del curso : " + etRinho.cur_nomb;
     this.cur_cont = etRinho.cur_cont;
     this.rin_grup = etRinho.rin_grup;
@@ -88,7 +88,7 @@ export class EtasistPage implements OnInit {
         .subscribe(async (resp) => {
           if (resp.Retorno == 1) {
             this._alert.error(resp.TxtError);
-          } else {   
+          } else {
             console.log(resp.ObjTransaction);
             this.asi_cont = resp.ObjTransaction.asi_cont;
             const modal = await this._modal.create({
@@ -99,9 +99,22 @@ export class EtasistPage implements OnInit {
             });
 
             await modal.present();
-            await modal.onDidDismiss();
-            this._alert.success("Asistencia creada correctamente");
-            this._router.navigateByUrl('tabs/dt/dtsmenu');
+            await modal.onDidDismiss().then(data => {
+              if (data.data.dismissvalue == false) {
+                this._service.EliminarEtAsis(this.user, this.asi_cont).subscribe((resp: ToTransaction) => {
+                  if (resp.Retorno == 1) {
+                    this._alert.error(resp.TxtError);
+                  }
+                  this.loading = false;
+                  console.log(resp);
+                });
+                this._router.navigateByUrl('tabs/et/etsmenu');
+              }
+              else {
+                this._alert.success("Asistencia creada correctamente");
+                this._router.navigateByUrl('tabs/et/etsmenu');
+              }
+            });
           }
         });
     }

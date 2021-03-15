@@ -4,14 +4,14 @@
     <ion-item>
         <ion-icon slot="start" src="assets/icon/calendar-alt-solid.svg"></ion-icon>
         <ion-label>Fecha Inicial</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY" 
+        <ion-datetime displayFormat="DD/MM/YYYY" 
                       min="1994-03-14"
                       (ionChange)="CambioFechaInic($event)"></ion-datetime>          
       </ion-item>
       <ion-item>
         <ion-icon slot="start" src="assets/icon/calendar-alt-solid.svg"></ion-icon>
         <ion-label>Fecha Final</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY" 
+        <ion-datetime displayFormat="DD/MM/YYYY" 
                       min="1994-03-14"
                       (ionChange)="CambioFechaFini($event)"
                       name="fechFin"></ion-datetime>                               
@@ -19,7 +19,7 @@
     
       <ion-item [disabled]="enableButton" (click)="GetAsistenciasPL()">    
         <ion-icon slot="start" src="assets/icon/chalkboard-teacher-solid.svg"></ion-icon>
-        <ion-label>Apertura</ion-label>
+        <ion-label>Curso</ion-label>
         <ion-note slot="end"> {{apc_desc}} </ion-note>
       </ion-item>
     

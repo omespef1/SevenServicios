@@ -95,9 +95,22 @@ export class PlasistPage implements OnInit {
             });
 
             await modal.present();
-            await modal.onDidDismiss();
-            this._alert.success("Asistencia creada correctamente");
-            this._router.navigateByUrl('tabs/pl/plsmenu');
+            await modal.onDidDismiss().then(data => {
+              if (data.data.dismissvalue == false) {
+                this._service.EliminarPlAsis(this.user, this.asi_cont).subscribe((resp: ToTransaction) => {
+                  if (resp.Retorno == 1) {
+                    this._alert.error(resp.TxtError);
+                  }
+                  this.loading = false;
+                  console.log(resp);
+                });
+                this._router.navigateByUrl('tabs/pl/plsmenu');
+              }
+              else {
+                this._alert.success("Asistencia creada correctamente");
+                this._router.navigateByUrl('tabs/pl/plsmenu');
+              }
+            });
           }
         });
     }

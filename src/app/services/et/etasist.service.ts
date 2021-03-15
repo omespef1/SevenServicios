@@ -32,4 +32,8 @@ export class EtasistService {
   getEstudiantes(user: TOAccess, asi_cont: number) {
     return this._http.Get<transaction>(`EtAsist/getEstudiantes?emp_codi=${this._sesion.GetGnEmpre().emp_codi}&asi_cont=${asi_cont}`,user.strToken)
   } 
+
+  EliminarEtAsis(user: TOAccess, asi_cont: number) {
+    return this._http.Post<transaction>(`EtAsist/EliminarEtAsis?emp_codi=${this._sesion.GetGnEmpre().emp_codi}&asi_cont=${asi_cont}`,user.strToken)
+  }
 }

@@ -40,7 +40,13 @@ export class PlsmenuPage implements OnInit {
         mainTitle: "Consultas de Asistencias",
         mainPath: "pl/plcasis",
         mainSrc: ""
-      }
+      },
+      {
+        mainIcon: "cash",
+        mainTitle: "Cotizaciones",
+        mainPath: "pl/plcotiz",
+        mainSrc: ""
+      } 
     ];
   }
 

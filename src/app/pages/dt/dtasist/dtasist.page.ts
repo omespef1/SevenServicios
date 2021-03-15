@@ -91,9 +91,22 @@ export class DtasistPage implements OnInit {
             });
 
             await modal.present();
-            await modal.onDidDismiss();
-            this._alert.success("Asistencia creada correctamente");
-            this._router.navigateByUrl('tabs/dt/dtsmenu');
+            await modal.onDidDismiss().then(data => {
+              if (data.data.dismissvalue == false){
+                this._service.EliminarDtAsis(this.user, this.asi_cont).subscribe((resp: ToTransaction) => {
+                  if (resp.Retorno == 1) {
+                    this._alert.error(resp.TxtError);
+                  }
+                  this.loading = false;
+                  console.log(resp);
+                });
+                this._router.navigateByUrl('tabs/dt/dtsmenu');
+              }
+              else {
+                this._alert.success("Asistencia creada correctamente");
+                this._router.navigateByUrl('tabs/dt/dtsmenu');
+              }
+            });
           }
         });
     }

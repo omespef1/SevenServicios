@@ -40,7 +40,13 @@ export class TesmenuPage implements OnInit {
         mainTitle: "Consultas de Asistencias",
         mainPath: "te/tecasis",
         mainSrc: ""
-      }
+      },
+      {
+        mainIcon: "cash",
+        mainTitle: "Cotizaciones",
+        mainPath: "te/tecotiz",
+        mainSrc: ""
+      } 
     ];
    }
 

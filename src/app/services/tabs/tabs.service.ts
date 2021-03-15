@@ -34,8 +34,8 @@ export class TabsService {
         mainSrc: "assets/icon/globe-americas-solid.svg"
       },
       {
-        mainIcon: "school",
-        mainTitle: "Escuelas",
+        mainIcon: "football",
+        mainTitle: "Escuelas y Club",
         mainPath: "et",
         mainSrc: ""
       },

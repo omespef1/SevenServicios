@@ -132,7 +132,7 @@ export class EtinfarPage implements OnInit {
           icon: 'success',
           confirmButtonText: 'Aceptar'
         })
-        this.router.navigateByUrl('tabs/dtendep')
+        this.router.navigateByUrl('dt/dtsmenu')
       }
 
 

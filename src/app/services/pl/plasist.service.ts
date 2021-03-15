@@ -33,4 +33,8 @@ export class PlasistService {
   getEstudiantes(user: TOAccess, asi_cont: number) {
     return this._http.Get<transaction>(`PlAsist/getEstudiantes?emp_codi=${this._sesion.GetGnEmpre().emp_codi}&asi_cont=${asi_cont}`,user.strToken)
   }
+
+  EliminarPlAsis(user: TOAccess, asi_cont: number) {
+    return this._http.Post<transaction>(`PlAsist/EliminarPlAsis?emp_codi=${this._sesion.GetGnEmpre().emp_codi}&asi_cont=${asi_cont}`,user.strToken)
+  }
 }

@@ -39,4 +39,8 @@ export class TeasistService {
   getEstudiantes(user: TOAccess, asi_cont: number) {
     return this._http.Get<transaction>(`TeAsist/getEstudiantes?emp_codi=${this._sesion.GetGnEmpre().emp_codi}&asi_cont=${asi_cont}`,user.strToken)
   }
+
+  EliminarTeAsis(user: TOAccess, asi_cont: number) {
+    return this._http.Post<transaction>(`TeAsist/EliminarTeAsis?emp_codi=${this._sesion.GetGnEmpre().emp_codi}&asi_cont=${asi_cont}`,user.strToken)
+  }
 }

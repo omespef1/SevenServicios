@@ -122,7 +122,7 @@ export class DtcotizPage implements OnInit {
       if (resp.Retorno == 1) {
         this._alert.error(resp.TxtError);
       } else {
-        this._alert.success('La inscripción ha sido realizada!');
+        this._alert.success('La cotizacion ha sido realizada!');
         this._router.navigateByUrl('tabs/dt/dtsmenu');
       }
     });

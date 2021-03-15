@@ -96,9 +96,22 @@ export class TeasistPage implements OnInit {
             });
 
             await modal.present();
-            await modal.onDidDismiss();
-            this._alert.success("Asistencia creada correctamente");
-            this._router.navigateByUrl('tabs/te/tesmenu');
+            await modal.onDidDismiss().then(data => {
+              if (data.data.dismissvalue == false) {
+                this._service.EliminarTeAsis(this.user, this.asi_cont).subscribe((resp: ToTransaction) => {
+                  if (resp.Retorno == 1) {
+                    this._alert.error(resp.TxtError);
+                  }
+                  this.loading = false;
+                  console.log(resp);
+                });
+                this._router.navigateByUrl('tabs/te/tesmenu');
+              }
+              else {
+                this._alert.success("Asistencia creada correctamente");
+                this._router.navigateByUrl('tabs/te/tesmenu');
+              }
+            });
           }
         });
     }

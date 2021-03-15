@@ -62,7 +62,11 @@ export class PlasistEstuPage implements OnInit {
   }
 
   CerrarModal() {
-    this._modal.dismiss();
+    this._modal.dismiss({dismissvalue: true});
+  }
+
+  Salir() {
+    this._modal.dismiss({dismissvalue: false});
   }
 
   buscar(event) {

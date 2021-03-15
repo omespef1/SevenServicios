@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-buttons slot="start">
+        <ion-button color="dark" (click)="Salir()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-buttons slot="start">
+        <ion-button color="dark" (click)="setPlCotiz()">
+          <ion-icon name="save" color="secondary"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-buttons>
+    <ion-title>Cotizaciones</ion-title>
+  </ion-toolbar>
+  <ion-searchbar (ionChange)="buscar($event)" placeholder="Buscar" showCancelButton="focus"></ion-searchbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of PlProdu">
+      <ion-label>{{ item.cac_codi + '-' + item.cac_nomb }}</ion-label>
+      <ion-checkbox [(ngModel)]="item.cac_marc" color="tertiary"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

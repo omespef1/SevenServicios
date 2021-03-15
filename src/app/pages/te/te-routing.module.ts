@@ -35,7 +35,13 @@ const routes: Routes = [
     path: "teasist",
     loadChildren: () =>
       import("../te/teasist/teasist.module").then((te) => te.TeasistPageModule),
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard]
+  },
+  { 
+    path: 'tecotiz', 
+    loadChildren: () =>
+      import("../te/tecotiz/tecotiz.module").then((te) => te.TecotizPageModule),
+    canActivate: [AuthGuard]
   }
 
 ];

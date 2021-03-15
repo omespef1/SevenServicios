@@ -43,9 +43,12 @@ export class SessionsService {
     return JSON.parse(localStorage.getItem('GnEmpre'));
   }
 
+
+
   erraseStorage() {
     localStorage.removeItem('GnEmpre')
     localStorage.removeItem('GnConex')
-    localStorage.removeItem('user')
+    localStorage.removeItem('user');
+    localStorage.removeItem("developerMode");
   }
 }
