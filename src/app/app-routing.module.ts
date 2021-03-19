@@ -18,8 +18,9 @@ const routes: Routes = [
   // { path: 'plinfar', loadChildren: './pages/pl/plinfar/plinfar.module#PlinfarPageModule' },
   // { path: 'teinfar', loadChildren: './pages/te/teinfar/teinfar.module#TeinfarPageModule' },
   // { path: 'dtinfar', loadChildren: './pages/dt/dtinfar/dtinfar.module#DtinfarPageModule' },
-  { path: 'dtsmenu', loadChildren: './pages/dt/dtsmenu/dtsmenu.module#DtsmenuPageModule' },
-  { path: 'dtasist', loadChildren: './pages/dt/dtasist/dtasist.module#DtasistPageModule' },
+  // { path: 'dtsmenu', loadChildren: './pages/dt/dtsmenu/dtsmenu.module#DtsmenuPageModule' },
+  // { path: 'dtasist', loadChildren: './pages/dt/dtasist/dtasist.module#DtasistPageModule' },
+  // { path: 'tusmenu', loadChildren: './pages/tu/tusmenu/tusmenu.module#TusmenuPageModule' },
 
   // { path: 'modal', loadChildren: './pages/modal/modal/modal.module#ModalPageModule' },
 

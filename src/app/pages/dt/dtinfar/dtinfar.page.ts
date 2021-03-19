@@ -90,7 +90,7 @@ export class DtinfarPage implements OnInit {
       inf_desc: `Inscripción ${this.user.objResult.cli_noco}`,
       inf_fech: new Date(),
       inf_icde: "N",
-      inf_envc: "N",
+      inf_envc: "S",
       inf_nume: 0,
       inf_pcor: "S",
     

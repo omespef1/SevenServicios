@@ -30,7 +30,7 @@ export class TabsService {
       {
         mainIcon: "",
         mainTitle: "Turismo",
-        mainPath: "tuplatu",
+        mainPath: "tu",
         mainSrc: "assets/icon/globe-americas-solid.svg"
       },
       {

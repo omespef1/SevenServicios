@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
-import { AuthGuard } from '../guards/auth.guard';
-import { DtinfarPageModule } from '../pages/dt/dtinfar/dtinfar.module';
 
 const routes: Routes = [
   {
@@ -14,7 +12,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../pages/gm/gm-routing.module').then(m=>m.GmRoutingModule),
+            loadChildren: () => import('../pages/gm/gm-routing.module').then(m => m.GmRoutingModule),
           }
         ]
       },
@@ -23,7 +21,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../pages/et/et-routing.module').then(m=>m.EtRoutingModule),
+            loadChildren: () => import('../pages/et/et-routing.module').then(m => m.EtRoutingModule),
           }
         ]
       },
@@ -36,16 +34,6 @@ const routes: Routes = [
         loadChildren: () => import('../pages/dt/dt-routing.module').then(dt => dt.DtRoutingModule)
       },
       {
-        path: 'dtinfar',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../pages/dt/dtinfar/dtinfar.module').then(m => m.DtinfarPageModule)
-          }
-        ]
-      },
-      {
         path: 'suafili',
         children: [
           {
@@ -54,10 +42,6 @@ const routes: Routes = [
               import('../pages/su/suafili/suafili.module').then(m => m.SuafiliPageModule)
           }
         ]
-      },
-      {
-        path: 'et',
-        loadChildren: () => import('../pages/et/et-routing.module').then(et => et.EtRoutingModule)
       },
       {
         path: 'profile',
@@ -74,14 +58,8 @@ const routes: Routes = [
         loadChildren: () => import('../pages/te/te-routing.module').then(te => te.TeRoutingModule)
       },
       {
-        path: 'tuplatu',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../pages/tu/tuplatu/tuplatu.module').then(m => m.TuplatuPageModule)
-          }
-        ]
+        path: 'tu',
+        loadChildren: () => import('../pages/tu/tu-routing.module').then(tu => tu.TuRoutingModule)
       },
       {
         path: 'cf',
@@ -94,8 +72,8 @@ const routes: Routes = [
         ]
       },
       {
-        path:'menu',
-        loadChildren: ()=>import('../pages/menu/menu.module').then(m=>m.MenuPageModule)
+        path: 'menu',
+        loadChildren: () => import('../pages/menu/menu.module').then(m => m.MenuPageModule)
       }
     ]
   },
@@ -110,4 +88,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

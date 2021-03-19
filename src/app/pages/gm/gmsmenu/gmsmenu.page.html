@@ -1,0 +1,15 @@
+<app-header headerName="Gimnasios"></app-header>
+
+<ion-content>
+    <ion-row padding>    
+      <ion-col  no-padding size="4" *ngFor="let col of smenu" button tappable>
+        <ion-button  fill="block" class="btn-assistancy" (click)="GoPage(col)">
+          <ion-icon class="icon-assistancy" slot="icon-only" [name]="col.mainIcon" [src]="col.mainSrc" color="secondary"></ion-icon>
+        </ion-button>
+        <div text-center class="label-assistancy">
+          <ion-label>{{ col.mainTitle }}</ion-label>
+        </div>
+      </ion-col>  
+    </ion-row>
+  </ion-content>
+  

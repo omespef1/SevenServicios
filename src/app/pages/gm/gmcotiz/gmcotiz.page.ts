@@ -1,34 +1,34 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { TOAccess, ToTransaction } from '../../../models/general/totransaction';
-import { etprodu, etdcoti, etcotiz } from '../../../models/et/etcotiz';
+import { gmprodu, gmdcoti, gmcotiz } from '../../../models/gm/gmcotiz';
 import { IonInfiniteScroll, AlertController } from '@ionic/angular';
 import { Location } from "@angular/common";
 import { AuthService } from '../../../services/auth/auth.service';
-import { EtcotizService } from '../../../services/et/etcotiz.service';
 import { AlertService } from '../../../services/alert/alert.service';
 import { SessionsService } from '../../../services/sessions/sessions.service';
 import { Router } from '@angular/router';
+import { GmcotizService } from '../../../services/gm/gmcotiz.service';
 
 @Component({
-  selector: 'app-etcotiz',
-  templateUrl: './etcotiz.page.html',
-  styleUrls: ['./etcotiz.page.scss'],
+  selector: 'app-gmcotiz',
+  templateUrl: './gmcotiz.page.html',
+  styleUrls: ['./gmcotiz.page.scss'],
 })
-export class EtcotizPage implements OnInit {
+export class GmcotizPage implements OnInit {
   @Input() cur_marc;
   textoBuscar = "";
   user: TOAccess;
   loading = false;
-  EtProdu: etprodu[] = [];
-  EtProdn: etprodu[] = [];
-  EtDcoti: etdcoti[] = [];
+  GmProdu: gmprodu[] = [];
+  GmProdn: gmprodu[] = [];
+  GmDcoti: gmdcoti[] = [];
   length = 0;
   @ViewChild(IonInfiniteScroll, { static: false }) infiniteScroll: IonInfiniteScroll;
 
   constructor(private _location: Location,
     public alertCtrl: AlertController,
     private _auth: AuthService,
-    private _service: EtcotizService,
+    private _service: GmcotizService,
     private _alert: AlertService,
     private _sesion: SessionsService,
     private _router: Router) {
@@ -50,22 +50,22 @@ export class EtcotizPage implements OnInit {
   getCursos() {
     this.loading = true;
     let user: TOAccess = JSON.parse(localStorage.getItem("user"));
-    this._service.getCursos(user).subscribe((resp: ToTransaction) => {
+    this._service.getPlanes(user).subscribe((resp: ToTransaction) => {
       this.loading = false;
       if (resp.Retorno == 1) {
         this._alert.error(resp.TxtError);
         return;
       }
-      this.EtProdn = resp.ObjTransaction;
+      this.GmProdn = resp.ObjTransaction;
       this.appendElements(50);
     });
   }
 
   appendElements(count: number) {
-    let max: number = this.EtProdu.length - 1 + count;
-    for (let i = this.EtProdu.length; i <= max; i++) {
-      if (this.EtProdu.length < this.EtProdn.length) {
-        this.EtProdu.push(this.EtProdn[i]);
+    let max: number = this.GmProdu.length - 1 + count;
+    for (let i = this.GmProdu.length; i <= max; i++) {
+      if (this.GmProdu.length < this.GmProdn.length) {
+        this.GmProdu.push(this.GmProdn[i]);
       }
     }
   }
@@ -75,23 +75,23 @@ export class EtcotizPage implements OnInit {
       console.log('Done');
       this.appendElements(50);
       event.target.complete();
-      if (this.EtProdu.length == this.EtProdn.length) {
+      if (this.GmProdu.length == this.GmProdn.length) {
         event.target.disabled = true;
       }
 
     }, 500);
   }
 
-  setEtCotiz() {
+  setGmCotiz() {
     this.loading = true;
     let user: TOAccess = JSON.parse(localStorage.getItem("user"));
 
-    let details: etdcoti[] = [];
-    for (let produ of this.EtProdu.filter(b => b.cur_marc == true)) {
-      details.push({ cur_codi: produ.cur_codi });
+    let details: gmdcoti[] = [];
+    for (let produ of this.GmProdu.filter(b => b.pla_marc == true)) {
+      details.push({ pla_cont: produ.pla_cont });
     };
 
-    let cotizaciones: etcotiz = {
+    let cotizaciones: gmcotiz = {
       emp_codi: this._sesion.GetGnEmpre().emp_codi,
       cli_coda: this.user.objResult.cli_coda,
       detalle: details
@@ -99,13 +99,13 @@ export class EtcotizPage implements OnInit {
 
     console.log(cotizaciones);
 
-    this._service.setEtCotiz(cotizaciones, user).subscribe(resp => {
+    this._service.setGmCotiz(cotizaciones, user).subscribe(resp => {
       this.loading = false;
       if (resp.Retorno == 1) {
         this._alert.error(resp.TxtError);
       } else {
         this._alert.success('La cotizacion ha sido realizada!');
-        this._router.navigateByUrl('tabs/et/etsmenu');
+        this._router.navigateByUrl('tabs/gm/gmsmenu');
       }
     });
   }

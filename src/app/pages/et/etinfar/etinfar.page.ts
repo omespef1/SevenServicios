@@ -92,7 +92,7 @@ export class EtinfarPage implements OnInit {
       inf_nume: 0,
       arb_cods: "",
       inf_desc: `Inscripción ${this.user.objResult.cli_noco}`,
-      inf_envc: "N",
+      inf_envc: "S",
       inf_icrm: "N",
       inf_pcor: "N",
       inf_icde: "S",
